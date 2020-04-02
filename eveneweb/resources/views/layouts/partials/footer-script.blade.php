@@ -1,4 +1,4 @@
-        <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+		<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 		<script src="{{ asset('plugins/jquery/jquery-migrate-3.0.0.min.js') }}"></script>
 		<script src="{{ asset('plugins/jquery-ui/jquery-ui.js') }}"></script>
 		<script src="{{ asset('plugins/bootstrap/js/popper.min.js') }}"></script>

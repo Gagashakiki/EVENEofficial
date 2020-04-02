@@ -165,11 +165,14 @@
                                             <div class="form-group row">
                                                 <label for="" class="col-md-3 mt-3 control-label">Event*</label>
                                                 <div class="col-md-7">
-                                                  <input type="checkbox" name="kategori[]" value="Event Organizer">Event Organizer <br />
-                                                  <input type="checkbox" name="kategori[]" value="Sweet 17">Sweet 17 <br />
-                                                  <input type="checkbox" name="kategori[]" value="Bridal Shower">Bridal Shower <br />
-
-
+                                                  <input type="checkbox" name="kategori[]" value="birthday-party">Birthday Party<br />
+                                                  <input type="checkbox" name="kategori[]" value="anniversary">Anniversary<br />
+                                                  <input type="checkbox" name="kategori[]" value="wedding-party">Wedding Party<br />
+                                                  <input type="checkbox" name="kategori[]" value="sweet-17">Sweet 17 <br />
+                                                  <input type="checkbox" name="kategori[]" value="bridal-shower">Bridal Shower <br />
+                                                  <input type="checkbox" name="kategori[]" value="baby-shower">Baby Shower<br />
+                                                  <input type="checkbox" name="kategori[]" value="prom-night">Prom Night<br />
+                                                  <input type="checkbox" name="kategori[]" value="proposal">Proposal<br />
                                                 </div>
                                             </div>
                                             <div class="form-group row">

@@ -169,11 +169,16 @@
 
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown"
-                            role="button" aria-haspopup="true" aria-expanded="false">Events</a>
+                            role="button" aria-haspopup="true" aria-expanded="false">Event</a>
                         <ul class="dropdown-menu dropdown-menu-left">
-                            <li><a href="{{ url('vendor/weddingparty') }}">Wedding Party</a></li>
-                            <li><a href="{{ url('vendor/sweet17') }}">Sweet 17</a></li>
-                            <li><a href="{{ url('vendor/bridalshower') }}">Bridal Shower</a></li>
+                            <li><a href="{{ url('vendor/birthday-party') }}">Birthday Party</a></li>
+                            <li><a href="{{ url('vendor/anniversary') }}">Anniversary</a></li>
+                            <li><a href="{{ url('vendor/wedding-party') }}">Wedding Party</a></li>
+                            <li><a href="{{ url('vendor/sweet-17') }}">Sweet 17</a></li>
+                            <li><a href="{{ url('vendor/bridal-shower') }}">Bridal Shower</a></li>
+                            <li><a href="{{ url('vendor/baby-shower') }}">Baby Shower</a></li>
+                            <li><a href="{{ url('vendor/prom-night') }}">Prom Night</a></li>
+                            <li><a href="{{ url('vendor/proposal') }}">Proposal</a></li>
                             {{-- <li><a href="{{ url('vendor/funeral') }}">Funeral</a></li> --}}
                         </ul>
                     </li>
@@ -182,10 +187,10 @@
                         <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown"
                             role="button" aria-haspopup="true" aria-expanded="false">Vendors</a>
                         <ul class="dropdown-menu dropdown-menu-left">
-                            <li><a href="{{ url('vendor/all/eventorganizer') }}">EO</a></li>
-                            <li><a href="{{ url('vendor/all/tabledecoration') }}">Table Decoration</a></li>
+                            <li><a href="{{ url('vendor/all/event-organizer') }}">EO</a></li>
+                            <li><a href="{{ url('vendor/all/table-decoration') }}">Table Decoration</a></li>
                             <li><a href="{{ url('vendor/all/Photographer') }}">Photographer</a></li>
-                            <li><a href="{{ url('vendor/all/makeupartist') }}">Make Up Artist</a></li>
+                            <li><a href="{{ url('vendor/all/makeup-artist') }}">Make Up Artist</a></li>
                         </ul>
                     </li>
 
