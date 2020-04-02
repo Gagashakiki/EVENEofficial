@@ -155,7 +155,7 @@
              </svg> --}}
                 </a>
                 <input type="text" name="query" id="searchbar" class="form-control mt-1 mb-2 mr-sm-1 rounded"
-                    placeholder="Find Your Best EO, Type All to See Everything..." aria-describedby="basic-addon2">
+                    placeholder="search" aria-describedby="basic-addon2">
             </form>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-ex1-collapse"
                 aria-controls="navbar-ex1-collapse" aria-expanded="false" aria-label="Toggle navigation">
