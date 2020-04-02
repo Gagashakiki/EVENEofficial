@@ -1,3 +1,26 @@
+@font-face {
+  font-family: 'montserrat';
+  src: url('font/Montserrat-Regular.ttf')format("truetype");
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url('font/Montserrat-Bold.ttf')format("truetype");
+  font-weight: bold;
+}
+
+* {
+  font-family: 'montserrat', 'sans-serif';
+}
+
+li a {
+  color: #333333 !important;
+}
+
+li a:hover {
+  color: #FBB03B !important;
+}
+
 .mini-blog {
   height: 10rem;
   overflow: hidden;
