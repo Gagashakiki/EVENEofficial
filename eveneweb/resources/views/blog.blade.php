@@ -42,11 +42,12 @@
                         <li><i class="fa fa-calendar" aria-hidden="true"></i>{{\Carbon\Carbon::parse($lists->tanggal)->format('d M Y')}}</li>
                       </ul>
                     </div>
-                    <div class="col-md-10 order-md-1">
+                    <div class="col-md-10 order-md-1 mini-blog">
                       <h3><a href="{{ url('blog/'.$lists->id) }}">{{$lists->judul}} </a> </h3>
                     {!!$lists->isi!!}
                     </div>
                   </div>
+                  <b><a href="{{ url('blog/'.$lists->id) }}">See more...</a></b>
                 </div>
               </div>
             </div>

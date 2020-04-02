@@ -22,6 +22,7 @@
     <!-- CUSTOM CSS -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/default.css') }}" id="option_color">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}" id="custom_style">
 
     <!-- Icons -->
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">

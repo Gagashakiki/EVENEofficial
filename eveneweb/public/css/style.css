@@ -409,13 +409,12 @@ body.static .bb-fixed-header {
 }
 
 a {
-  transition: all 0.3s ease;
-  color: rgba(255, 255, 255, 0.25);
+  color: #333333;
   text-decoration: none !important;
 }
 
 a:hover, a:focus {
-  color: rgba(255, 255, 255, 0.5);
+  color: blue;
   outline: 0;
 }
 

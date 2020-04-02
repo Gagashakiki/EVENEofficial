@@ -1,0 +1,6 @@
+.mini-blog {
+  height: 10rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 1rem;
+}
