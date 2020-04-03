@@ -13,13 +13,17 @@
   font-family: 'montserrat', 'sans-serif';
 }
 
-li a {
+nav li a {
   color: #333333 !important;
 }
 
-li a:hover {
+nav li a:hover {
   color: #FBB03B !important;
 }
+
+/*.thumbnail img {*/
+/*  object-fit: contain;*/
+/*}*/
 
 .mini-blog {
   height: 10rem;
