@@ -31,3 +31,9 @@ nav li a:hover {
   text-overflow: ellipsis;
   margin-bottom: 1rem;
 }
+
+#preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
