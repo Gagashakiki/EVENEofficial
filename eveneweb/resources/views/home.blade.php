@@ -58,7 +58,9 @@
                 data-endspeed="300"
                 data-endeasing="Power1.easeIn"
                 data-captionhidden="off">
-                <span class="page-scroll"><a href="/vendor/all" class="btn primary-btn">Get Started<i class="fa fa-chevron-right"></i></a></span>
+                <span class="page-scroll">
+                  <a href="/vendor/all" style="width:20rem" class="btn primary-btn">Start Your Journey Here<i class="fa fa-chevron-right"></i></a>
+                </span>
               </div>
             </div>
           </li>
@@ -115,7 +117,7 @@
                 data-endspeed="300"
                 data-endeasing="Power1.easeIn"
                 data-captionhidden="off">
-                <span class="page-scroll"><a href="/vendor/all" class="btn primary-btn">Get Started<i class="fa fa-chevron-right"></i></a></span>
+                <span class="page-scroll"><a href="/vendor/all" style="width:20rem" class="btn primary-btn">Start Your Journey Here<i class="fa fa-chevron-right"></i></a></span>
               </div>
             </div>
           </li>
