@@ -1,5 +1,5 @@
 			<!-- FOOTER -->
-			<div class="footer clearfix">
+			<div class="footer clearfix" style="border: none;">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6">
