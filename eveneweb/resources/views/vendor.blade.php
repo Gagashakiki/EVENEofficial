@@ -36,6 +36,35 @@
       <div class="row">
         <div class="col-lg-3 col-md-4 sideBar">
           <div class="panel panel-default">
+            <div class="panel-heading">Sort by</div>
+            <div class="panel-body">
+              <div class="collapse navbar-collapse navbar-ex1-collapse navbar-side-collapse">
+                <ul class="nav navbar-nav side-nav">
+                  <li>
+                    <a href="javascript:;" data-toggle="collapse" aria-expanded="false" data-target="#sortByPrice">Price<i class="fa fa-plus"></i></a>
+                    <ul id="sortByPrice" class="collapse collapseItem">
+                      <li><a href="?sortBy=harga&sort=asc">
+                          <i class="fa fa-caret-right" aria-hidden="true"></i>Low to High
+                        </a>
+                      </li>
+                      <li><a href="?sortBy=harga&sort=desc">
+                          <i class="fa fa-caret-right" aria-hidden="true"></i>High to Low
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="javascript:;" data-toggle="collapse" aria-expanded="false" data-target="#sortByRating">Rating<i class="fa fa-plus"></i></a>
+                    <ul id="sortByRating" class="collapse collapseItem">
+                      <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>High to Low</a></li>
+                      <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Low to High</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
             <div class="panel-heading">View By</div>
             <div class="panel-body">
               <div class="collapse navbar-collapse navbar-ex1-collapse navbar-side-collapse">
@@ -76,36 +105,21 @@
               </div>
             </div>
           </div>
-          <div class="panel panel-default priceRange">
-            <div class="panel-heading">Sort by Price</div>
-            <div class="panel-body clearfix">
-              <div class="price-slider-inner">
-                <span class="amount-wrapper">
-                  Price:
-                  <input type="text" id="price-amount-1" readonly>
-                  <strong>-</strong>
-                  <input type="text" id="price-amount-2" readonly>
-                </span>
-                <div id="price-range"></div>
-              </div>
-              <input class="btn-default" type="submit" value="Filter">
-            </div>
-          </div>
-          <div class="panel panel-default priceRange">
-            <div class="panel-heading">Sort by Rating</div>
-            <div class="panel-body clearfix">
-              <div class="price-slider-inner">
-                <span class="amount-wrapper">
-                  Price:
-                  <input type="text" id="price-amount-1" readonly>
-                  <strong>-</strong>
-                  <input type="text" id="price-amount-2" readonly>
-                </span>
-                <div id="price-range"></div>
-              </div>
-              <input class="btn-default" type="submit" value="Filter">
-            </div>
-          </div>
+{{--          <div class="panel panel-default priceRange">--}}
+{{--            <div class="panel-heading">Sort by Rating</div>--}}
+{{--            <div class="panel-body clearfix">--}}
+{{--              <div class="price-slider-inner">--}}
+{{--                <span class="amount-wrapper">--}}
+{{--                  Price:--}}
+{{--                  <input type="text" id="price-amount-1" readonly>--}}
+{{--                  <strong>-</strong>--}}
+{{--                  <input type="text" id="price-amount-2" readonly>--}}
+{{--                </span>--}}
+{{--                <div id="price-range"></div>--}}
+{{--              </div>--}}
+{{--              <input class="btn-default" type="submit" value="Filter">--}}
+{{--            </div>--}}
+{{--          </div>--}}
 {{--          <div class="panel panel-default filterNormal">--}}
 {{--            <div class="panel-heading">filter by Color</div>--}}
 {{--            <div class="panel-body">--}}

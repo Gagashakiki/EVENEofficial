@@ -38,10 +38,20 @@ class Clientcontroller extends Controller {
     return view('article')->with('profil', $data)->with('blog', $detail);
   }
 
-  public function vendor($id) {
+  public function vendor($id, Request $request) {
+    $sortBy = $this->validateSortBy($request->get('sortBy'));
+    $sortType = $this->validateSortType($request->get('sort'));
+
     $data = session::get('profil');
     $query = substr($id, 0, 5);
-    $list = DB::table('vendor')->where('kategori', 'LIKE', '%' . $query . '%')->where('status', 'Verified')->paginate(12);
+    $list = '';
+
+    if ($sortBy && $sortType) {
+      $list = DB::table('vendor')->where('kategori', 'LIKE', '%' . $query . '%')->where('status', 'Verified')->orderBy($sortBy, $sortType)->paginate(12);
+    } else {
+      $list = DB::table('vendor')->where('kategori', 'LIKE', '%' . $query . '%')->where('status', 'Verified')->paginate(12);
+    }
+
     //  $count = DB::table('news')->where('judul', 'LIKE', '%' . $query . '%')->orWhere('kategori','LIKE','%' . $query . '%')->count();
     return view('vendor')->with('profil', $data)->with('list', $list)->with('jenis', $id)->with('tipe', '');
   }
@@ -94,5 +104,25 @@ class Clientcontroller extends Controller {
     $data = session::get('profil');
     $inspirasi = DB::table('inspirasi')->orderBy('id', 'desc')->paginate(12);
     return view('inspiration')->with('profil', $data)->with('inspirasi', $inspirasi);
+  }
+
+  private function validateSortBy($sortBy) {
+    switch ($sortBy) {
+      case "harga":
+      case "rating":
+        return $sortBy;
+      default:
+        return null;
+    }
+  }
+
+  private function validateSortType($sortType) {
+    switch ($sortType) {
+      case "asc":
+      case "desc":
+        return $sortType;
+      default:
+        return null;
+    }
   }
 }
