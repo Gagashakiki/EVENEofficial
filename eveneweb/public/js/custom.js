@@ -102,12 +102,17 @@ jQuery(document).ready(function() {
 		fullScreen: 'off',
 		hideCaptionAtLimit: '',
 		dottedOverlay: 'twoxtwo',
-		navigationStyle: 'preview4',
+		// navigationStyle: 'preview4',
 		fullScreenOffsetContainer: '',
 		// stopLoop: 'on',
 		// stopAfterLoops: 0,
 		// stopAtSlide: 1,
-		hideTimerBar:'on'
+		hideTimerBar:'on',
+		navigation: {
+			bullets: {
+				enable: true,
+			}
+		}
 	});
 
 	jQuery('.bannerV4 .fullscreenbanner').revolution({
