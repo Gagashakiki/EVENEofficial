@@ -45,6 +45,8 @@ Route::get('verify', 'Client\usercontroller@verify')->name('signup.verify');
 Route::post('/login/submit', 'Client\usercontroller@login');
 Route::get('/logout', 'Client\usercontroller@logout');
 
+Route::get('/why-join-us', 'Client\Clientcontroller@joinReason');
+
 
 
 // Admin Routing

@@ -106,6 +106,10 @@ class Clientcontroller extends Controller {
     return view('inspiration')->with('profil', $data)->with('inspirasi', $inspirasi);
   }
 
+  public function joinReason() {
+    return view('join-reason');
+  }
+
   private function validateSortBy($sortBy) {
     switch ($sortBy) {
       case "harga":

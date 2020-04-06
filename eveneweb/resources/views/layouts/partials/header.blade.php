@@ -107,8 +107,8 @@
                 </div>
                 <div class="col-md-6 col-12">
                     <ul class="list-inline float-right top-right">
-                      @if(session()->has('profil')) @else <li class="account-login"><span><small class="text-warning"><a data-toggle="modal"
-                                        href='#signup' class="text-warning" style="font-weight: bold">are you vendor ?</a></small> <a
+                      @if(session()->has('profil')) @else <li class="account-login"><span><small class="text-warning"><a
+                                        href='{{ url('why-join-us') }}' class="text-warning" style="font-weight: bold">are you vendor ?</a></small> <a
                                     data-toggle="modal" href='.login-modal'>Log in</a><small class="text-dark">or</small><a
                                     data-toggle="modal" href='#signup'>Create an account</a></span></li>@endif
                         <li class="searchBox">
