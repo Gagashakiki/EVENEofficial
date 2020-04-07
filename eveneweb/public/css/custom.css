@@ -41,3 +41,16 @@ nav li a:hover {
 .wording {
   margin-top: 2rem;
 }
+
+.wording-section {
+  height: 100vh;
+}
+
+.eveneBtn{
+  border-color: #FBF000 !important;
+}
+
+.eveneBtn:hover{
+  color: black !important;
+  background-color: #FBF000 !important;
+}
