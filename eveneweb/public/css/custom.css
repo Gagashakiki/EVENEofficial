@@ -53,4 +53,5 @@ nav li a:hover {
 .eveneBtn:hover{
   color: black !important;
   background-color: #FBF000 !important;
+  cursor: pointer;
 }

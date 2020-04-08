@@ -24,14 +24,11 @@ use Illuminate\Queue\SerializesModels;
 
 class usercontroller extends Controller {
   public function daftar(Request $request) {
-    $password = hash::make($request->pass);
-    $user = User::create([
-      'email' => $request->email,
-      'pass' => $password,
-    ]);
+    if ($request->userType == 'vendor') {
+      return $this->createUserVendor($request);
+    }
 
-    Mail::to($request->email)->send(new VerifyEmail($user));
-    return redirect('/')->with('success', 'Please Verify Your Email before Using Evene');
+    return $this->createUserCustomer($request);
   }
 
   public function verify() {
@@ -292,5 +289,38 @@ class usercontroller extends Controller {
     }
 
 
+  }
+
+  private function createUserCustomer($request) {
+    $password = hash::make($request->pass);
+    $user = User::create([
+      'email' => $request->email,
+      'pass' => $password,
+    ]);
+
+    Mail::to($request->email)->send(new VerifyEmail($user));
+
+    return redirect('/')->with('success', 'Please Verify Your Email before Using Evene');
+  }
+
+  private function createUserVendor($request) {
+    $password = hash::make($request->pass);
+    $email = $request->email;
+    $fullName = $request->fullName;
+    $companyName = $request->companyName;
+    $phoneNumber= $request->phoneNumber;
+
+    $user = User::create([
+      'email' => $email,
+      'pass' => $password,
+      'nama1' => $fullName,
+      'nama2' => $companyName,
+      'notelp' => $phoneNumber,
+      'jenis' => 'vendor'
+    ]);
+
+    Mail::to($email)->send(new VerifyEmail($user));
+
+    return redirect('/')->with('success', 'Please Verify Your Email before Using Evene');
   }
 }

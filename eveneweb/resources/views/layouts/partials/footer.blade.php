@@ -67,7 +67,7 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-						<form action="{{ url('/login/submit') }}" method="POST" role="form">
+						<form action="{{ url('/login/submit') }}" id="login-form" method="POST" role="form">
 								{{ csrf_field() }}
 							<div class="form-group">
 								<label for="">Enter Email</label>
@@ -82,14 +82,14 @@
 								<label for="checkbox-1" class="checkbox-custom-label form-check-label">Remember me</label>
 							</div>
 							<button type="submit" class="btn btn-primary btn-block">log in</button>
-							<button type="button" class="btn btn-link btn-block">Forgot Password?</button>
+{{--							<button type="button" class="btn btn-link btn-block">Forgot Password?</button>--}}
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<!-- SIGN UP MODAL -->
+		<!-- SIGN UP CUSTOMER MODAL -->
 		<div class="modal fade " id="signup" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -112,6 +112,52 @@
 								<label for="">Confirm Password</label>
 								<input type="password" class="form-control" id="" required>
 							</div>
+							<button type="submit" class="btn btn-primary btn-block">Sign up</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- SIGN UP VENDOR MODAL -->
+		<div class="modal fade " id="signup-vendor" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header flex-column justify-content-center" style="background-color:#FBB03B">
+						<div class="d-flex justify-content-end">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<h3 class="modal-title">ACCOUNT INFORMATION</h3>
+						<h5>Please fill out All the column below</h5>
+					</div>
+					<div class="modal-body">
+						<form action="{{ url('/signup/submit') }}" method="POST" role="form">
+							{{ csrf_field() }}
+							<div class="form-group">
+								<label for="">Full name</label>
+								<input type="text" class="form-control" name="fullName" id="full-name" required>
+							</div>
+							<div class="form-group">
+								<label for="">Company name</label>
+								<input type="text" class="form-control" name="companyName" id="company-name" required>
+							</div>
+							<div class="form-group">
+								<label for="">Email</label>
+								<input type="email" class="form-control" name="email" id="email" required>
+							</div>
+							<div class="form-group">
+								<label for="">Phone</label>
+								<input type="text" maxlength="13" class="form-control" name="phoneNumber" id="" required>
+							</div>
+							<div class="form-group">
+								<label for="">Password</label>
+								<input type="password" pattern=".{8,16}" title="8 to 16 characters" class="form-control" name="pass" id="password" required>
+							</div>
+							<div class="form-group">
+								<label for="">Confirm Password</label>
+								<input type="password" class="form-control" id="confirm-password" required>
+							</div>
+							<input name="userType" value="vendor" type="hidden"/>
 							<button type="submit" class="btn btn-primary btn-block">Sign up</button>
 						</form>
 					</div>

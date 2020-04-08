@@ -11,12 +11,12 @@
           <h4 style="color:white;font-weight:lighter" class="wording">Get a lot of advantage and elevate your business with EVENE.</h4>
           <div class="d-flex wording">
             <div>
-              <a href="#">
+              <a data-toggle="modal" href="#signup-vendor">
                 <button style="color:white" class="eveneBtn btn-outline-primary btn-lg">Sign Up</button>
               </a>
             </div>
             <div style="margin-left: 1rem">
-              <a href="#">
+              <a data-toggle="modal" href='.login-modal'>
                 <button style="color:white" class="eveneBtn btn-outline-primary btn-lg">Sign In</button>
               </a>
             </div>
@@ -65,12 +65,12 @@
           <h1 style="color:white">ARE YOU READY TO IMPROVE YOUR BUSINESS?</h1>
           <div class="d-flex wording">
             <div>
-              <a href="#">
+              <a data-toggle="modal" href="#signup-vendor">
                 <button style="color:white" class="eveneBtn btn-outline-primary btn-lg">Sign Up</button>
               </a>
             </div>
             <div style="margin-left:1rem;">
-              <a href="#">
+              <a data-toggle="modal" href=".login-modal">
                 <button style="color:white" class="eveneBtn btn-outline-primary btn-lg">Sign In</button>
               </a>
             </div>
