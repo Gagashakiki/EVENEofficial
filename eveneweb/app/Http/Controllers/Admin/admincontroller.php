@@ -177,7 +177,7 @@ use Illuminate\Queue\SerializesModels;
       public function listuser(){
         if(session::get('profiladmin')){
           $data=session::get('profiladmin');
-         $datains=db::table('users')->get();
+         $datains=db::table('users')->where('jenis', '=', 'users')->get();
           return view('admin.users')->with('profil',$data)->with('users',$datains);
       }
       return redirect('admin/login');
