@@ -139,19 +139,31 @@ class UserController extends Controller {
 
   public function editvendor($id) {
     $user = session::get('profil');
-    $detail = db::select("call editvendor($id)");
-    $iduser = $user[0]->id;
-    $idvendoruser = $detail[0]->iduser;
-    if ($iduser == $idvendoruser) {
-      return view('editvendor')->with('profil', $user)->with('detail', $detail);
-    } else {
-      return redirect('/myvendors');
+    if ($user) {
+      if ($user[0]->jenis != 'vendor') {
+        abort(404);
+      }
+
+      $detail = db::select("call editvendor($id)");
+      $iduser = $user[0]->id;
+      $idvendoruser = $detail[0]->iduser;
+      if ($iduser == $idvendoruser) {
+        return view('editvendor')->with('profil', $user)->with('detail', $detail);
+      } else {
+        return redirect('/myvendors');
+      }
     }
+
+    return redirect('/');
   }
 
   public function insertvendor() {
     $user = session::get('profil');
     if ($user) {
+      if ($user[0]->jenis != 'vendor') {
+        abort(404);
+      }
+
       return view('insertvendor')->with('profil', $user);
     } else {
       return redirect('/')->with('failed', 'Please Login before you add your vendor');
