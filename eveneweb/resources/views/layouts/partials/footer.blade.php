@@ -101,8 +101,20 @@
 						<form action="{{ url('/signup/submit') }}" method="POST" role="form">
 							{{ csrf_field() }}
 							<div class="form-group">
+								<label for="">First Name</label>
+								<input type="text" class="form-control" name="firstName" id="first-name" required>
+							</div>
+							<div class="form-group">
+								<label for="">Last Name</label>
+								<input type="text" class="form-control" name="lastName" id="last-name" required>
+							</div>
+							<div class="form-group">
 								<label for="">Enter Email</label>
 								<input type="email" class="form-control" name="email" id="" required>
+							</div>
+							<div class="form-group">
+								<label for="">Phone</label>
+								<input type="text" maxlength="13" class="form-control" name="phoneNumber" id="customer-phone-number" required>
 							</div>
 							<div class="form-group">
 								<label for="">Password</label>
@@ -121,7 +133,7 @@
 
 		<!-- SIGN UP VENDOR MODAL -->
 		<div class="modal fade " id="signup-vendor" tabindex="-1" role="dialog">
-			<div class="modal-dialog modal-lg">
+			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header flex-column justify-content-center" style="background-color:#FBB03B">
 						<div class="d-flex justify-content-end">
@@ -147,7 +159,7 @@
 							</div>
 							<div class="form-group">
 								<label for="">Phone</label>
-								<input type="text" maxlength="13" class="form-control" name="phoneNumber" id="phone-number" required>
+								<input type="text" maxlength="13" class="form-control" name="phoneNumber" id="vendor-phone-number" required>
 							</div>
 							<div class="form-group">
 								<label for="">Password</label>

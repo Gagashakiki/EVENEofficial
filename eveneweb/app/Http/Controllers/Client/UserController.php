@@ -290,12 +290,17 @@ class UserController extends Controller {
 
   private function createUserCustomer($request) {
     $password = hash::make($request->pass);
+    $email = $request->email;
+
     $user = User::create([
-      'email' => $request->email,
+      'email' => $email,
       'pass' => $password,
+      'nama1' => $request->firstName,
+      'nama2' => $request->lastName,
+      'notelp' => $request->phoneNumber
     ]);
 
-    Mail::to($request->email)->send(new VerifyEmail($user));
+    Mail::to($email)->send(new VerifyEmail($user));
 
     return redirect('/')->with('success', 'Please Verify Your Email before Using Evene');
   }
@@ -303,16 +308,13 @@ class UserController extends Controller {
   private function createUserVendor($request) {
     $password = hash::make($request->pass);
     $email = $request->email;
-    $fullName = $request->fullName;
-    $companyName = $request->companyName;
-    $phoneNumber = $request->phoneNumber;
 
     $user = User::create([
       'email' => $email,
       'pass' => $password,
-      'nama1' => $fullName,
-      'nama2' => $companyName,
-      'notelp' => $phoneNumber,
+      'nama1' => $request->fullName,
+      'nama2' => $request->companyName,
+      'notelp' => $request->phoneNumber,
       'jenis' => 'vendor'
     ]);
 
