@@ -2,27 +2,19 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
-use Session;
-use DB;
 use App\Quotation;
+use App\User;
 use Auth;
-use Mail;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Crypt;
-use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
-use Illuminate\Queue\SerializesModels;
+use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Mail;
+use Session;
 
 
-class usercontroller extends Controller {
+class UserController extends Controller {
   public function daftar(Request $request) {
     if ($request->userType == 'vendor') {
       return $this->createUserVendor($request);
@@ -94,7 +86,11 @@ class usercontroller extends Controller {
 
   public function profile() {
     $user = session::get('profil');
-    return view('profile')->with('profil', $user);
+    if ($user) {
+      return view('profile')->with('profil', $user);
+    }
+
+    return redirect('/');
   }
 
   public function editprofile(Request $request) {
@@ -129,6 +125,9 @@ class usercontroller extends Controller {
   public function myvendors(Request $request) {
     $users = Session::get('profil');
     if ($users) {
+      if ($users[0]->jenis != 'vendor') {
+        abort(404);
+      }
       //  dd($users);
       $iduser = $users[0]->id;
       $vendor = db::select("call daftaruvendor($iduser)");
@@ -287,8 +286,6 @@ class usercontroller extends Controller {
         return redirect('/');
       }
     }
-
-
   }
 
   private function createUserCustomer($request) {
@@ -308,7 +305,7 @@ class usercontroller extends Controller {
     $email = $request->email;
     $fullName = $request->fullName;
     $companyName = $request->companyName;
-    $phoneNumber= $request->phoneNumber;
+    $phoneNumber = $request->phoneNumber;
 
     $user = User::create([
       'email' => $email,
