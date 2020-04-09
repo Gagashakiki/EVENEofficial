@@ -21,8 +21,8 @@
               <th>ID</th>
               <th>Email</th>
               <th>Status</th>
-              <th>First Name</th>
-              <th>Last Name</th>
+              <th>{{ $firstName }}</th>
+              <th>{{ $secondName }}</th>
               <th>Phone Number</th>
               <th>Profile Picture</th>
               <th>Action</th>

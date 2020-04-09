@@ -54,10 +54,24 @@
                                 <p>Inspirations</p>
                             </a>
                         </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Users<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{url('admin/users')}}" class="nav-link">
+                            <a href="{{url('admin/users/customer')}}" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Users</p>
+                                <p>Customer</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('admin/users/vendor')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Vendor</p>
                             </a>
                         </li>
                     </ul>

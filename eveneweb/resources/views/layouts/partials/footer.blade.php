@@ -147,7 +147,7 @@
 							</div>
 							<div class="form-group">
 								<label for="">Phone</label>
-								<input type="text" maxlength="13" class="form-control" name="phoneNumber" id="" required>
+								<input type="text" maxlength="13" class="form-control" name="phoneNumber" id="phone-number" required>
 							</div>
 							<div class="form-group">
 								<label for="">Password</label>

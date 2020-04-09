@@ -80,8 +80,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/form-inspiration/submit','admin\admincontroller@insertinsp');
     Route::delete('/deleteinsp/{id}','admin\admincontroller@deleteinsp');
 
-    Route::get('/users', 'admin\admincontroller@listuser');
-        Route::delete('/deleteuser/{id}', 'admin\admincontroller@deleteuser');
+    Route::get('/users/customer', 'admin\admincontroller@listUserCustomer');
+    Route::get('/users/vendor', 'admin\admincontroller@listUserVendor');
 
-
+    Route::delete('/deleteuser/{id}', 'admin\admincontroller@deleteuser');
 });
