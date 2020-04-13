@@ -90,14 +90,25 @@
               </a>
               </div>
               <div class="tabArea">
-                <ul class="nav nav-tabs bar-tabs">
-                  <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#contacts">Detail</a></li>
+                <ul class="nav nav-tabs" style="justify-content:start">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="detail-tab" data-toggle="tab" role="tab" aria-selected="true" href="#vendor-detail">Detail</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="review-tab" data-toggle="tab" role="tab" aria-selected="false" href="#vendor-review">Review</a>
+                  </li>
                 </ul>
-                <div class="coba">
-                    {!!$list->detail!!}
-
+                <div class="tab-content" id="vendorDetailTab">
+                  <div class="tab-pane fade show active" id="vendor-detail" role="tabpanel" aria-labelledby="detail-tab">
+                    <div class="coba">
+                      {!!$list->detail!!}
+                    </div>
                   </div>
-                  <ul class="garis">Hubungi kami :</ul>
+                  <div class="tab-pane fade show" id="vendor-review" role="tabpanel" aria-labelledby="review-tab">
+                    <h1>This is Review List</h1>
+                  </div>
+                </div>
+              <ul class="garis">Hubungi kami :</ul>
               <li>Whatsapp / Phone : +{{$list->notelp}}</li>
               <li>Email : {{$list->email}}</li>
               <li>Company Address : {{$list->alamat}}</li>
