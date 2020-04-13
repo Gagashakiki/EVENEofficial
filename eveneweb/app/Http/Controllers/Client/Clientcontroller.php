@@ -38,66 +38,12 @@ class Clientcontroller extends Controller {
     return view('article')->with('profil', $data)->with('blog', $detail);
   }
 
-  public function vendor($id, Request $request) {
-    $sortBy = $this->validateSortBy($request->get('sortBy'));
-    $sortType = $this->validateSortType($request->get('sort'));
-
-    $data = session::get('profil');
-    $query = substr($id, 0, 5);
-    $list = '';
-
-    if ($sortBy && $sortType) {
-      $list = DB::table('vendor')->where('kategori', 'LIKE', '%' . $query . '%')->where('status', 'Verified')->orderBy($sortBy, $sortType)->paginate(12);
-    } else {
-      $list = DB::table('vendor')->where('kategori', 'LIKE', '%' . $query . '%')->where('status', 'Verified')->paginate(12);
-    }
-
-    //  $count = DB::table('news')->where('judul', 'LIKE', '%' . $query . '%')->orWhere('kategori','LIKE','%' . $query . '%')->count();
-    return view('vendor')->with('profil', $data)->with('list', $list)->with('jenis', $id)->with('tipe', '');
-  }
-
   public function event($id) {
     $data = session::get('profil');
     $query = substr($id, 0, 5);
     $list = DB::table('vendor')->where('jenis', 'LIKE', '%' . $query . '%')->where('status', 'Verified')->paginate(12);
     //  $count = DB::table('news')->where('judul', 'LIKE', '%' . $query . '%')->orWhere('kategori','LIKE','%' . $query . '%')->count();
     return view('vendor')->with('profil', $data)->with('list', $list);
-  }
-
-  public function vendorevent($id, $jenis) {
-    $data = session::get('profil');
-    if ($id == '') {
-      $query = 'all';
-    } else {
-      $query = substr($id, 0, 5);
-    }
-    $jenisi = substr($jenis, 0, 4);
-    $list = DB::table('vendor')->where('kategori', 'LIKE', '%' . $query . '%')
-      ->Where('jenis', 'LIKE', '%' . $jenisi . '%')->where('status', 'Verified')->paginate(12);
-    //  $count = DB::table('news')->where('judul', 'LIKE', '%' . $query . '%')->orWhere('kategori','LIKE','%' . $query . '%')->count();
-    return view('vendor')->with('profil', $data)->with('list', $list)->with('jenis', $id)->with('tipe', $jenis);
-  }
-
-  public function searchvendor(Request $request) {
-    $data = session::get('profil');
-    $query = $request->get('query');
-    //$jenisi=substr($jenis,0,4);
-    $list = DB::table('vendor')->where('kategori', 'LIKE', '%' . $query . '%')->where('status', 'Verified')
-      ->orWhere('jenis', 'LIKE', '%' . $query . '%')->orWhere('nama', 'LIKE', '%' . $query . '%')->paginate(12);
-    $count = $list->count();
-    return view('searchvendor')->with('profil', $data)->with('list', $list)->with('query', $query)->with('count', $count);
-  }
-
-  public function vendordetail($id) {
-    $data = session::get('profil');
-    $detail = db::select("call detailvendor($id)");
-    $status = $detail[0]->status;
-
-    if ($status == 'Verified') {
-      return view('detail-vendors')->with('list', $detail)->with('profil', $data);
-    } else {
-      return redirect('/');
-    }
   }
 
   public function inspiration() {
@@ -108,25 +54,5 @@ class Clientcontroller extends Controller {
 
   public function joinReason() {
     return view('join-reason');
-  }
-
-  private function validateSortBy($sortBy) {
-    switch ($sortBy) {
-      case "harga":
-      case "rating":
-        return $sortBy;
-      default:
-        return null;
-    }
-  }
-
-  private function validateSortType($sortType) {
-    switch ($sortType) {
-      case "asc":
-      case "desc":
-        return $sortType;
-      default:
-        return null;
-    }
   }
 }

@@ -79,8 +79,6 @@
             <div class="media-body">
               <h2 id="nama-vendor">{{strtoupper($list->judul)}}</h2>
               <h6 class="text-muted">START FROM <span class="text-warning"> Rp. {{number_format($list->harga)}} NETT </span></h6>
-              <p></p>
-
               <div class="btn mb-5">
                 <a href="https://api.whatsapp.com/send?phone={{$list->notelp}}" target="_blank" class="btn btn-primary btn-default">
                     <i class="fa fa-whatsapp fa-lg"></i>
@@ -94,10 +92,8 @@
               <div class="tabArea">
                 <ul class="nav nav-tabs bar-tabs">
                   <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#contacts">Detail</a></li>
-                </li>
                 </ul>
                 <div class="coba">
-
                     {!!$list->detail!!}
 
                   </div>
@@ -107,7 +103,6 @@
               <li>Company Address : {{$list->alamat}}</li>
 
               </div>
-
             </div>
           </div>
         </div>

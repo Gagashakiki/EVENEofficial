@@ -29,16 +29,17 @@ Route::get('/profile', 'Client\usercontroller@profile');
 Route::post('/profile/submit', 'Client\usercontroller@editprofile');
 
 //vendor
-Route::get('/myvendors', 'Client\usercontroller@myvendors');
-Route::get('/editvendors/{id}', 'Client\usercontroller@editvendor');
-Route::get('/insertvendors','Client\usercontroller@insertvendor');
-Route::post('/insertvendors/submit','Client\usercontroller@submitvendor');
-Route::get('/vendor/{id}', 'Client\Clientcontroller@vendor');
-Route::get('/detail/{id}', 'Client\Clientcontroller@vendordetail');
-Route::get('/vendor/{id}/{jenis}', 'Client\Clientcontroller@vendorevent');
-Route::get('/search', 'Client\Clientcontroller@searchvendor');
-Route::delete('/deletevendor/{id}','Client\usercontroller@deletevendor');
-Route::post('/editvendors/submit','Client\usercontroller@editvendorsubmit');
+Route::get('/vendor/{category}', 'Client\VendorController@listVendorsByCategory');
+Route::get('/vendor/detail/{id}', 'Client\VendorController@vendorDetail');
+Route::get('/vendor/{category}/{event}', 'Client\VendorController@listVendorsByCategoryAndEvent');
+Route::get('/search', 'Client\VendorController@searchVendors');
+Route::get('/account/vendors', 'Client\VendorController@listUserVendors');
+Route::get('/account/vendors/create','Client\VendorController@createVendor');
+Route::post('/account/vendors/create','Client\VendorController@createVendorSubmit');
+Route::get('/account/vendors/edit/{id}', 'Client\VendorController@editVendor');
+Route::post('/account/vendors/edit','Client\VendorController@editVendorSubmit');
+Route::delete('/account/vendors/delete/{id}','Client\VendorController@deleteVendorSubmit');
+
 //Userauth
 Route::post('/signup/submit', 'Client\usercontroller@daftar');
 Route::get('verify', 'Client\usercontroller@verify')->name('signup.verify');

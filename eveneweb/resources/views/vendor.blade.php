@@ -174,7 +174,7 @@
                     <div class="productMasking">
                       <ul class="list-inline btn-group" role="group">
                         <li><a class="btn btn-default"
-                               {{--ata-toggle="modal"--}} href="{{url('/detail/'.$list->id)}}"><i class="fa fa-eye"></i>
+                               {{--ata-toggle="modal"--}} href="{{url('/vendor/detail/'.$list->id)}}"><i class="fa fa-eye"></i>
                             View </a></li>
                       </ul>
                     </div>
@@ -188,8 +188,6 @@
                 </div>
               </div>
             @endforeach
-
-
           </div>
         </div>
       </div>

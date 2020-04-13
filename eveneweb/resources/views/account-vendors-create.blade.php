@@ -3,15 +3,15 @@
 @section('content')
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix userProfile">
-    <form action="/insertvendors/submit" method="post" enctype="multipart/form-data">
+    <form action="{{url('/account/vendors/create')}}" method="post" enctype="multipart/form-data">
       {{ csrf_field() }}
         <div class="container">
             <div class="row mb-5">
                 <div class="col-12">
                     <div class="btn-group" role="group" aria-label="...">
-                        <a href="{{ url('/myvendors') }}" class="btn btn-default"><i class="fa fa-th"
+                        <a href="{{ url('/account/vendors') }}" class="btn btn-default"><i class="fa fa-th"
                                 aria-hidden="true"></i>My Vendors</a>
-                        <a href="{{ url('/profile') }}" class="btn btn-default active"><i class="fa fa-user"
+                        <a href="{{ url('/profile') }}" class="btn btn-default"><i class="fa fa-user"
                                 aria-hidden="true"></i>Profile</a>
                     </div>
                 </div>

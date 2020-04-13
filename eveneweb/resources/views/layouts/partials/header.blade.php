@@ -207,7 +207,7 @@
               <ul class="dropdown-menu dropdown-menu-right">
                 <li class=""><a href="{{url('/profile')}}">Profile</a></li>
                 @if(session()->get('profil')[0]->jenis == 'vendor')
-                  <li class=""><a href="{{url('/myvendors')}}">My Vendors</a></li>
+                  <li class=""><a href="{{url('/account/vendors')}}">My Vendors</a></li>
                 @endif
                 <li class=""><a href="{{url('/logout')}}">Logout</a></li>
               </ul>
