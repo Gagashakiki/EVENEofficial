@@ -89,7 +89,7 @@
                   <small>Contact Email</small>
               </a>
               </div>
-              <div class="tabArea">
+              <div>
                 <ul class="nav nav-tabs" style="justify-content:start">
                   <li class="nav-item">
                     <a class="nav-link active" id="detail-tab" data-toggle="tab" role="tab" aria-selected="true" href="#vendor-detail">Detail</a>
@@ -100,19 +100,49 @@
                 </ul>
                 <div class="tab-content" id="vendorDetailTab">
                   <div class="tab-pane fade show active" id="vendor-detail" role="tabpanel" aria-labelledby="detail-tab">
-                    <div class="coba">
+                    <div>
                       {!!$list->detail!!}
                     </div>
                   </div>
                   <div class="tab-pane fade show" id="vendor-review" role="tabpanel" aria-labelledby="review-tab">
-                    <h1>This is Review List</h1>
+                    <div>
+                      @if($profil)
+                      <button id="btn-create-review" class="btn btn-success"><i class="fa fa-plus"></i> Rating and Review</button>
+                      @endif
+                      <div class="main-review">
+                        <div class="avatar-review">
+                          <img class="avatar" alt="Customer Avatar" src="{{asset("img/avatar/default-photo.jpg")}}" width="50" height="50"/>
+                        </div>
+                        <div class="content-review">
+                          <div class="content-review-header">
+                            <div>
+                              <h5>Kevin</h5>
+                              <p>14 April 2020</p>
+                            </div>
+                            <div>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star"></span>
+                              <span class="fa fa-star"></span>
+                            </div>
+                          </div>
+                          <div class="content-review-body">
+                            <b class="review-title">Judul Review</b>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In laboriosam laborum praesentium quaerat totam. Assumenda, atque commodi dolor ea earum est, harum minus mollitia nulla obcaecati recusandae saepe sequi veritatis?</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              <ul class="garis">Hubungi kami :</ul>
-              <li>Whatsapp / Phone : +{{$list->notelp}}</li>
-              <li>Email : {{$list->email}}</li>
-              <li>Company Address : {{$list->alamat}}</li>
-
+              <h6>Hubungi kami :</h6>
+              <ul>
+                <li>Whatsapp / Phone : +{{$list->notelp}}</li>
+                <li>Email : {{$list->email}}</li>
+                <li>Company Address : {{$list->alamat}}</li>
+              </ul>
               </div>
             </div>
           </div>

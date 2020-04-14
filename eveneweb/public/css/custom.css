@@ -13,6 +13,10 @@
   font-family: 'montserrat', 'sans-serif';
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'montserrat', 'sans-serif';
+}
+
 nav li a {
   color: #333333 !important;
 }
@@ -55,3 +59,58 @@ nav li a:hover {
   background-color: #FBF000 !important;
   cursor: pointer;
 }
+
+.tab-content {
+  border-bottom: 1px solid rgb(221, 221, 221);
+  margin-bottom: 1rem;
+}
+
+.nav-link.active {
+  border-top-color: #FBB03B !important;
+}
+
+.checked {
+  color: #FBB03B;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+#vendor-review {
+  max-height: 30rem;
+  overflow: scroll;
+}
+
+#btn-create-review {
+  margin-bottom: 1rem;
+}
+
+.main-review {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.avatar-review {
+  flex: 1;
+}
+
+.content-review {
+  flex: 6;
+}
+
+.content-review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.review-title {
+  font-style: italic;
+  margin-bottom: .5rem;
+}
+
+.singleProduct .media .media-body p {
+  margin-bottom: 0;
+}
+

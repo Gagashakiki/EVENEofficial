@@ -31,7 +31,7 @@ class VendorController extends Controller {
     $status = $detail[0]->status;
 
     if ($status == 'Verified') {
-      return view('vendor-detail')->with('list', $detail)->with('profil', $data);
+      return view('vendor-detail')->with('list', $detail)->with('profil', $data[0]);
     } else {
       return redirect('/');
     }
