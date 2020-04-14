@@ -129,7 +129,7 @@
                   </div>
                   <div class="productMasking">
                     <ul class="list-inline btn-group" role="group">
-                      <li><a class="btn btn-default" {{--ata-toggle="modal"--}} href="{{url('/detail/'.$list->id)}}" ><i class="fa fa-eye"> View</i> </a></li>
+                      <li><a class="btn btn-default" {{--ata-toggle="modal"--}} href="{{url('/vendor/detail/'.$list->id)}}" ><i class="fa fa-eye"> View</i> </a></li>
                     </ul>
                   </div>
                   <div class="vendor-rating">
@@ -150,7 +150,7 @@
                   </div>
                 </div>
                 <div class="productCaption clearfix text-center" title="{{substr($list->kategori,5)}}">
-                  <a href="{{url('/detail/'.$list->id)}}">
+                  <a href="{{url('/vendor/detail/'.$list->id)}}">
                     <h4>{{$list->nama}}</h4>
                   </a>
                   <h5>{{$list->jenis}}</h5>
