@@ -180,16 +180,18 @@
                     </div>
                     <div class="vendor-rating">
                       <button class="btn-rating">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        4.2/5
+                        @for($i=0; $i<5; $i++)
+                          @if($i < floor($list->ratingCount))
+                            <span class="fa fa-star checked"></span>
+                          @else
+                            <span class="fa fa-star"></span>
+                          @endif
+                        @endfor
+                        {{$list->ratingCount}}/5
                       </button>
                       <button class="btn-rating">
                         <span class="fa fa-comment"></span>
-                        11
+                        {{$list->reviewCount}}
                       </button>
                     </div>
                   </div>

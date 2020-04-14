@@ -17,9 +17,20 @@ class VendorController extends Controller {
     $list = '';
 
     if ($sortBy && $sortType) {
-      $list = DB::table('vendor')->where('kategori', 'LIKE', '%' . $query . '%')->where('status', 'Verified')->orderBy($sortBy, $sortType)->paginate(12);
+      $list = DB::table('vendor')
+        ->select(DB::raw("vendor.id, vendor.nama, vendor.jenis, vendor.kategori, vendor.gambar1, COALESCE(CAST(AVG(vendor_ratings.rating) AS DECIMAL(10,1)), 0) AS ratingCount, count(vendor_ratings.id) AS reviewCount"))
+        ->leftJoin('vendor_ratings', 'vendor.id', '=', 'vendor_ratings.vendor_id')
+        ->where('kategori', 'LIKE', '%' . $query . '%')->where('status', 'Verified')
+        ->groupBy('vendor.id')
+        ->orderBy($sortBy, $sortType)
+        ->paginate(12);
     } else {
-      $list = DB::table('vendor')->where('kategori', 'LIKE', '%' . $query . '%')->where('status', 'Verified')->paginate(12);
+      $list = DB::table('vendor')
+        ->select(DB::raw("vendor.id, vendor.nama, vendor.jenis, vendor.kategori, vendor.gambar1, COALESCE(CAST(AVG(vendor_ratings.rating) AS DECIMAL(10,1)), 0) AS ratingCount, count(vendor_ratings.id) AS reviewCount"))
+        ->leftJoin('vendor_ratings', 'vendor.id', '=', 'vendor_ratings.vendor_id')
+        ->where('kategori', 'LIKE', '%' . $query . '%')->where('status', 'Verified')
+        ->groupBy('vendor.id')
+        ->paginate(12);
     }
 
     return view('vendor')->with('profil', $data)->with('list', $list)->with('jenis', $category)->with('tipe', '');
@@ -53,9 +64,20 @@ class VendorController extends Controller {
     $jenisi = substr($event, 0, 4);
 
     if ($sortBy && $sortType) {
-      $list = DB::table('vendor')->where('kategori', 'LIKE', '%' . $query . '%')->Where('jenis', 'LIKE', '%' . $jenisi . '%')->where('status', 'Verified')->orderBy($sortBy, $sortType)->paginate(12);
+      $list = DB::table('vendor')
+        ->select(DB::raw("vendor.id, vendor.nama, vendor.jenis, vendor.kategori, vendor.gambar1, COALESCE(CAST(AVG(vendor_ratings.rating) AS DECIMAL(10,1)), 0) AS ratingCount, count(vendor_ratings.id) AS reviewCount"))
+        ->leftJoin('vendor_ratings', 'vendor.id', '=', 'vendor_ratings.vendor_id')
+        ->where('kategori', 'LIKE', '%' . $query . '%')->Where('jenis', 'LIKE', '%' . $jenisi . '%')->where('status', 'Verified')
+        ->groupBy('vendor.id')
+        ->orderBy($sortBy, $sortType)
+        ->paginate(12);
     } else {
-      $list = DB::table('vendor')->where('kategori', 'LIKE', '%' . $query . '%')->Where('jenis', 'LIKE', '%' . $jenisi . '%')->where('status', 'Verified')->paginate(12);
+      $list = DB::table('vendor')
+        ->select(DB::raw("vendor.id, vendor.nama, vendor.jenis, vendor.kategori, vendor.gambar1, COALESCE(CAST(AVG(vendor_ratings.rating) AS DECIMAL(10,1)), 0) AS ratingCount, count(vendor_ratings.id) AS reviewCount"))
+        ->leftJoin('vendor_ratings', 'vendor.id', '=', 'vendor_ratings.vendor_id')
+        ->where('kategori', 'LIKE', '%' . $query . '%')->Where('jenis', 'LIKE', '%' . $jenisi . '%')->where('status', 'Verified')
+        ->groupBy('vendor.id')
+        ->paginate(12);
     }
 
     return view('vendor')->with('profil', $data)->with('list', $list)->with('jenis', $category)->with('tipe', $event);
@@ -65,8 +87,14 @@ class VendorController extends Controller {
     $data = session::get('profil');
     $query = $request->get('query');
 
-    $list = DB::table('vendor')->where('kategori', 'LIKE', '%' . $query . '%')->where('status', 'Verified')
-      ->orWhere('jenis', 'LIKE', '%' . $query . '%')->orWhere('nama', 'LIKE', '%' . $query . '%')->paginate(12);
+    $list = DB::table('vendor')
+      ->select(DB::raw("vendor.id, vendor.nama, vendor.jenis, vendor.kategori, vendor.gambar1, COALESCE(CAST(AVG(vendor_ratings.rating) AS DECIMAL(10,1)), 0) AS ratingCount, count(vendor_ratings.id) AS reviewCount"))
+      ->leftJoin('vendor_ratings', 'vendor.id', '=', 'vendor_ratings.vendor_id')
+      ->where('kategori', 'LIKE', '%' . $query . '%')->where('status', 'Verified')
+      ->orWhere('jenis', 'LIKE', '%' . $query . '%')->orWhere('nama', 'LIKE', '%' . $query . '%')
+      ->groupBy('vendor.id')
+      ->paginate(12);
+
     $count = $list->count();
 
     return view('searchvendor')->with('profil', $data)->with('list', $list)->with('query', $query)->with('count', $count);
