@@ -178,6 +178,20 @@
                             View </a></li>
                       </ul>
                     </div>
+                    <div class="vendor-rating">
+                      <button class="btn-rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        4.2/5
+                      </button>
+                      <button class="btn-rating">
+                        <span class="fa fa-comment"></span>
+                        11
+                      </button>
+                    </div>
                   </div>
                   <div class="productCaption clearfix text-center" title="{{substr($list->kategori,5)}}">
                     <a href="{{url('/detail/'.$list->id)}}">

@@ -114,3 +114,18 @@ nav li a:hover {
   margin-bottom: 0;
 }
 
+.vendor-rating {
+  display: flex;
+  position: absolute;
+  top: 12rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.btn-rating {
+  padding: .5rem;
+  border-radius: 3rem;
+  background-color: rgba(255,255,255, .5);
+  min-width: 5rem;
+}
+
