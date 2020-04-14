@@ -129,3 +129,10 @@ nav li a:hover {
   min-width: 5rem;
 }
 
+.review-blank {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+}
+

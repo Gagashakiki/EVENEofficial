@@ -109,31 +109,41 @@
                       @if($profil)
                       <button id="btn-create-review" class="btn btn-success"><i class="fa fa-plus"></i> Rating and Review</button>
                       @endif
-                      <div class="main-review">
-                        <div class="avatar-review">
-                          <img class="avatar" alt="Customer Avatar" src="{{asset("img/avatar/default-photo.jpg")}}" width="50" height="50"/>
+                      @if($reviews->count() == 0)
+                        <div class="review-blank">
+                          <h5>Review Tidak Ditemukan</h5>
                         </div>
-                        <div class="content-review">
-                          <div class="content-review-header">
-                            <div>
-                              <h5>Kevin</h5>
-                              <p>14 April 2020</p>
+                      @else
+                        @foreach($reviews as $review)
+                          <div class="main-review">
+                            <div class="avatar-review">
+                              <img class="avatar" alt="Customer Avatar" src="{{asset("img/avatar/default-photo.jpg")}}" width="50" height="50"/>
                             </div>
-                            <div>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                            </div>
-                          </div>
-                          <div class="content-review-body">
-                            <b class="review-title">Judul Review</b>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In laboriosam laborum praesentium quaerat totam. Assumenda, atque commodi dolor ea earum est, harum minus mollitia nulla obcaecati recusandae saepe sequi veritatis?</p>
+                            <div class="content-review">
+                              <div class="content-review-header">
+                                <div>
+                                  <h5>{{$review->user->nama1}}</h5>
+                                  <p>{{date_format($review->created_at, "d F Y")}}</p>
+                                </div>
+                                <div>
+                                  @for($i=0; $i<5; $i++)
+                                    @if($i < floor($review->rating))
+                                      <span class="fa fa-star checked"></span>
+                                    @else
+                                      <span class="fa fa-star"></span>
+                                    @endif
+                                  @endfor
+                                </div>
+                              </div>
+                              <div class="content-review-body">
+                                <b class="review-title">{{$review->title}}</b>
+                                <p>{{$review->review}}</p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
+                        @endforeach
+                      @endif
                     </div>
                   </div>
                 </div>

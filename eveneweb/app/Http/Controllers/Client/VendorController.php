@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\VendorRatings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -41,11 +42,14 @@ class VendorController extends Controller {
     $detail = db::select("call detailvendor($id)");
     $status = $detail[0]->status;
 
+    $reviews = VendorRatings::with('user')->where('vendor_id', '=', $id)->get();
+
     if ($status == 'Verified') {
-      return view('vendor-detail')->with('list', $detail)->with('profil', $data[0]);
+      return view('vendor-detail')->with('list', $detail)->with('reviews', $reviews)->with('profil', $data[0]);
     } else {
       return redirect('/');
     }
+//    return VendorRatings::with('user')->where('vendor_id', '=', $id)->get();
   }
 
   public function listVendorsByCategoryAndEvent($category, $event, Request $request) {
