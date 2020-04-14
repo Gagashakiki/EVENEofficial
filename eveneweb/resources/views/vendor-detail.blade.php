@@ -117,7 +117,7 @@
                         @foreach($reviews as $review)
                           <div class="main-review">
                             <div class="avatar-review">
-                              <img class="avatar" alt="Customer Avatar" src="{{asset("img/avatar/default-photo.jpg")}}" width="50" height="50"/>
+                              <img class="avatar" alt="Customer Avatar" src="{{asset('img/avatar/'.$review->user->pict)}}" width="50" height="50"/>
                             </div>
 
                             <div class="content-review">
