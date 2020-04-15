@@ -49,7 +49,6 @@ class VendorController extends Controller {
     } else {
       return redirect('/');
     }
-//    return VendorRatings::with('user')->where('vendor_id', '=', $id)->get();
   }
 
   public function listVendorsByCategoryAndEvent($category, $event, Request $request) {
@@ -281,6 +280,26 @@ class VendorController extends Controller {
         return redirect('/');
       }
     }
+  }
+
+  public function vendorReviewSubmit(Request $request) {
+    $user = session::get('profil');
+
+    if ($user) {
+      $vendorRating = new VendorRatings();
+
+      $vendorRating->vendor_id = $request->vendorId;
+      $vendorRating->user_id = $request->userId;
+      $vendorRating->title = $request->titleReview;
+      $vendorRating->review = $request->review;
+      $vendorRating->rating = $request->rating;
+
+      $vendorRating->save();
+
+      return redirect('/vendor/detail/'.$request->vendorId);
+    }
+
+    return redirect('/');
   }
 
   private function validateSortBy($sortBy) {

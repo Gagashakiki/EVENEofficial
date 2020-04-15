@@ -39,6 +39,7 @@ Route::post('/account/vendors/create','Client\VendorController@createVendorSubmi
 Route::get('/account/vendors/edit/{id}', 'Client\VendorController@editVendor');
 Route::post('/account/vendors/edit','Client\VendorController@editVendorSubmit');
 Route::delete('/account/vendors/delete/{id}','Client\VendorController@deleteVendorSubmit');
+Route::post('/vendor/review', 'Client\VendorController@vendorReviewSubmit');
 
 //Userauth
 Route::post('/signup/submit', 'Client\usercontroller@daftar');

@@ -77,7 +77,7 @@ nav li a:hover {
   border-radius: 50%;
 }
 
-#vendor-review {
+#reviews {
   max-height: 30rem;
   overflow: scroll;
 }
@@ -134,5 +134,19 @@ nav li a:hover {
   justify-content: center;
   align-items: center;
   height: 10rem;
+}
+
+.rating-input {
+  font-size: 2rem;
+}
+
+.form-group.required .control-label:after {
+  content:"*";
+  color:red;
+}
+
+#btnSubmitReview:disabled, #btnSubmitReview[disabled]:hover{
+  background-color: lightgrey !important;
+  border-color: lightgrey !important;
 }
 

@@ -107,42 +107,46 @@
                   <div class="tab-pane fade show" id="vendor-review" role="tabpanel" aria-labelledby="review-tab">
                     <div>
                       @if($profil)
-                      <button id="btn-create-review" class="btn btn-success"><i class="fa fa-plus"></i> Rating and Review</button>
+                      <button id="btn-create-review" class="btn btn-success" data-toggle="modal" data-target="#reviewModal">
+                        <i class="fa fa-plus"></i> Rating and Review
+                      </button>
                       @endif
                       @if($reviews->count() == 0)
                         <div class="review-blank">
                           <h5>Review Tidak Ditemukan</h5>
                         </div>
                       @else
-                        @foreach($reviews as $review)
-                          <div class="main-review">
-                            <div class="avatar-review">
-                              <img class="avatar" alt="Customer Avatar" src="{{asset('img/avatar/'.$review->user->pict)}}" width="50" height="50"/>
-                            </div>
+                        <div id="reviews">
+                          @foreach($reviews as $review)
+                            <div class="main-review">
+                              <div class="avatar-review">
+                                <img class="avatar" alt="Customer Avatar" src="{{asset('img/avatar/'.$review->user->pict)}}" width="50" height="50"/>
+                              </div>
 
-                            <div class="content-review">
-                              <div class="content-review-header">
-                                <div>
-                                  <h5>{{$review->user->nama1}}</h5>
-                                  <p>{{date_format($review->created_at, "d F Y")}}</p>
+                              <div class="content-review">
+                                <div class="content-review-header">
+                                  <div>
+                                    <h5>{{$review->user->nama1}}</h5>
+                                    <p>{{date_format($review->created_at, "d F Y")}}</p>
+                                  </div>
+                                  <div>
+                                    @for($i=0; $i<5; $i++)
+                                      @if($i < floor($review->rating))
+                                        <span class="fa fa-star checked"></span>
+                                      @else
+                                        <span class="fa fa-star"></span>
+                                      @endif
+                                    @endfor
+                                  </div>
                                 </div>
-                                <div>
-                                  @for($i=0; $i<5; $i++)
-                                    @if($i < floor($review->rating))
-                                      <span class="fa fa-star checked"></span>
-                                    @else
-                                      <span class="fa fa-star"></span>
-                                    @endif
-                                  @endfor
+                                <div class="content-review-body">
+                                  <b class="review-title">{{$review->title}}</b>
+                                  <p>{{$review->review}}</p>
                                 </div>
-                              </div>
-                              <div class="content-review-body">
-                                <b class="review-title">{{$review->title}}</b>
-                                <p>{{$review->review}}</p>
                               </div>
                             </div>
-                          </div>
-                        @endforeach
+                          @endforeach
+                        </div>
                       @endif
                     </div>
                   </div>
@@ -160,5 +164,86 @@
       </div>
     </div>
   </section>
+
+  <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center">
+          <h5 class="modal-title" id="reviewModalLabel">Review Vendor</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="formReview" action="{{url("/vendor/review")}}" method="post" role="form">
+            {{ csrf_field() }}
+            <div class="d-flex flex-column align-items-center">
+              <h5 class="mb-2">Rate this Vendor</h5>
+              <div class="mb-2" id="inputRating">
+                <span class="rating-input fa fa-star" data-rating="1"></span>
+                <span class="rating-input fa fa-star" data-rating="2"></span>
+                <span class="rating-input fa fa-star" data-rating="3"></span>
+                <span class="rating-input fa fa-star" data-rating="4"></span>
+                <span class="rating-input fa fa-star" data-rating="5"></span>
+                <input type="hidden" class="rating-value" name="rating"/>
+              </div>
+              <p class="font-italic">Press the star</p>
+            </div>
+            <div class="form-group required">
+              <label class="control-label" for="title-review">Title Review</label>
+              <input type="text" class="form-control" id="title-review" maxlength="50" name="titleReview" required/>
+            </div>
+            <div class="form-group required">
+              <label class="control-label" for="input-review">Review</label>
+              <textarea class="form-control" id="input-review" rows="3" maxlength="100" required name="review"></textarea>
+            </div>
+            <input type="hidden" name="vendorId" value="{{$list->id}}"/>
+            <input type="hidden" name="userId" value="{{$profil->id}}" />
+          </form>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button disabled id="btnSubmitReview" type="button" class="btn btn-primary">Send Review</button>
+        </div>
+      </div>
+    </div>
+  </div>
   @endforeach
+
+  <script>
+    jQuery(document).ready(function(){
+      $('#btnSubmitReview').on('click', function() {
+        if(validateReview()) {
+          // $('#formReview').submit();
+          console.log('submit');
+        }
+
+
+      });
+
+      var validateReview = function () {
+        return $('#input-review').val() && $('#title-review').val()
+      };
+
+      var $star_rating = $('#inputRating .fa');
+
+      var SetRatingStar = function() {
+        return $star_rating.each(function() {
+          if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+            return $(this).addClass('checked')
+          } else {
+            return $(this).removeClass('checked');
+          }
+        });
+      };
+
+      $star_rating.on('click', function() {
+        $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+
+        $('#btnSubmitReview').removeAttr('disabled');
+
+        return SetRatingStar();
+      });
+
+    });
+  </script>
   @endsection
