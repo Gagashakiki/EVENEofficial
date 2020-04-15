@@ -121,6 +121,15 @@ class UserController extends Controller {
     return redirect('/profile')->with('failed', 'Password salah');
   }
 
+  public function listMessages() {
+    $user = session::get('profil');
+    if ($user) {
+      return view('account-messages')->with('profil', $user);
+    }
+
+    return redirect('/');
+  }
+
   private function createUserCustomer($request) {
     $password = hash::make($request->pass);
     $email = $request->email;

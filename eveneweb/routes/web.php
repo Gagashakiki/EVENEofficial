@@ -49,7 +49,7 @@ Route::get('/logout', 'Client\usercontroller@logout');
 
 Route::get('/why-join-us', 'Client\Clientcontroller@joinReason');
 
-
+Route::get('/account/messages', 'Client\UserController@listMessages');
 
 // Admin Routing
 Route::group(['prefix' => 'admin'], function () {
