@@ -164,7 +164,7 @@
       </div>
     </div>
   </section>
-
+  @if($profil)
   <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -198,7 +198,8 @@
               <textarea class="form-control" id="input-review" rows="3" maxlength="100" required name="review"></textarea>
             </div>
             <input type="hidden" name="vendorId" value="{{$list->id}}"/>
-            <input type="hidden" name="userId" value="{{$profil->id}}" />
+
+              <input type="hidden" name="userId" value="{{$profil->id}}" />
           </form>
         </div>
         <div class="modal-footer justify-content-center">
@@ -207,6 +208,7 @@
       </div>
     </div>
   </div>
+  @endif
   @endforeach
 
   <script>

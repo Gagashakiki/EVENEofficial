@@ -179,20 +179,24 @@
                       </ul>
                     </div>
                     <div class="vendor-rating">
-                      <button class="btn-rating">
-                        @for($i=0; $i<5; $i++)
-                          @if($i < floor($list->ratingCount))
-                            <span class="fa fa-star checked"></span>
-                          @else
-                            <span class="fa fa-star"></span>
-                          @endif
-                        @endfor
-                        {{$list->ratingCount}}/5
-                      </button>
-                      <button class="btn-rating">
-                        <span class="fa fa-comment"></span>
-                        {{$list->reviewCount}}
-                      </button>
+                      <div>
+                        <button class="btn-rating" style="padding-left:1.5rem; position: relative; left:-1rem">
+                          @for($i=0; $i<5; $i++)
+                            @if($i < floor($list->ratingCount))
+                              <span class="fa fa-star checked"></span>
+                            @else
+                              <span class="fa fa-star"></span>
+                            @endif
+                          @endfor
+                          {{$list->ratingCount}}/5
+                        </button>
+                      </div>
+                      <div>
+                        <button class="btn-rating" style="position: relative; right:-1rem">
+                          <span class="fa fa-comment"></span>
+                          {{$list->reviewCount}}
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="productCaption clearfix text-center" title="{{substr($list->kategori,5)}}">
