@@ -97,6 +97,9 @@
                   <li class="nav-item">
                     <a class="nav-link" id="review-tab" data-toggle="tab" role="tab" aria-selected="false" href="#vendor-review">Review</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" role="tab" aria-selected="false" href="#vendor-contact">About Us</a>
+                  </li>
                 </ul>
                 <div class="tab-content" id="vendorDetailTab">
                   <div class="tab-pane fade show active" id="vendor-detail" role="tabpanel" aria-labelledby="detail-tab">
@@ -150,13 +153,14 @@
                       @endif
                     </div>
                   </div>
+                  <div class="tab-pane fade show" id="vendor-contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <ul>
+                      <li><i class="fa fa-phone mr-2"></i> Whatsapp / Phone : +{{$list->notelp}}</li>
+                      <li><i class="fa fa-envelope mr-2"></i> Email : {{$list->email}}</li>
+                      <li><i class="fa fa-building mr-2"></i> Address : {{$list->alamat}}</li>
+                    </ul>
+                  </div>
                 </div>
-              <h6>Hubungi kami :</h6>
-              <ul>
-                <li>Whatsapp / Phone : +{{$list->notelp}}</li>
-                <li>Email : {{$list->email}}</li>
-                <li>Company Address : {{$list->alamat}}</li>
-              </ul>
               </div>
             </div>
           </div>
