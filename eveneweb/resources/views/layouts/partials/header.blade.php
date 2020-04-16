@@ -209,9 +209,11 @@
                 @if(session()->get('profil')[0]->jenis == 'vendor')
                   <li class=""><a href="{{url('/account/vendors')}}">My Vendors</a></li>
                 @endif
-                <li><a href="{{ url('account/messages') }}">Messages</a></li>
                 <li class=""><a href="{{url('/logout')}}">Logout</a></li>
               </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('account/messages') }}"><i class="fa fa-envelope"></i></a>
             </li>
           @endif
         </ul>
