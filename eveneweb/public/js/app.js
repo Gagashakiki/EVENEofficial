@@ -1948,16 +1948,24 @@ __webpack_require__.r(__webpack_exports__);
     message: {
       type: String,
       required: true
+    },
+    isSelectedContact: {
+      type: Boolean,
+      "default": false,
+      required: true
     }
   },
   computed: {
     computedClass: function computedClass() {
-      return !this.contactId ? 'active-contact' : '';
+      return this.isSelectedContact ? 'active-contact' : '';
     }
   },
   methods: {
     getDate: function getDate(date) {
       return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format('DD MMM YYYY');
+    },
+    onSelectContact: function onSelectContact() {
+      this.$emit('onSelectContact', this.contactId);
     }
   }
 });
@@ -1987,6 +1995,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     contactList: {
       type: Array,
+      required: true
+    },
+    selectedContact: {
+      type: String,
+      required: true
+    },
+    onSelectContact: {
+      type: Function,
       required: true
     }
   }
@@ -2023,6 +2039,16 @@ __webpack_require__.r(__webpack_exports__);
     contacts: {
       type: Array,
       required: true
+    }
+  },
+  data: function data() {
+    return {
+      selectedContact: this.contacts[0].roomId
+    };
+  },
+  methods: {
+    onSelectContact: function onSelectContact(roomId) {
+      this.selectedContact = roomId;
     }
   }
 });
@@ -56221,30 +56247,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "contact", class: _vm.computedClass }, [
-    _c("div", { staticClass: "contact-avatar" }, [
-      _c("img", {
-        staticClass: "avatar",
-        attrs: {
-          src: _vm.contactAvatar,
-          alt: "contactAvatar",
-          width: "50",
-          height: "50"
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "contact-detail" }, [
-      _c("h5", { staticClass: "contact-detail-title" }, [
-        _vm._v("\n      " + _vm._s(_vm.contactName) + "\n      "),
-        _c("span", { staticClass: "chat_date" }, [
-          _vm._v(_vm._s(_vm.getDate(_vm.messageDate)))
-        ])
+  return _c(
+    "div",
+    {
+      staticClass: "contact",
+      class: _vm.computedClass,
+      on: { click: _vm.onSelectContact }
+    },
+    [
+      _c("div", { staticClass: "contact-avatar" }, [
+        _c("img", {
+          staticClass: "avatar",
+          attrs: {
+            src: _vm.contactAvatar,
+            alt: "contactAvatar",
+            width: "50",
+            height: "50"
+          }
+        })
       ]),
       _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.message))])
-    ])
-  ])
+      _c("div", { staticClass: "contact-detail" }, [
+        _c("h5", { staticClass: "contact-detail-title" }, [
+          _vm._v("\n      " + _vm._s(_vm.contactName) + "\n      "),
+          _c("span", { staticClass: "chat_date" }, [
+            _vm._v(_vm._s(_vm.getDate(_vm.messageDate)))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("p", [_vm._v(_vm._s(_vm.message))])
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -56279,8 +56313,10 @@ var render = function() {
           "contact-avatar": _vm.assetUrl + "/" + contact.avatar,
           "contact-name": contact.username,
           "message-date": contact.createdAt,
-          message: contact.message
-        }
+          message: contact.message,
+          "is-selected-contact": contact.roomId === _vm.selectedContact
+        },
+        on: { onSelectContact: _vm.onSelectContact }
       })
     }),
     1
@@ -56315,7 +56351,12 @@ var render = function() {
         { staticClass: "messaging" },
         [
           _c("ContactList", {
-            attrs: { "contact-list": _vm.contacts, assetUrl: _vm.assetUrl }
+            attrs: {
+              "contact-list": _vm.contacts,
+              assetUrl: _vm.assetUrl,
+              selectedContact: _vm.selectedContact,
+              onSelectContact: _vm.onSelectContact
+            }
           }),
           _vm._v(" "),
           _c("Chat")

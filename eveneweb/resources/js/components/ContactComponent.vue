@@ -23,16 +23,24 @@
       message: {
         type: String,
         required: true,
+      },
+      isSelectedContact: {
+        type: Boolean,
+        default: false,
+        required: true,
       }
     },
     computed: {
       computedClass() {
-        return !this.contactId ? 'active-contact' : ''
+        return this.isSelectedContact ? 'active-contact' : ''
       },
     },
     methods: {
-      getDate : function (date) {
+      getDate(date) {
         return moment(date).format('DD MMM YYYY')
+      },
+      onSelectContact() {
+        this.$emit('onSelectContact', this.contactId)
       }
     }
   }
@@ -73,7 +81,7 @@
 </style>
 
 <template>
-  <div class="contact" :class="computedClass">
+  <div class="contact" :class="computedClass" v-on:click="onSelectContact">
     <div class="contact-avatar">
       <img class="avatar" :src="contactAvatar" alt="contactAvatar" width="50" height="50">
     </div>

@@ -17,6 +17,16 @@
         required: true,
       }
     },
+    data() {
+      return {
+        selectedContact: this.contacts[0].roomId
+      }
+    },
+    methods: {
+      onSelectContact(roomId){
+        this.selectedContact = roomId;
+      }
+    }
   }
 </script>
 
@@ -35,7 +45,12 @@
   <div class="container">
     <div class="container mt-5">
       <div class="messaging">
-        <ContactList :contact-list="contacts" :assetUrl="assetUrl"/>
+        <ContactList
+          :contact-list="contacts"
+          :assetUrl="assetUrl"
+          :selectedContact="selectedContact"
+          :onSelectContact="onSelectContact"
+        />
         <Chat />
       </div>
     </div>

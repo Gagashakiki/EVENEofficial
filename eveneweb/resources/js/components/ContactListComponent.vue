@@ -12,8 +12,16 @@
       contactList: {
         type: Array,
         required: true,
+      },
+      selectedContact: {
+        type: String,
+        required: true,
+      },
+      onSelectContact: {
+        type: Function,
+        required: true,
       }
-    },
+    }
   }
 </script>
 
@@ -36,6 +44,8 @@
              :contact-name="contact.username"
              :message-date="contact.createdAt"
              :message="contact.message"
+             :is-selected-contact="contact.roomId === selectedContact"
+             @onSelectContact="onSelectContact"
     />
   </div>
 </template>
