@@ -8,10 +8,15 @@
       console.log('Component mounted.')
     },
     props: {
-      image: {
+      assetUrl: {
         type: String,
+        required: true,
+      },
+      contacts: {
+        type: Array,
+        required: true,
       }
-    }
+    },
   }
 </script>
 
@@ -30,7 +35,7 @@
   <div class="container">
     <div class="container mt-5">
       <div class="messaging">
-        <ContactList :contact-avatar="image"/>
+        <ContactList :contact-list="contacts" :assetUrl="assetUrl"/>
         <Chat />
       </div>
     </div>

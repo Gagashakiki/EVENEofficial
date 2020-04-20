@@ -1,10 +1,34 @@
 <script>
+  import moment from 'moment';
+
   export default {
     name: 'Contact',
     props: {
       contactAvatar: {
         type: String,
-        required: true
+        required: true,
+      },
+      contactName: {
+        type: String,
+        required: true,
+      },
+      contactId: {
+        type: Number,
+        required: true,
+      },
+      messageDate: {
+        type: String,
+        required: true,
+      }
+    },
+    computed: {
+      computedClass() {
+        return this.contactId === 0 ? 'active-contact' : ''
+      },
+    },
+    methods: {
+      getDate : function (date) {
+        return moment(date).format('DD MMM YYYY')
       }
     }
   }
@@ -21,6 +45,11 @@
     justify-content: space-between;
   }
 
+  .contact:hover {
+    background-color: #ebebeb;
+    cursor: pointer
+  }
+
   .active-contact{ background:#ebebeb;}
 
   .contact-avatar {
@@ -28,7 +57,7 @@
   }
 
   .contact-detail {
-    flex: 6;
+    flex: 5;
     padding-left: 1rem;
   }
 
@@ -40,14 +69,14 @@
 </style>
 
 <template>
-  <div class="contact active-contact">
+  <div class="contact" :class="computedClass">
     <div class="contact-avatar">
-      <img class="avatar" :src="contactAvatar" alt="contactAvatar">
+      <img class="avatar" :src="contactAvatar" alt="contactAvatar" width="50" height="50">
     </div>
     <div class="contact-detail">
       <h5 class="contact-detail-title">
-        Sunil Rajput
-        <span class="chat_date">Dec 25</span>
+        {{ contactName }}
+        <span class="chat_date">{{ getDate(messageDate) }}</span>
       </h5>
       <p>Test, which is a new approach to have all solutions
         astrology under one roof.</p>

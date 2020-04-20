@@ -124,7 +124,27 @@ class UserController extends Controller {
   public function listMessages() {
     $user = session::get('profil');
     if ($user) {
-      return view('account-messages')->with('profil', $user);
+      $messageRoom = array();
+
+      $userMessageRooms = db::table('message_room')
+        ->select('message_room.id')
+        ->where('message_room.user_id', '=', $user[0]->id)
+        ->get();
+
+      foreach ($userMessageRooms as $userMessageRoom) {
+        array_push($messageRoom, $userMessageRoom->id);
+      }
+
+      $contacts = db::table('message_room')
+        ->selectRaw('max(messages.created_at) as latestMessageData, message_room.id, case when users.jenis = \'vendor\' then users.nama1 else concat(users.nama1, \' \', users.nama2) end as username, users.pict as avatar')
+        ->join('messages', 'message_room.id', '=', 'messages.room_id')
+        ->join('users', 'message_room.user_id', '=', 'users.id')
+        ->whereIn('message_room.id', $messageRoom)
+        ->where('message_room.user_id', '!=', $user[0]->id)
+        ->groupBy(['message_room.user_id', 'message_room.id'])
+        ->get();
+
+      return view('account-messages')->with('profil', $user)->with('contacts', $contacts);
     }
 
     return redirect('/');
