@@ -13,17 +13,21 @@
         required: true,
       },
       contactId: {
-        type: Number,
+        type: String,
         required: true,
       },
       messageDate: {
+        type: String,
+        required: true,
+      },
+      message: {
         type: String,
         required: true,
       }
     },
     computed: {
       computedClass() {
-        return this.contactId === 0 ? 'active-contact' : ''
+        return !this.contactId ? 'active-contact' : ''
       },
     },
     methods: {
@@ -78,8 +82,7 @@
         {{ contactName }}
         <span class="chat_date">{{ getDate(messageDate) }}</span>
       </h5>
-      <p>Test, which is a new approach to have all solutions
-        astrology under one roof.</p>
+      <p>{{ message }}</p>
     </div>
   </div>
 </template>

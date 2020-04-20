@@ -31,10 +31,11 @@
   <div class="contact-list">
     <Contact v-for="(contact, index) in contactList"
              :key="index"
-             :contact-id="index"
+             :contact-id="contact.roomId"
              :contact-avatar="assetUrl + '/' + contact.avatar"
              :contact-name="contact.username"
-             :message-date="contact.latestMessageData"
+             :message-date="contact.createdAt"
+             :message="contact.message"
     />
   </div>
 </template>

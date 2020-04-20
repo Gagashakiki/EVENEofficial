@@ -2,7 +2,7 @@
 
 @section('content')
   <div id="chat-app">
-    <message-container asset-url="{{ asset('/img/avatar/') }}" :contacts="{{ $contacts }}">
+    <message-container asset-url="{{ asset('/img/avatar/') }}" :contacts="{{ json_encode($contacts) }}">
 
     </message-container>
   </div>

@@ -1938,17 +1938,21 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     },
     contactId: {
-      type: Number,
+      type: String,
       required: true
     },
     messageDate: {
+      type: String,
+      required: true
+    },
+    message: {
       type: String,
       required: true
     }
   },
   computed: {
     computedClass: function computedClass() {
-      return this.contactId === 0 ? 'active-contact' : '';
+      return !this.contactId ? 'active-contact' : '';
     }
   },
   methods: {
@@ -56238,11 +56242,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "Test, which is a new approach to have all solutions\n      astrology under one roof."
-        )
-      ])
+      _c("p", [_vm._v(_vm._s(_vm.message))])
     ])
   ])
 }
@@ -56275,10 +56275,11 @@ var render = function() {
       return _c("Contact", {
         key: index,
         attrs: {
-          "contact-id": index,
+          "contact-id": contact.roomId,
           "contact-avatar": _vm.assetUrl + "/" + contact.avatar,
           "contact-name": contact.username,
-          "message-date": contact.latestMessageData
+          "message-date": contact.createdAt,
+          message: contact.message
         }
       })
     }),
