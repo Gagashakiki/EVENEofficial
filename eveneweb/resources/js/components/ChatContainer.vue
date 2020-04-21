@@ -1,6 +1,19 @@
 <script>
+  import IncomingMessage from './IncomingMessage';
+  import OutgoingMessage from './OutgoingMessage';
   export default {
-    name: 'Chat'
+    name: 'Chat',
+    components: { OutgoingMessage, IncomingMessage },
+    props: {
+      currentUser: {
+        type: Number,
+        required: true,
+      },
+      messages: {
+        type: Array,
+        required: true,
+      }
+    },
   }
 </script>
 
@@ -58,55 +71,19 @@
 <template>
   <div class="messages">
     <div class="message-history">
-      <div class="incoming_msg">
-        <div class="received_msg">
-          <div class="received_withd_msg">
-            <p>Test which is a new approach to have all
-              solutions</p>
-            <span class="time_date"> 11:01 AM    |    June 9</span></div>
-        </div>
-      </div>
-      <div class="outgoing_msg">
-        <div class="sent_msg">
-          <p>Test which is a new approach to have all
-            solutions</p>
-          <span class="time_date"> 11:01 AM    |    June 9</span></div>
-      </div>
-      <div class="incoming_msg">
-        <div class="received_msg">
-          <div class="received_withd_msg">
-            <p>Test, which is a new approach to have</p>
-            <span class="time_date"> 11:01 AM    |    Yesterday</span></div>
-        </div>
-      </div>
-      <div class="outgoing_msg">
-        <div class="sent_msg">
-          <p>Apollo University, Delhi, India Test</p>
-          <span class="time_date"> 11:01 AM    |    Today</span></div>
-      </div>
-      <div class="outgoing_msg">
-        <div class="sent_msg">
-          <p>Apollo University, Delhi, India Test</p>
-          <span class="time_date"> 11:01 AM    |    Today</span></div>
-      </div>
-      <div class="outgoing_msg">
-        <div class="sent_msg">
-          <p>Apollo University, Delhi, India Test</p>
-          <span class="time_date"> 11:01 AM    |    Today</span></div>
-      </div>
-      <div class="outgoing_msg">
-        <div class="sent_msg">
-          <p>Apollo University, Delhi, India Test</p>
-          <span class="time_date"> 11:01 AM    |    Today</span></div>
-      </div>
-      <div class="incoming_msg">
-        <div class="received_msg">
-          <div class="received_withd_msg">
-            <p>We work directly with our designers and suppliers,
-              and sell direct to you, which means quality, exclusive
-              products, at a price anyone can afford.</p>
-            <span class="time_date"> 11:01 AM    |    Today</span></div>
-        </div>
+      <div v-for="(message,index) in messages">
+        <IncomingMessage
+          :key="index"
+          v-if="currentUser !== message.senderId"
+          :message="message.message"
+          :message-date="message.createdAt"
+        />
+        <OutgoingMessage
+          :key="index"
+          v-if="currentUser === message.senderId"
+          :message="message.message"
+          :message-date="message.createdAt"
+        />
       </div>
     </div>
     <div class="message-box">

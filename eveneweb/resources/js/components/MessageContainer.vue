@@ -5,7 +5,11 @@
   export default {
     components: { Chat, ContactList },
     mounted() {
-      console.log('Component mounted.')
+      this.messages = [
+        { senderId: 40, message: "Halo", createdAt: "2020-04-17 23:29:09" },
+        { senderId: 36, message: "Halo Juga", createdAt: "2020-04-17 23:29:09" },
+        { senderId: 40, message: "Mau Tanya Boleh ??", createdAt: "2020-04-17 23:29:09" },
+      ];
     },
     props: {
       assetUrl: {
@@ -15,11 +19,16 @@
       contacts: {
         type: Array,
         required: true,
+      },
+      currentUser: {
+        type: Number,
+        required: true,
       }
     },
     data() {
       return {
-        selectedContact: this.contacts[0].roomId
+        selectedContact: this.contacts[0].roomId,
+        messages: []
       }
     },
     methods: {
@@ -51,7 +60,10 @@
           :selectedContact="selectedContact"
           :onSelectContact="onSelectContact"
         />
-        <Chat />
+        <Chat
+          :current-user="currentUser"
+          :messages="messages"
+        />
       </div>
     </div>
   </div>
