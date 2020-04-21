@@ -79,16 +79,32 @@
             <div class="media-body">
               <h2 id="nama-vendor">{{strtoupper($list->judul)}}</h2>
               <h6 class="text-muted">START FROM <span class="text-warning"> Rp. {{number_format($list->harga)}} NETT </span></h6>
-              <div class="btn mb-5">
-                <a href="https://api.whatsapp.com/send?phone={{$list->notelp}}" target="_blank" class="btn btn-primary btn-default">
-                    <i class="fa fa-whatsapp fa-lg"></i>
-                    <small>Chat from Whatsapp</small>
-                </a>
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{$list->email}}" target="_blank" class="btn btn-warning btn-default">
-                  <i class="fa fa-envelope fa-lg"></i>
-                  <small>Contact Email</small>
-              </a>
-              </div>
+              @if($profil)
+              <form action="/ask-vendor" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" value="{{$list->iduser}}" name="receiverUser">
+                <input type="hidden" value="{{$profil->id}}" name="senderUser">
+                <button type="submit" class="btn btn-primary btn-default mb-5 mt-2">
+                  <i class="fa fa-comment"></i>
+                  <small>Ask Vendor</small>
+                </button>
+              </form>
+              @else
+              <button class="btn btn-primary btn-default mb-5 mt-2" data-toggle="modal" href='.login-modal'>
+                <i class="fa fa-comment"></i>
+                <small>Ask Vendor</small>
+              </button>
+              @endif
+{{--              <div class="btn mb-5">--}}
+{{--                <a href="https://api.whatsapp.com/send?phone={{$list->notelp}}" target="_blank" class="btn btn-primary btn-default">--}}
+{{--                    <i class="fa fa-whatsapp fa-lg"></i>--}}
+{{--                    <small>Chat from Whatsapp</small>--}}
+{{--                </a>--}}
+{{--                <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{$list->email}}" target="_blank" class="btn btn-warning btn-default">--}}
+{{--                  <i class="fa fa-envelope fa-lg"></i>--}}
+{{--                  <small>Contact Email</small>--}}
+{{--              </a>--}}
+{{--              </div>--}}
               <div>
                 <ul class="nav nav-tabs" style="justify-content:start">
                   <li class="nav-item">

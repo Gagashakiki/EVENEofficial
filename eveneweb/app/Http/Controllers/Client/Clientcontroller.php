@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Message;
+use App\MessageRoom;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -12,6 +14,7 @@ use Session;
 use DB;
 use str;
 use App\Quotation;
+use Carbon\Carbon;
 
 
 class Clientcontroller extends Controller {
@@ -54,5 +57,37 @@ class Clientcontroller extends Controller {
 
   public function joinReason() {
     return view('join-reason');
+  }
+
+  public function askVendor(Request $request) {
+    $user = session::get('profil');
+
+    if($user){
+      $currentTime = Carbon::now();
+      $senderId = $request->senderUser;
+      $receiverId = $request->receiverUser;
+      $roomId = $senderId . "-" . $currentTime->format("yymdhms");
+      $initialMessage = "Halo.. saya mau bertanya";
+
+      $messageRoom = new MessageRoom;
+      $messageRoom->id = $roomId;
+      $messageRoom->user_id = $senderId;
+      $messageRoom->save();
+
+      $messageRoom = new MessageRoom;
+      $messageRoom->id = $roomId;
+      $messageRoom->user_id = $receiverId;
+      $messageRoom->save();
+
+      $message = new Message;
+      $message->room_id = $roomId;
+      $message->sender_id = $senderId;
+      $message->message = $initialMessage;
+      $message->save();
+
+      return redirect('/account/messages');
+    }
+
+    return redirect('/');
   }
 }

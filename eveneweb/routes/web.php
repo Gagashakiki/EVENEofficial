@@ -51,6 +51,8 @@ Route::get('/why-join-us', 'Client\Clientcontroller@joinReason');
 
 Route::get('/account/messages', 'Client\UserController@listMessages');
 
+Route::post('/ask-vendor', 'Client\Clientcontroller@askVendor');
+
 // Admin Routing
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/login', function(){
