@@ -62,32 +62,46 @@ class Clientcontroller extends Controller {
   public function askVendor(Request $request) {
     $user = session::get('profil');
 
-    if($user){
+    if ($user) {
       $currentTime = Carbon::now();
       $senderId = $request->senderUser;
       $receiverId = $request->receiverUser;
-      $roomId = $senderId . "-" . $currentTime->format("yymdhms");
+      $roomId =
       $initialMessage = "Halo.. saya mau bertanya";
 
-      $messageRoom = new MessageRoom;
-      $messageRoom->id = $roomId;
-      $messageRoom->user_id = $senderId;
-      $messageRoom->save();
+      $existingRoom = $this->checkAvailableRoom($senderId, $receiverId);
 
-      $messageRoom = new MessageRoom;
-      $messageRoom->id = $roomId;
-      $messageRoom->user_id = $receiverId;
-      $messageRoom->save();
+      if($existingRoom){
+        $roomId = $existingRoom;
+      }else {
+        $roomId = $senderId . "-" . $currentTime->format("yymdhms");
 
-      $message = new Message;
-      $message->room_id = $roomId;
-      $message->sender_id = $senderId;
-      $message->message = $initialMessage;
-      $message->save();
+        $messageRoom = new MessageRoom;
+        $messageRoom->id = $roomId;
+        $messageRoom->user_id = $senderId;
+        $messageRoom->save();
+
+        $messageRoom = new MessageRoom;
+        $messageRoom->id = $roomId;
+        $messageRoom->user_id = $receiverId;
+        $messageRoom->save();
+
+        $message = new Message;
+        $message->room_id = $roomId;
+        $message->sender_id = $senderId;
+        $message->message = $initialMessage;
+        $message->save();
+      }
 
       return redirect('/account/messages');
     }
 
     return redirect('/');
+  }
+
+  private function checkAvailableRoom($senderId, $receiverId) {
+    $checkQuery = "select mr.id from message_room mr where mr.id in (select id from message_room mr where user_id = " . $senderId . ") and mr.user_id != " . $senderId . " and mr.user_id = " . $receiverId;
+
+    return db::select($checkQuery);
   }
 }
