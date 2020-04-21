@@ -5,10 +5,6 @@
     name: 'ContactList',
     components: { Contact },
     props: {
-      assetUrl: {
-        type: String,
-        required: true,
-      },
       contactList: {
         type: Array,
         required: true,
@@ -40,7 +36,7 @@
     <Contact v-for="(contact, index) in contactList"
              :key="index"
              :contact-id="contact.roomId"
-             :contact-avatar="assetUrl + '/' + contact.avatar"
+             :contact-avatar="'/img/avatar/' + contact.avatar"
              :contact-name="contact.username"
              :message-date="contact.createdAt"
              :message="contact.message"

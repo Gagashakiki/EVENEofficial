@@ -2007,10 +2007,6 @@ __webpack_require__.r(__webpack_exports__);
     Contact: _ContactComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    assetUrl: {
-      type: String,
-      required: true
-    },
     contactList: {
       type: Array,
       required: true
@@ -2075,6 +2071,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ContactListComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ContactListComponent */ "./resources/js/components/ContactListComponent.vue");
 /* harmony import */ var _ChatContainer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ChatContainer */ "./resources/js/components/ChatContainer.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2083,25 +2082,9 @@ __webpack_require__.r(__webpack_exports__);
     ContactList: _ContactListComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   mounted: function mounted() {
-    this.messages = [{
-      senderId: 40,
-      message: "Halo",
-      createdAt: "2020-04-17 23:29:09"
-    }, {
-      senderId: 36,
-      message: "Halo Juga",
-      createdAt: "2020-04-17 23:29:09"
-    }, {
-      senderId: 40,
-      message: "Mau Tanya Boleh ??",
-      createdAt: "2020-04-17 23:29:09"
-    }];
+    this.onGetMessages();
   },
   props: {
-    assetUrl: {
-      type: String,
-      required: true
-    },
     contacts: {
       type: Array,
       required: true
@@ -2120,6 +2103,14 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onSelectContact: function onSelectContact(roomId) {
       this.selectedContact = roomId;
+      this.onGetMessages();
+    },
+    onGetMessages: function onGetMessages() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/messages/' + this.selectedContact).then(function (response) {
+        _this.messages = response.data;
+      });
     }
   }
 });
@@ -56448,7 +56439,7 @@ var render = function() {
         key: index,
         attrs: {
           "contact-id": contact.roomId,
-          "contact-avatar": _vm.assetUrl + "/" + contact.avatar,
+          "contact-avatar": "/img/avatar/" + contact.avatar,
           "contact-name": contact.username,
           "message-date": contact.createdAt,
           message: contact.message,
@@ -56530,7 +56521,6 @@ var render = function() {
           _c("ContactList", {
             attrs: {
               "contact-list": _vm.contacts,
-              assetUrl: _vm.assetUrl,
               selectedContact: _vm.selectedContact,
               onSelectContact: _vm.onSelectContact
             }

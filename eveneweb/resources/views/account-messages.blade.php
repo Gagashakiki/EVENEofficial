@@ -2,7 +2,10 @@
 
 @section('content')
   <div id="chat-app">
-    <message-container asset-url="{{ asset('/img/avatar/') }}" :contacts="{{ json_encode($contacts) }}">
+    <message-container
+      :contacts="{{ json_encode($contacts) }}"
+      :current-user="{{ $profil[0]->id }}"
+    >
 
     </message-container>
   </div>

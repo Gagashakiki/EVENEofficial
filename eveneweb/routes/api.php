@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/messages/{roomId}', 'Client\MessageController@getMessages');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

@@ -1,21 +1,14 @@
 <script>
   import ContactList from './ContactListComponent';
   import Chat from './ChatContainer';
+  import axios from 'axios';
 
   export default {
     components: { Chat, ContactList },
     mounted() {
-      this.messages = [
-        { senderId: 40, message: "Halo", createdAt: "2020-04-17 23:29:09" },
-        { senderId: 36, message: "Halo Juga", createdAt: "2020-04-17 23:29:09" },
-        { senderId: 40, message: "Mau Tanya Boleh ??", createdAt: "2020-04-17 23:29:09" },
-      ];
+      this.onGetMessages();
     },
     props: {
-      assetUrl: {
-        type: String,
-        required: true,
-      },
       contacts: {
         type: Array,
         required: true,
@@ -34,6 +27,14 @@
     methods: {
       onSelectContact(roomId){
         this.selectedContact = roomId;
+
+        this.onGetMessages();
+      },
+      onGetMessages() {
+        axios.get('/api/messages/' + this.selectedContact)
+        .then(response => {
+          this.messages = response.data;
+        })
       }
     }
   }
@@ -56,7 +57,6 @@
       <div class="messaging">
         <ContactList
           :contact-list="contacts"
-          :assetUrl="assetUrl"
           :selectedContact="selectedContact"
           :onSelectContact="onSelectContact"
         />
