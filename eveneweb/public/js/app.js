@@ -1910,6 +1910,9 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _IncomingMessage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IncomingMessage */ "./resources/js/components/IncomingMessage.vue");
 /* harmony import */ var _OutgoingMessage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OutgoingMessage */ "./resources/js/components/OutgoingMessage.vue");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1919,6 +1922,10 @@ __webpack_require__.r(__webpack_exports__);
     IncomingMessage: _IncomingMessage__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
+    messageRoomId: {
+      type: String,
+      required: true
+    },
     currentUser: {
       type: Number,
       required: true
@@ -1926,6 +1933,23 @@ __webpack_require__.r(__webpack_exports__);
     messages: {
       type: Array,
       required: true
+    }
+  },
+  data: function data() {
+    return {
+      message: ""
+    };
+  },
+  methods: {
+    handleSendMessage: function handleSendMessage() {
+      var messageRequest = {
+        roomId: this.messageRoomId,
+        senderId: this.currentUser,
+        message: this.message,
+        createdAt: moment__WEBPACK_IMPORTED_MODULE_2___default()()
+      };
+      this.$emit('onSendMessage', messageRequest);
+      this.message = "";
     }
   }
 });
@@ -2111,6 +2135,10 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/messages/' + this.selectedContact).then(function (response) {
         _this.messages = response.data;
       });
+    },
+    onSendMessages: function onSendMessages(message) {
+      this.messages.push(message);
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/message', message);
     }
   }
 });
@@ -56326,7 +56354,40 @@ var render = function() {
       0
     ),
     _vm._v(" "),
-    _vm._m(0)
+    _c("div", { staticClass: "message-box" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.message,
+            expression: "message"
+          }
+        ],
+        staticClass: "write_msg",
+        attrs: { type: "text", placeholder: "Type a message" },
+        domProps: { value: _vm.message },
+        on: {
+          keyup: function($event) {
+            if (
+              !$event.type.indexOf("key") &&
+              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+            ) {
+              return null
+            }
+            return _vm.handleSendMessage($event)
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.message = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
   ])
 }
 var staticRenderFns = [
@@ -56334,24 +56395,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "message-box" }, [
-      _c("input", {
-        staticClass: "write_msg",
-        attrs: { type: "text", placeholder: "Type a message" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "message-action-box" }, [
-        _c(
-          "button",
-          { staticClass: "btn-message-send", attrs: { type: "button" } },
-          [
-            _c("i", {
-              staticClass: "fa fa-paper-plane-o",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
+    return _c("div", { staticClass: "message-action-box" }, [
+      _c(
+        "button",
+        { staticClass: "btn-message-send", attrs: { type: "button" } },
+        [
+          _c("i", {
+            staticClass: "fa fa-paper-plane-o",
+            attrs: { "aria-hidden": "true" }
+          })
+        ]
+      )
     ])
   }
 ]
@@ -56527,7 +56581,12 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("Chat", {
-            attrs: { "current-user": _vm.currentUser, messages: _vm.messages }
+            attrs: {
+              "message-room-id": _vm.selectedContact,
+              "current-user": _vm.currentUser,
+              messages: _vm.messages
+            },
+            on: { onSendMessage: _vm.onSendMessages }
           })
         ],
         1

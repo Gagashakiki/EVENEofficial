@@ -35,6 +35,11 @@
         .then(response => {
           this.messages = response.data;
         })
+      },
+      onSendMessages(message) {
+        this.messages.push(message);
+
+        axios.post('/api/message', message);
       }
     }
   }
@@ -61,8 +66,10 @@
           :onSelectContact="onSelectContact"
         />
         <Chat
+          :message-room-id="selectedContact"
           :current-user="currentUser"
           :messages="messages"
+          @onSendMessage="onSendMessages"
         />
       </div>
     </div>

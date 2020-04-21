@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/messages/{roomId}', 'Client\MessageController@getMessages');
+Route::post('/message/', 'Client\MessageController@sendMessage');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

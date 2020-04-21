@@ -1,10 +1,16 @@
 <script>
   import IncomingMessage from './IncomingMessage';
   import OutgoingMessage from './OutgoingMessage';
+  import moment from 'moment';
+
   export default {
     name: 'Chat',
     components: { OutgoingMessage, IncomingMessage },
     props: {
+      messageRoomId: {
+        type: String,
+        required: true,
+      },
       currentUser: {
         type: Number,
         required: true,
@@ -14,6 +20,24 @@
         required: true,
       }
     },
+    data() {
+      return {
+        message: "",
+      }
+    },
+    methods: {
+      handleSendMessage() {
+        const messageRequest = {
+          roomId: this.messageRoomId,
+          senderId: this.currentUser,
+          message: this.message,
+          createdAt: moment(),
+        }
+        this.$emit('onSendMessage', messageRequest);
+
+        this.message = "";
+      }
+    }
   }
 </script>
 
@@ -87,7 +111,11 @@
       </div>
     </div>
     <div class="message-box">
-      <input type="text" class="write_msg" placeholder="Type a message"/>
+      <input
+        type="text" class="write_msg" placeholder="Type a message"
+        v-model="message"
+        v-on:keyup.enter="handleSendMessage"
+      />
       <div class="message-action-box">
         <button class="btn-message-send" type="button">
           <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
