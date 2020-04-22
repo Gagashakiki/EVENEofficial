@@ -1921,6 +1921,9 @@ __webpack_require__.r(__webpack_exports__);
     OutgoingMessage: _OutgoingMessage__WEBPACK_IMPORTED_MODULE_1__["default"],
     IncomingMessage: _IncomingMessage__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  mounted: function mounted() {
+    this.scrollToEnd();
+  },
   props: {
     messageRoomId: {
       type: String,
@@ -1946,10 +1949,15 @@ __webpack_require__.r(__webpack_exports__);
         roomId: this.messageRoomId,
         senderId: this.currentUser,
         message: this.message,
-        createdAt: moment__WEBPACK_IMPORTED_MODULE_2___default()()
+        createdAt: moment__WEBPACK_IMPORTED_MODULE_2___default()().toISOString()
       };
       this.$emit('onSendMessage', messageRequest);
       this.message = "";
+    },
+    scrollToEnd: function scrollToEnd() {
+      var container = this.$el.querySelector('.message-history');
+      container.scrollTop = container.scrollHeight;
+      console.log('scrolled');
     }
   }
 });
@@ -6724,7 +6732,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.messages[data-v-61c7e9a4] {\n  flex: 2;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n}\n.message-history[data-v-61c7e9a4] {\n  overflow: auto;\n  padding: 1rem 1rem;\n}\n.message-box[data-v-61c7e9a4] {\n  border-top: 1px solid #c4c4c4;\n  padding: .5rem .5rem;\n  display: flex;\n  background-color: whitesmoke;\n}\n.message-box input[data-v-61c7e9a4] {\n  flex: 10;\n  color: #4c4c4c;\n  font-size: 1rem;\n  min-height: 3rem;\n  padding: 0 1rem;\n  margin: 0 0.5rem 0 0;\n  border-radius: 2rem;\n}\n.message-action-box[data-v-61c7e9a4] {\n  flex: 1;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.btn-message-send[data-v-61c7e9a4] {\n  background: #05728f none repeat scroll 0 0;\n  border: medium none;\n  border-radius: 50%;\n  color: #fff;\n  cursor: pointer;\n  font-size: 17px;\n  height: 33px;\n  right: 0;\n  top: 11px;\n  width: 33px;\n}\n", ""]);
+exports.push([module.i, "\n.messages[data-v-61c7e9a4] {\n  flex: 2;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n}\n.message-history[data-v-61c7e9a4] {\n  overflow: auto;\n  padding: 1rem 1rem;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n}\n.message-box[data-v-61c7e9a4] {\n  border-top: 1px solid #c4c4c4;\n  padding: .5rem .5rem;\n  display: flex;\n  background-color: whitesmoke;\n}\n.message-box input[data-v-61c7e9a4] {\n  flex: 10;\n  color: #4c4c4c;\n  font-size: 1rem;\n  min-height: 3rem;\n  padding: 0 1rem;\n  margin: 0 0.5rem 0 0;\n  border-radius: 2rem;\n}\n.message-action-box[data-v-61c7e9a4] {\n  flex: 1;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.btn-message-send[data-v-61c7e9a4] {\n  background: #05728f none repeat scroll 0 0;\n  border: medium none;\n  border-radius: 50%;\n  color: #fff;\n  cursor: pointer;\n  font-size: 17px;\n  height: 33px;\n  right: 0;\n  top: 11px;\n  width: 33px;\n}\n", ""]);
 
 // exports
 

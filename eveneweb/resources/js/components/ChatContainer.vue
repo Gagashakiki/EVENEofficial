@@ -6,6 +6,9 @@
   export default {
     name: 'Chat',
     components: { OutgoingMessage, IncomingMessage },
+    mounted() {
+      this.scrollToEnd();
+    },
     props: {
       messageRoomId: {
         type: String,
@@ -31,12 +34,18 @@
           roomId: this.messageRoomId,
           senderId: this.currentUser,
           message: this.message,
-          createdAt: moment(),
+          createdAt: moment().toISOString(),
         }
         this.$emit('onSendMessage', messageRequest);
 
         this.message = "";
-      }
+      },
+      scrollToEnd() {
+        let container = this.$el.querySelector('.message-history');
+        container.scrollTop = container.scrollHeight;
+
+        console.log('scrolled');
+      },
     }
   }
 </script>
@@ -52,6 +61,9 @@
   .message-history {
     overflow: auto;
     padding: 1rem 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .message-box {
