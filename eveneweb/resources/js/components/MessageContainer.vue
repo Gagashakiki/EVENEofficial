@@ -16,17 +16,25 @@
       currentUser: {
         type: Number,
         required: true,
+      },
+      currentUserType: {
+        type: String,
+        required: true,
       }
     },
     data() {
       return {
         selectedContact: this.contacts[0].roomId,
+        selectedContactEmail: this.contacts[0].email,
+        selectedContactName: this.contacts[0].username,
         messages: []
       }
     },
     methods: {
       onSelectContact(roomId){
         this.selectedContact = roomId;
+        this.selectedContactEmail = this.getContact(this.selectedContact).email;
+        this.selectedContactName = this.getContact(this.selectedContact).username;
 
         this.onGetMessages();
       },
@@ -40,7 +48,15 @@
         this.messages.push(message);
 
         axios.post('/api/message', message);
-      }
+      },
+      getContact: function (selectedContact) {
+        return this.contacts.find(
+          function(contact) {
+            return contact.roomId === selectedContact;
+          },
+          selectedContact
+        )
+      },
     }
   }
 </script>
@@ -67,8 +83,11 @@
         />
         <Chat
           :message-room-id="selectedContact"
+          :current-user-type="currentUserType"
           :current-user="currentUser"
           :messages="messages"
+          :current-contact-email="selectedContactEmail"
+          :current-contact-name="selectedContactName"
           @onSendMessage="onSendMessages"
         />
       </div>

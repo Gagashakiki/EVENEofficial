@@ -1912,6 +1912,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _OutgoingMessage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OutgoingMessage */ "./resources/js/components/OutgoingMessage.vue");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -1936,6 +1939,19 @@ __webpack_require__.r(__webpack_exports__);
     messages: {
       type: Array,
       required: true
+    },
+    currentUserType: {
+      type: String,
+      "default": "users",
+      required: true
+    },
+    currentContactEmail: {
+      type: String,
+      required: true
+    },
+    currentContactName: {
+      type: String,
+      required: true
     }
   },
   data: function data() {
@@ -1958,6 +1974,15 @@ __webpack_require__.r(__webpack_exports__);
       var container = this.$el.querySelector('.message-history');
       container.scrollTop = container.scrollHeight;
       console.log('scrolled');
+    },
+    sendRequestInvoice: function sendRequestInvoice() {
+      var request = {
+        vendorEmail: this.currentContactEmail,
+        vendorName: this.currentContactName
+      };
+      this.message = "Hai, Saya meminta Invoice";
+      this.handleSendMessage();
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/message/requestInvoice', request);
     }
   }
 });
@@ -2124,17 +2149,25 @@ __webpack_require__.r(__webpack_exports__);
     currentUser: {
       type: Number,
       required: true
+    },
+    currentUserType: {
+      type: String,
+      required: true
     }
   },
   data: function data() {
     return {
       selectedContact: this.contacts[0].roomId,
+      selectedContactEmail: this.contacts[0].email,
+      selectedContactName: this.contacts[0].username,
       messages: []
     };
   },
   methods: {
     onSelectContact: function onSelectContact(roomId) {
       this.selectedContact = roomId;
+      this.selectedContactEmail = this.getContact(this.selectedContact).email;
+      this.selectedContactName = this.getContact(this.selectedContact).username;
       this.onGetMessages();
     },
     onGetMessages: function onGetMessages() {
@@ -2147,6 +2180,11 @@ __webpack_require__.r(__webpack_exports__);
     onSendMessages: function onSendMessages(message) {
       this.messages.push(message);
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/message', message);
+    },
+    getContact: function getContact(selectedContact) {
+      return this.contacts.find(function (contact) {
+        return contact.roomId === selectedContact;
+      }, selectedContact);
     }
   }
 });
@@ -6732,7 +6770,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.messages[data-v-61c7e9a4] {\n  flex: 2;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n}\n.message-history[data-v-61c7e9a4] {\n  overflow: auto;\n  padding: 1rem 1rem;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n}\n.message-box[data-v-61c7e9a4] {\n  border-top: 1px solid #c4c4c4;\n  padding: .5rem .5rem;\n  display: flex;\n  background-color: whitesmoke;\n}\n.message-box input[data-v-61c7e9a4] {\n  flex: 10;\n  color: #4c4c4c;\n  font-size: 1rem;\n  min-height: 3rem;\n  padding: 0 1rem;\n  margin: 0 0.5rem 0 0;\n  border-radius: 2rem;\n}\n.message-action-box[data-v-61c7e9a4] {\n  flex: 1;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.btn-message-send[data-v-61c7e9a4] {\n  background: #05728f none repeat scroll 0 0;\n  border: medium none;\n  border-radius: 50%;\n  color: #fff;\n  cursor: pointer;\n  font-size: 17px;\n  height: 33px;\n  right: 0;\n  top: 11px;\n  width: 33px;\n}\n", ""]);
+exports.push([module.i, "\n.messages[data-v-61c7e9a4] {\n  flex: 2;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n}\n.message-history[data-v-61c7e9a4] {\n  overflow: auto;\n  padding: 1rem 1rem;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n}\n.message-box[data-v-61c7e9a4] {\n  border-top: 1px solid #c4c4c4;\n  padding: .5rem .5rem;\n  display: flex;\n  background-color: whitesmoke;\n}\n.message-box input[data-v-61c7e9a4] {\n  flex: 10;\n  color: #4c4c4c;\n  font-size: 1rem;\n  min-height: 3rem;\n  padding: 0 1rem;\n  margin: 0 0.5rem 0 0;\n  border-radius: 2rem;\n}\n.message-action-box[data-v-61c7e9a4] {\n  flex: 1;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.btn-message-send[data-v-61c7e9a4] {\n  background: #FBB03B none repeat scroll 0 0;\n  border: medium none;\n  border-radius: 50%;\n  color: #fff;\n  cursor: pointer;\n  font-size: 17px;\n  height: 33px;\n  right: 0;\n  top: 11px;\n  width: 33px;\n}\n", ""]);
 
 // exports
 
@@ -6827,7 +6865,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.outgoing_msg[data-v-5fea09e0] {\n  overflow: hidden;\n  margin: 26px 0 26px;\n}\n.sent_msg[data-v-5fea09e0] {\n  float: right;\n  width: 46%;\n}\n.time_date[data-v-5fea09e0] {\n  color: #747474;\n  display: block;\n  font-size: 12px;\n  margin: 8px 0 0;\n}\n.sent_msg p[data-v-5fea09e0] {\n  background: #05728f none repeat scroll 0 0;\n  border-radius: 3px;\n  font-size: 14px;\n  margin: 0; color:#fff;\n  padding: 5px 10px 5px 12px;\n  width:100%;\n}\n", ""]);
+exports.push([module.i, "\n.outgoing_msg[data-v-5fea09e0] {\n  overflow: hidden;\n  margin: 26px 0 26px;\n}\n.sent_msg[data-v-5fea09e0] {\n  float: right;\n  width: 46%;\n}\n.time_date[data-v-5fea09e0] {\n  color: #747474;\n  display: block;\n  font-size: 12px;\n  margin: 8px 0 0;\n}\n.sent_msg p[data-v-5fea09e0] {\n  background: #FBB03B none repeat scroll 0 0;\n  border-radius: 3px;\n  font-size: 14px;\n  margin: 0; color:#fff;\n  padding: 5px 10px 5px 12px;\n  width:100%;\n}\n", ""]);
 
 // exports
 
@@ -56394,29 +56432,45 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "message-action-box" }, [
+        _vm.currentUserType === "users"
+          ? _c(
+              "button",
+              {
+                staticClass: "btn-message-send",
+                attrs: { title: "Request Invoice", type: "button" },
+                on: { click: _vm.sendRequestInvoice }
+              },
+              [
+                _c("i", {
+                  staticClass: "fa fa-cart-arrow-down",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]
+            )
+          : _c(
+              "button",
+              {
+                staticClass: "btn-message-send",
+                attrs: {
+                  title: "Request Invoice",
+                  type: "button",
+                  "data-toggle": "modal",
+                  href: "#requestInvoiceModal"
+                }
+              },
+              [
+                _c("i", {
+                  staticClass: "fa fa-cart-plus",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]
+            )
+      ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "message-action-box" }, [
-      _c(
-        "button",
-        { staticClass: "btn-message-send", attrs: { type: "button" } },
-        [
-          _c("i", {
-            staticClass: "fa fa-paper-plane-o",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -56591,8 +56645,11 @@ var render = function() {
           _c("Chat", {
             attrs: {
               "message-room-id": _vm.selectedContact,
+              "current-user-type": _vm.currentUserType,
               "current-user": _vm.currentUser,
-              messages: _vm.messages
+              messages: _vm.messages,
+              "current-contact-email": _vm.selectedContactEmail,
+              "current-contact-name": _vm.selectedContactName
             },
             on: { onSendMessage: _vm.onSendMessages }
           })

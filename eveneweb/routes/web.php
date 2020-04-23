@@ -53,6 +53,9 @@ Route::get('/account/messages', 'Client\UserController@listMessages');
 
 Route::post('/ask-vendor', 'Client\Clientcontroller@askVendor');
 
+// Message Controller
+Route::post('/message/requestInvoice', 'Client\MessageController@requestInvoice');
+
 // Admin Routing
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/login', function(){

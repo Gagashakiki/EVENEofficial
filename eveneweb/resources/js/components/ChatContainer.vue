@@ -2,6 +2,7 @@
   import IncomingMessage from './IncomingMessage';
   import OutgoingMessage from './OutgoingMessage';
   import moment from 'moment';
+  import axios from 'axios';
 
   export default {
     name: 'Chat',
@@ -20,6 +21,19 @@
       },
       messages: {
         type: Array,
+        required: true,
+      },
+      currentUserType: {
+        type: String,
+        default: "users",
+        required: true,
+      },
+      currentContactEmail: {
+        type: String,
+        required: true,
+      },
+      currentContactName: {
+        type: String,
         required: true,
       }
     },
@@ -46,6 +60,16 @@
 
         console.log('scrolled');
       },
+      sendRequestInvoice() {
+        const request = {
+          vendorEmail: this.currentContactEmail,
+          vendorName: this.currentContactName,
+        }
+        this.message = "Hai, Saya meminta Invoice";
+        this.handleSendMessage();
+
+        axios.post('/message/requestInvoice', request);
+      }
     }
   }
 </script>
@@ -91,7 +115,7 @@
   }
 
   .btn-message-send {
-    background: #05728f none repeat scroll 0 0;
+    background: #FBB03B none repeat scroll 0 0;
     border: medium none;
     border-radius: 50%;
     color: #fff;
@@ -129,8 +153,11 @@
         v-on:keyup.enter="handleSendMessage"
       />
       <div class="message-action-box">
-        <button class="btn-message-send" type="button">
-          <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+        <button v-if="currentUserType === 'users'" class="btn-message-send" title="Request Invoice" type="button" v-on:click="sendRequestInvoice">
+          <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+        </button>
+        <button v-else class="btn-message-send" title="Request Invoice" type="button" data-toggle="modal" href='#requestInvoiceModal'>
+          <i class="fa fa-cart-plus" aria-hidden="true"></i>
         </button>
       </div>
     </div>

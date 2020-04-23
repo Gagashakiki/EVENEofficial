@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Session;
 use DB;
+use stdClass;
 use str;
 use App\Quotation;
 use Carbon\Carbon;
@@ -66,7 +67,7 @@ class Clientcontroller extends Controller {
       $currentTime = Carbon::now();
       $senderId = $request->senderUser;
       $receiverId = $request->receiverUser;
-      $roomId =
+      $roomId = "";
       $initialMessage = "Halo.. saya mau bertanya";
 
       $existingRoom = $this->checkAvailableRoom($senderId, $receiverId);
