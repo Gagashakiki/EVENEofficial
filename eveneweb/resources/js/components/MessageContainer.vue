@@ -27,12 +27,14 @@
         selectedContact: this.contacts[0].roomId,
         selectedContactEmail: this.contacts[0].email,
         selectedContactName: this.contacts[0].username,
+        selectedContactId: this.contacts[0].id,
         messages: []
       }
     },
     methods: {
       onSelectContact(roomId){
         this.selectedContact = roomId;
+        this.selectedContactId = this.getContact(this.selectedContact).id;
         this.selectedContactEmail = this.getContact(this.selectedContact).email;
         this.selectedContactName = this.getContact(this.selectedContact).username;
 
@@ -88,6 +90,7 @@
           :messages="messages"
           :current-contact-email="selectedContactEmail"
           :current-contact-name="selectedContactName"
+          :current-contact-id="selectedContactId"
           @onSendMessage="onSendMessages"
         />
       </div>

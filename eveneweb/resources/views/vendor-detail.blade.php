@@ -34,21 +34,21 @@
               <div id="carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active img-responsive" data-thumb="0">
-                    <img src="{{ asset('img/vendor/'.$list->gambar1) }}" height="460px">
+                    <img src="{{ asset('img/vendor/'.$list->gambar1) }}" style="object-fit: contain" height="460px">
                   </div>
                   @if($list->gambar2)
                   <div class="carousel-item img-responsive text-center" data-thumb="1">
-                    <img src="{{ asset('img/vendor/'.$list->gambar2) }}" height="460px">
+                    <img src="{{ asset('img/vendor/'.$list->gambar2) }}" style="object-fit: contain" height="460px">
                   </div>
                   @endif
                   @if($list->gambar3)
                   <div class="carousel-item img-responsive text-center" data-thumb="2">
-                    <img src="{{ asset('img/vendor/'.$list->gambar3) }}" height="460px">
+                    <img src="{{ asset('img/vendor/'.$list->gambar3) }}" style="object-fit: contain" height="460px">
                   </div>
                   @endif
                   @if($list->gambar4)
                   <div class="carousel-item img-responsive text-center" data-thumb="3">
-                    <img src="{{ asset('img/vendor/'.$list->gambar4) }}" height="460px">
+                    <img src="{{ asset('img/vendor/'.$list->gambar4) }}" style="object-fit: contain" height="460px">
                   </div>
                   @endif
                 </div>

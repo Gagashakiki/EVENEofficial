@@ -124,7 +124,7 @@ class UserController extends Controller {
   public function listMessages() {
     $user = session::get('profil');
     if ($user) {
-      $queryContactMessage = "select ml.room_id as roomId, ml.created_at as createdAt, case when u.jenis = 'vendor' then u.nama1 else concat(u.nama1, ' ', u.nama2) end as username, u.pict as avatar ,ml.message, u.email from message_room mr join (select m.* from messages m 
+      $queryContactMessage = "select u.id, ml.room_id as roomId, ml.created_at as createdAt, case when u.jenis = 'vendor' then u.nama1 else concat(u.nama1, ' ', u.nama2) end as username, u.pict as avatar ,ml.message, u.email from message_room mr join (select m.* from messages m 
 join (select max(m.created_at) created_at, m.room_id from messages m group by m.room_id) ml on m.room_id = ml.room_id and m.created_at = ml.created_at) ml on mr.id = ml.room_id
 join users u on mr.user_id = u.id
 where mr.id in (select mr.id from message_room mr where mr.user_id = " . $user[0]->id . ") and mr.user_id != " . $user[0]->id. " order by ml.created_at desc";

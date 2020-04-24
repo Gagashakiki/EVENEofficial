@@ -55,6 +55,7 @@ Route::post('/ask-vendor', 'Client\Clientcontroller@askVendor');
 
 // Message Controller
 Route::post('/message/requestInvoice', 'Client\MessageController@requestInvoice');
+Route::post('/order', 'Client\OrderController@createOrder');
 
 // Admin Routing
 Route::group(['prefix' => 'admin'], function () {

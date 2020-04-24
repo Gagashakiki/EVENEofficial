@@ -3,10 +3,11 @@
   import OutgoingMessage from './OutgoingMessage';
   import moment from 'moment';
   import axios from 'axios';
+  import OrderModal from './CreateOrderModal';
 
   export default {
     name: 'Chat',
-    components: { OutgoingMessage, IncomingMessage },
+    components: { OrderModal, OutgoingMessage, IncomingMessage },
     mounted() {
       this.scrollToEnd();
     },
@@ -35,10 +36,16 @@
       currentContactName: {
         type: String,
         required: true,
+      },
+      currentContactId: {
+        type: Number,
+        required: true,
       }
     },
     data() {
       return {
+        showAlert: false,
+        alertMessage: '',
         message: "",
       }
     },
@@ -57,18 +64,26 @@
       scrollToEnd() {
         let container = this.$el.querySelector('.message-history');
         container.scrollTop = container.scrollHeight;
-
-        console.log('scrolled');
       },
       sendRequestInvoice() {
         const request = {
           vendorEmail: this.currentContactEmail,
           vendorName: this.currentContactName,
         }
-        this.message = "Hai, Saya meminta Invoice";
-        this.handleSendMessage();
+        this.alertHandle("Request Invoice Sent")
 
         axios.post('/message/requestInvoice', request);
+      },
+      alertHandle(message) {
+        let alert = this
+
+        alert.showAlert = true;
+        alert.alertMessage = message;
+
+        setTimeout(function () {
+          alert.showAlert = false;
+          alert.alertMessage = ''
+        }, 5000);
       }
     }
   }
@@ -130,6 +145,9 @@
 
 <template>
   <div class="messages">
+    <div v-if="showAlert" id="message-alert" class="alert alert-success fade show" role="alert">
+      {{ alertMessage }}
+    </div>
     <div class="message-history">
       <div v-for="(message,index) in messages">
         <IncomingMessage
@@ -161,5 +179,10 @@
         </button>
       </div>
     </div>
+
+    <OrderModal
+      :contact-name="currentContactName"
+      :contact-id="currentContactId"
+      @dismissAlert="alertHandle"/>
   </div>
 </template>
