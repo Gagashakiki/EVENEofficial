@@ -32,7 +32,6 @@
                     <th>Note</th>
                     <th>Amount</th>
                     <th>Status</th>
-                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -43,9 +42,8 @@
                       <td>{{ $order->theme }}</td>
                       <td>{{ date("d F Y", strtotime($order->date)) }}</td>
                       <td>{{ $order->notes }}</td>
-                      <td>{{ number_format($order->amount) }}</td>
+                      <td>{{ number_format($order->amount - ($order->amount * 0.1)) }}</td>
                       <td>{{ $order->status }}</td>
-                      <td></td>
                     </tr>
                   @endforeach
                   </tbody>
