@@ -15,14 +15,16 @@ class CreateOrderTable extends Migration {
       $table->bigIncrements('id');
       $table->integer('vendor_id');
       $table->integer('customer_id');
-      $table->string('event_type');
-      $table->string('event_theme');
+      $table->string('event_type', 100);
+      $table->string('event_theme', 100);
       $table->date('event_date');
       $table->string('notes');
+      $table->string('transaction_id', 50);
       $table->integer('transaction_amount');
-      $table->string('transaction_status');
+      $table->string('transaction_status', 50);
       $table->timestamps();
 
+      $table->unique('transaction_id');
       $table->foreign('vendor_id')->references('id')->on('users');
       $table->foreign('customer_id')->references('id')->on('users');
     });

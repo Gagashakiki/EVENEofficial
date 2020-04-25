@@ -216,6 +216,11 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url('account/messages') }}"><i class="fa fa-envelope"></i></a>
             </li>
+            @if(session()->get('profil')[0]->jenis == 'users')
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('account/cart') }}"><i class="fa fa-shopping-cart"></i></a>
+              </li>
+            @endif
           @endif
         </ul>
       </div><!-- /.navbar-collapse -->

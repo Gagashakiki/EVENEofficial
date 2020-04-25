@@ -59,6 +59,7 @@ Route::post('/order', 'Client\OrderController@createOrder');
 
 // Order Controller
 Route::get('/account/orders', 'Client\OrderController@listVendorOrder');
+Route::get('/account/cart', 'Client\OrderController@listCustomerOrder');
 
 // Admin Routing
 Route::group(['prefix' => 'admin'], function () {
