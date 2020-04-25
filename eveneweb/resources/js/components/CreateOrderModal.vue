@@ -34,9 +34,9 @@
           transactionAmount: this.transactionAmount
         }
 
-        axios.post('/order', request).then(function() {
-          this.$emit('dismissAlert', "Successful Create Order");
-        });
+        this.$emit('dismissAlert', "Successful Create Order");
+
+        axios.post('/order', request);
       }
     },
     computed: {

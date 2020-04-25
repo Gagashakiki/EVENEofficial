@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\Session;
 class OrderController extends Controller {
   public function createOrder(Request $request) {
     $user = session::get('profil');
+    $maxOrder = DB::table('order')->count();
 
     $order = new Order();
 
-    $transactionId = "INV".date("YmdHis").$user[0]->id.$request->customerId;
+    $transactionId = "#5254".($maxOrder+1);
 
     $order->vendor_id = $user[0]->id;
     $order->customer_id = $request->customerId;
@@ -24,7 +25,7 @@ class OrderController extends Controller {
     $order->notes = $request->notes;
     $order->transaction_id = $transactionId;
     $order->transaction_amount = $request->transactionAmount;
-    $order->transaction_status = "Menunggu Pembayaran";
+    $order->transaction_status = "Waiting For Payment";
 
     $order->save();
 
