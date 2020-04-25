@@ -80,7 +80,7 @@
             <br/> Konfirmasi pemesanan dari pihak EVENE maks H+3 dari pemesanan.
           </p>
           <p>Lengkapnya Metode Pembayaran EVENE ada
-            <a style="text-decoration:underline !important;" href="#">disini</a>
+            <a style="text-decoration:underline !important;" href="/how-evene-works#main">disini</a>
           </p>
         </div>
         <div class="modal-footer">
@@ -91,7 +91,7 @@
               <i class="fa fa-whatsapp fa-lg"></i>
               <small>via Whatsapp</small>
             </a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=test@evene.com" target="_blank"
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=eveneofficial@gmail.com" target="_blank"
                class="btn btn-warning btn-default btn-evene" style="line-height:40px; height:40px;">
               <i class="fa fa-envelope fa-lg"></i>
               <small>via Email</small>

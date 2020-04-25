@@ -100,6 +100,10 @@ class Clientcontroller extends Controller {
     return redirect('/');
   }
 
+  public function howEveneWorks() {
+    return view('how-evene-works');
+  }
+
   private function checkAvailableRoom($senderId, $receiverId) {
     $checkQuery = "select mr.id from message_room mr where mr.id in (select id from message_room mr where user_id = " . $senderId . ") and mr.user_id != " . $senderId . " and mr.user_id = " . $receiverId;
 
