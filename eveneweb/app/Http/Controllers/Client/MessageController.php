@@ -42,6 +42,6 @@ class MessageController extends Controller {
 
     Mail::to($email)->send(new RequestInvoice($invoice));
 
-    return response($invoice, 200);
+    return response("success", 200);
   }
 }

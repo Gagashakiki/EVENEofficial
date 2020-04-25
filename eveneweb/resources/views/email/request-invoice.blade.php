@@ -25,6 +25,11 @@
   .steps {
     margin-bottom: 0;
   }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   @media only screen and (min-width: 768px) {
     .container {
       width: 750px;
@@ -90,6 +95,15 @@
       <h4 class="steps">Tunggu hingga transaksi berhasil</h4>
     </li>
   </ol>
+
+  <div class="divider"></div>
+
+  <div class="footer">
+    <h4 style="font-weight: bold">Thank You For Trusting <span style="color:#FBF000">EVENE</span></h4>
+
+    <h5>If you have any question about this email, please contact us: <br/> (+62)82114360256  / eveneofficial@gmail.com</h5>
+    <h5></h5>
+  </div>
 </div>
 </body>
 </html>
