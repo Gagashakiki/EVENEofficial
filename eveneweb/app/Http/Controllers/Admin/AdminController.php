@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Order;
 use App\Quotation;
 use Auth;
 use Crypt;
@@ -208,8 +209,23 @@ class AdminController extends controller {
         ->join('users as cu', 'order.customer_id', '=', 'cu.id')
         ->get();
 
-//      return $transactions;
       return view('admin.transactions')->with('profil', $data)->with('transactions', $transactions);
+    }
+
+    return redirect('/');
+  }
+
+  public function confirmTransaction($transactionId) {
+    if (session::get('profiladmin')) {
+      $transaction = Order::where('transaction_id', '=', $transactionId)->first();
+
+      if ($transaction->transaction_status != "Sudah Membayar") {
+        $transaction->transaction_status = "Sudah Membayar";
+
+        $transaction->save();
+      }
+
+      return redirect('/admin/transactions')->with('success', 'Payment Confirmed');
     }
 
     return redirect('/');

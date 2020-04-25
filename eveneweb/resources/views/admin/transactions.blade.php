@@ -42,7 +42,10 @@
               <td>{{ $transaction->status }}</td>
               @if($transaction->status == "Menunggu Pembayaran")
                 <td>
-                  <button class="btn btn-success">Confirm Payment</button>
+                  <form action="{{ "/admin/transactions/".$transaction->id }}" method="post">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-success">Confirm Payment</button>
+                  </form>
                 </td>
               @else
                 <td></td>

@@ -40,8 +40,6 @@
                           <td>
                             <button class="btn btn-success">Bayar</button>
                           </td>
-                        @elseif($order->status == "Sudah Membayar")
-                          <td>No Action</td>
                         @else
                           <td></td>
                         @endif

@@ -98,4 +98,5 @@ Route::group(['prefix' => 'admin'], function () {
   Route::delete('/deleteuser/{id}', 'admin\admincontroller@deleteuser');
 
   Route::get('/transactions', 'admin\admincontroller@listTransactions');
+  Route::post('/transactions/{transactionId}', 'admin\admincontroller@confirmTransaction');
 });
