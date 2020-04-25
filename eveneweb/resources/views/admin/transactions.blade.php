@@ -40,7 +40,7 @@
               <td>{{ $transaction->notes }}</td>
               <td>{{ number_format($transaction->amount) }}</td>
               <td>{{ $transaction->status }}</td>
-              @if($transaction->status == "Menunggu Pembayaran")
+              @if($transaction->status == "Waiting For Payment")
                 <td>
                   <form action="{{ "/admin/transactions/".$transaction->id }}" method="post">
                     {{ csrf_field() }}

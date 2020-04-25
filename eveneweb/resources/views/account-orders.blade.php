@@ -45,11 +45,7 @@
                       <td>{{ $order->notes }}</td>
                       <td>{{ number_format($order->amount) }}</td>
                       <td>{{ $order->status }}</td>
-                      @if($order->status = "Menunggu Pembayaran")
-                        <td>No Action</td>
-                      @else
-                        <td></td>
-                      @endif
+                      <td></td>
                     </tr>
                   @endforeach
                   </tbody>

@@ -183,4 +183,8 @@ img{ max-width:100%;}
 
 .inbox_chat { height: 600px; overflow-y: scroll;}
 
+.btn-evene {
+  border-radius: 12rem;
+}
+
 
