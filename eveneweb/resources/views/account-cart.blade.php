@@ -36,7 +36,11 @@
                         <td>{{ $order->notes }}</td>
                         <td>{{ number_format($order->amount) }}</td>
                         <td>{{ $order->status }}</td>
-                        @if($order->status = "Menunggu Pembayaran")
+                        @if($order->status == "Menunggu Pembayaran")
+                          <td>
+                            <button class="btn btn-success">Bayar</button>
+                          </td>
+                        @elseif($order->status == "Sudah Membayar")
                           <td>No Action</td>
                         @else
                           <td></td>

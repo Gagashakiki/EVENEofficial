@@ -21,7 +21,7 @@ Route::get('/blog/{id}', 'Client\Clientcontroller@blogdetail');
 Route::get('/inspiration', 'Client\Clientcontroller@inspiration');
 
 Route::get('/inspiration/{slug}', function () {
-    return view('aaa');
+  return view('aaa');
 });
 
 //profile
@@ -34,11 +34,11 @@ Route::get('/vendor/detail/{id}', 'Client\VendorController@vendorDetail');
 Route::get('/vendor/{category}/{event}', 'Client\VendorController@listVendorsByCategoryAndEvent');
 Route::get('/search', 'Client\VendorController@searchVendors');
 Route::get('/account/vendors', 'Client\VendorController@listUserVendors');
-Route::get('/account/vendors/create','Client\VendorController@createVendor');
-Route::post('/account/vendors/create','Client\VendorController@createVendorSubmit');
+Route::get('/account/vendors/create', 'Client\VendorController@createVendor');
+Route::post('/account/vendors/create', 'Client\VendorController@createVendorSubmit');
 Route::get('/account/vendors/edit/{id}', 'Client\VendorController@editVendor');
-Route::post('/account/vendors/edit','Client\VendorController@editVendorSubmit');
-Route::delete('/account/vendors/delete/{id}','Client\VendorController@deleteVendorSubmit');
+Route::post('/account/vendors/edit', 'Client\VendorController@editVendorSubmit');
+Route::delete('/account/vendors/delete/{id}', 'Client\VendorController@deleteVendorSubmit');
 Route::post('/vendor/review', 'Client\VendorController@vendorReviewSubmit');
 
 //Userauth
@@ -63,37 +63,39 @@ Route::get('/account/cart', 'Client\OrderController@listCustomerOrder');
 
 // Admin Routing
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/login', function(){
-        return view('admin.login');
-    });
-    Route::post('/login/submit', 'Admin\authcontroller@login');
-    Route::get('/logout','admin\authcontroller@logout');
+  Route::get('/login', function () {
+    return view('admin.login');
+  });
+  Route::post('/login/submit', 'Admin\authcontroller@login');
+  Route::get('/logout', 'admin\authcontroller@logout');
 
-    Route::get('/dashboard', 'Admin\admincontroller@dashboard');
+  Route::get('/dashboard', 'Admin\admincontroller@dashboard');
 
-    Route::get('/vendor', 'Admin\admincontroller@order');
+  Route::get('/vendor', 'Admin\admincontroller@order');
 
-    Route::get('/approve/{id}','admin\admincontroller@approve');
+  Route::get('/approve/{id}', 'admin\admincontroller@approve');
 
-    Route::delete('/deletevendor/{id}','Client\usercontroller@deletevendor');
+  Route::delete('/deletevendor/{id}', 'Client\usercontroller@deletevendor');
 
-    Route::get('/blog', 'admin\admincontroller@blog');
+  Route::get('/blog', 'admin\admincontroller@blog');
 
-    Route::get('/insertblog', 'admin\admincontroller@formblog');
-    Route::post('/insertblog/submit','admin\admincontroller@insert');
-    Route::delete('/deleteblog/{id}','admin\admincontroller@deleteblog');
-    Route::get('/editblog/{id}','admin\admincontroller@edit');
-    Route::post('/editblog/submit','admin\admincontroller@editsubmit');
+  Route::get('/insertblog', 'admin\admincontroller@formblog');
+  Route::post('/insertblog/submit', 'admin\admincontroller@insert');
+  Route::delete('/deleteblog/{id}', 'admin\admincontroller@deleteblog');
+  Route::get('/editblog/{id}', 'admin\admincontroller@edit');
+  Route::post('/editblog/submit', 'admin\admincontroller@editsubmit');
 
-    Route::get('/inspiration', 'admin\admincontroller@inspiration');
-    Route::get('/form-inspiration','admin\admincontroller@forminsp');
-    Route::get('/edit-inspiration/{id}','admin\admincontroller@editinsp');
-    Route::post('/edit-inspiration/submit','admin\admincontroller@editinsps');
-    Route::post('/form-inspiration/submit','admin\admincontroller@insertinsp');
-    Route::delete('/deleteinsp/{id}','admin\admincontroller@deleteinsp');
+  Route::get('/inspiration', 'admin\admincontroller@inspiration');
+  Route::get('/form-inspiration', 'admin\admincontroller@forminsp');
+  Route::get('/edit-inspiration/{id}', 'admin\admincontroller@editinsp');
+  Route::post('/edit-inspiration/submit', 'admin\admincontroller@editinsps');
+  Route::post('/form-inspiration/submit', 'admin\admincontroller@insertinsp');
+  Route::delete('/deleteinsp/{id}', 'admin\admincontroller@deleteinsp');
 
-    Route::get('/users/customer', 'admin\admincontroller@listUserCustomer');
-    Route::get('/users/vendor', 'admin\admincontroller@listUserVendor');
+  Route::get('/users/customer', 'admin\admincontroller@listUserCustomer');
+  Route::get('/users/vendor', 'admin\admincontroller@listUserVendor');
 
-    Route::delete('/deleteuser/{id}', 'admin\admincontroller@deleteuser');
+  Route::delete('/deleteuser/{id}', 'admin\admincontroller@deleteuser');
+
+  Route::get('/transactions', 'admin\admincontroller@listTransactions');
 });

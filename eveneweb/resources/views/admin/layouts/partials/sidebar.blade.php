@@ -33,6 +33,12 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{url('admin/transactions')}}" class="nav-link">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p>Transactions</p>
+                    </a>
+                </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>

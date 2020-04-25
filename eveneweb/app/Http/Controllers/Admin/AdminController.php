@@ -198,4 +198,20 @@ class AdminController extends controller {
       return redirect('/');
     }
   }
+
+  public function listTransactions() {
+    $data = session::get('profiladmin');
+    if ($data) {
+      $transactions = db::table('order')
+        ->selectRaw("vu.nama1 as vendorName, concat(cu.nama1, ' ', cu.nama2) as customerName, order.event_type as type, order.event_theme as theme, order.event_date as date, order.notes, order.transaction_id as id, order.transaction_amount as amount, order.transaction_status as status")
+        ->join('users as vu', 'order.vendor_id', '=', 'vu.id')
+        ->join('users as cu', 'order.customer_id', '=', 'cu.id')
+        ->get();
+
+//      return $transactions;
+      return view('admin.transactions')->with('profil', $data)->with('transactions', $transactions);
+    }
+
+    return redirect('/');
+  }
 }
