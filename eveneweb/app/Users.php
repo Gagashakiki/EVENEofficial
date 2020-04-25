@@ -10,4 +10,8 @@ class Users extends Model {
   public function vendorRatings() {
     return $this->hasMany('App\VendorRatings');
   }
+
+  public function customerOrder() {
+    return $this->hasMany('App\Order', 'customer_id');
+  }
 }

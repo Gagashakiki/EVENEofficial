@@ -208,6 +208,7 @@
                 <li class=""><a href="{{url('/profile')}}">Profile</a></li>
                 @if(session()->get('profil')[0]->jenis == 'vendor')
                   <li class=""><a href="{{url('/account/vendors')}}">My Vendors</a></li>
+                  <li class=""><a href="{{url('/account/orders')}}">My Orders</a></li>
                 @endif
                 <li class=""><a href="{{url('/logout')}}">Logout</a></li>
               </ul>

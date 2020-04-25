@@ -57,6 +57,9 @@ Route::post('/ask-vendor', 'Client\Clientcontroller@askVendor');
 Route::post('/message/requestInvoice', 'Client\MessageController@requestInvoice');
 Route::post('/order', 'Client\OrderController@createOrder');
 
+// Order Controller
+Route::get('/account/orders', 'Client\OrderController@listVendorOrder');
+
 // Admin Routing
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/login', function(){

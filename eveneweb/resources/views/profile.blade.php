@@ -8,8 +8,8 @@
         <div class="col-12">
           <div class="btn-group" role="group" aria-label="...">
             @if(session()->get('profil')[0]->jenis == 'vendor')
-              <a href="{{ url('/account/vendors') }}" class="btn btn-default"><i class="fa fa-th" aria-hidden="true"></i>My
-                Vendors</a>
+              <a href="{{ url('/account/vendors') }}" class="btn btn-default"><i class="fa fa-th" aria-hidden="true"></i>My Vendors</a>
+              <a href="{{ url('/account/orders') }}" class="btn btn-default"><i class="fa fa-list" aria-hidden="true"></i>My Orders</a>
             @endif
             <a href="{{ url('/profile') }}" class="btn btn-default active"><i class="fa fa-user" aria-hidden="true"></i>Profile</a>
           </div>
