@@ -25,6 +25,10 @@ nav li a:hover {
   color: #FBB03B !important;
 }
 
+a {
+  cursor: pointer;
+}
+
 /*.thumbnail img {*/
 /*  object-fit: contain;*/
 /*}*/
