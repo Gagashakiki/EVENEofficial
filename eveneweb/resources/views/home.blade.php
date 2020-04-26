@@ -416,7 +416,7 @@
         <div class="col-md-4">
           <div class="thumbnail">
             <a href="{{ url('/blog/'.$list->id) }}" target="_blank">
-              <img src="img/blog/{{$list->thumbnail}}" alt="article-image">
+              <img src="img/blog/{{$list->thumbnail}}" alt="article-image" style="object-fit: contain;">
             </a>
             <h5><a href="{{ url('/blog/'.$list->id) }}">{{$list->judul}}</a></h5>
             {{-- <span class="meta"> by <a class="pr-1" href="#">{{$list->penulis}}</a> / <a class="pl-1" href="blog-single-right-sidebar.html">3 Comments</a></span> --}}
