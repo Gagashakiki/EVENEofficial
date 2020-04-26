@@ -81,6 +81,8 @@
 								<input id="checkbox-1" class="checkbox-custom form-check-input" name="checkbox-1" type="checkbox" checked>
 								<label for="checkbox-1" class="checkbox-custom-label form-check-label">Remember me</label>
 							</div>
+
+							<p>don’t have account? <a style="text-decoration: underline !important;" data-dismiss="modal" data-toggle="modal" data-target="#signup">sign up here</a></p>
 							<button type="submit" class="btn btn-primary btn-block">log in</button>
 {{--							<button type="button" class="btn btn-link btn-block">Forgot Password?</button>--}}
 						</form>

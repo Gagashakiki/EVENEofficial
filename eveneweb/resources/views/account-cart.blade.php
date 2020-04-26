@@ -34,7 +34,7 @@
                       <td>{{ $order->theme }}</td>
                       <td>{{ date("d F Y", strtotime($order->date)) }}</td>
                       <td>{{ $order->notes }}</td>
-                      <td>{{ number_format($order->amount) }}</td>
+                      <td>Rp{{ number_format($order->amount) }}</td>
                       <td>{{ $order->status }}</td>
                       @if($order->status == "Waiting For Payment")
                         <td>
@@ -87,12 +87,12 @@
           <h4>Payment Confirmation : </h4>
           <div class="btn">
             <a href="https://api.whatsapp.com/send?phone=08xx" target="_blank"
-               class="btn btn-primary btn-evene">
+               class="btn btn-warning btn-evene">
               <i class="fa fa-whatsapp fa-lg"></i>
               <small>via Whatsapp</small>
             </a>
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=eveneofficial@gmail.com" target="_blank"
-               class="btn btn-warning btn-default btn-evene" style="line-height:40px; height:40px;">
+               class="btn btn-warning btn-evene">
               <i class="fa fa-envelope fa-lg"></i>
               <small>via Email</small>
             </a>

@@ -86,7 +86,7 @@ body {
   font-family: 'Oxygen', sans-serif;
   font-size: 12px;
   line-height: 18px;
-  color: #252525;
+  color: #404040;
   font-weight: 400;
   min-height: 100% !important;
 }
@@ -2444,7 +2444,6 @@ body.bodyColor.container {
 
 .tp-caption.rs-caption-4 .btn,
 .bannerV2 .btn, .bannerV3 .btn {
-  border: 0.5px solid;
   border-color: #232323 !important;
   background-color: rgb(233,169,9) !important ;
   color: #252525 !important;
@@ -3911,7 +3910,7 @@ body.bodyColor.container {
 .whiteSection .latestArticles .thumbnail h5 a, .mainContent .latestArticles .thumbnail h5 a {
   font-size: inherit;
   letter-spacing: inherit;
-  color: #252525;
+  color: #404040;
 }
 
 .whiteSection .latestArticles .thumbnail h5 span, .mainContent .latestArticles .thumbnail h5 span {
@@ -9874,7 +9873,7 @@ body.bodyColor.container {
   height: 40px;
   padding: 0 20px;
   font-size: 14px;
-  line-height: 40px;
+  line-height: 38px;
   font-weight: 400;
   text-transform: uppercase;
   cursor: pointer;

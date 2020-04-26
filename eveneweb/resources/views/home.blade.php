@@ -191,7 +191,7 @@
         <div class="col-md-4 col-12">
           <div class="thumbnail" onclick="location.href='/vendor/all/eventorganizer';">
             <div class="imageWrapper">
-              <img src="img/home/featured-collection/eo.jpg" alt="feature-collection-image">
+              <img src="img/home/featured-collection/featured-event-organizer.png" alt="feature-collection-image">
               <div class="caption">
                   <h3>Event Organizer</h3>
                   @foreach($priceeo as $priceeo)
@@ -207,7 +207,7 @@
         <div class="col-md-4 col-12">
           <div class="thumbnail" onclick="location.href='/vendor/all/tabledecoration';">
             <div class="imageWrapper">
-              <img src="img/home/featured-collection/table.jpg" alt="feature-collection-image">
+              <img src="img/home/featured-collection/featured-table-decor.png" alt="feature-collection-image">
               <div class="caption">
                   <h3>Table Decoration</h3>
                   @foreach($pricetd as $pricetd)
@@ -223,7 +223,7 @@
         <div class="col-md-4 col-12">
           <div class="thumbnail" onclick="location.href='/vendor/all/photographer';">
             <div class="imageWrapper">
-              <img src="img/home/featured-collection/foto.jpg" alt="feature-collection-image">
+              <img src="img/home/featured-collection/featured-photographer.png" alt="feature-collection-image">
               <div class="caption">
                   <h3>Photographer</h3>
                   @foreach($priceph as $priceph)

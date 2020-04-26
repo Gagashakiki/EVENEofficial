@@ -15,18 +15,30 @@
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'montserrat', 'sans-serif';
+  color: #404040;
 }
 
 nav li a {
-  color: #333333 !important;
+  color: #404040 !important;
 }
 
 nav li a:hover {
-  color: #FBB03B !important;
+  color: #FCDF58 !important;
 }
 
 a {
   cursor: pointer;
+  color: #404040;
+}
+a:hover {
+  color: black;
+}
+a:focus {
+  color: black
+}
+
+a span:hover {
+  color: #FCDF58;
 }
 
 /*.thumbnail img {*/
@@ -55,12 +67,15 @@ a {
 }
 
 .eveneBtn{
-  border-color: #FBF000 !important;
+  color: white;
+  border-color: #FCDF58;
+  border-radius: 12rem;
 }
 
 .eveneBtn:hover{
-  color: black !important;
-  background-color: #FBF000 !important;
+  color: black;
+  background-color: #FCDF58;
+  border-color: #FCDF58;
   cursor: pointer;
 }
 
@@ -189,12 +204,22 @@ img{ max-width:100%;}
 
 .btn-evene {
   border-radius: 12rem;
+  border-color: #FCDF58;
   background-color: #FCDF58;
   color: #404040;
 }
 .btn-evene:hover {
   background-color: #C5AE45 !important;
+  border-color: #FCDF58;
   color: #FFFFFF;
+}
+.btn-evene:focus {
+  border-color: #FCDF58;
+  background-color: #FCDF58;
+}
+.btn-evene:active {
+  border-color: #FCDF58;
+  background-color: #FCDF58;
 }
 
 

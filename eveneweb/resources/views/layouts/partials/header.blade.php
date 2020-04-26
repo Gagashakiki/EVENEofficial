@@ -125,7 +125,7 @@
 {{--                  </span>--}}
 {{--                </li>--}}
 {{--              </ul>--}}
-              <a class="text-warning" href="/how-evene-works#main">How Evene Works</a>
+              <a class="text-warning" href="/how-evene-works#main" style="font-weight: bold">How Evene Works</a>
             </li>
           </ul>
         </div>
@@ -140,7 +140,7 @@
       <form class="form-inline navbar-brand" action="{{url('search')}}" method="get">
         {{ csrf_field() }}
         <a class="mr-3" href="{{ url('/') }}">
-          <img src="{{ asset('img/new-evene-logo.png') }}" width="120" height="100">
+          <img src="{{ asset('img/new-evene-logo.png') }}" width="100" height="100">
           {{-- <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
