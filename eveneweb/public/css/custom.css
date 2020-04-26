@@ -185,6 +185,12 @@ img{ max-width:100%;}
 
 .btn-evene {
   border-radius: 12rem;
+  background-color: #FCDF58;
+  color: #404040;
+}
+.btn-evene:hover {
+  background-color: #C5AE45 !important;
+  color: #FFFFFF;
 }
 
 
