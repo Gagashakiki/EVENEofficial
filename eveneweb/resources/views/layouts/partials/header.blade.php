@@ -140,7 +140,7 @@
       <form class="form-inline navbar-brand" action="{{url('search')}}" method="get">
         {{ csrf_field() }}
         <a class="mr-3" href="{{ url('/') }}">
-          <img src="{{ asset('img/logo.png') }}" width="166px" height="31px">
+          <img src="{{ asset('img/new-evene-logo.png') }}" width="120" height="100">
           {{-- <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
