@@ -9,10 +9,10 @@
 							<div class="footerLink">
 								<h5>Events</h5>
 								<ul class="list-unstyled">
-									<li><a href="#">Wedding Organizer </a></li>
-									<li><a href="#">Sweet 17 </a></li>
-									<li><a href="#">Bridal Shower </a></li>
-									<li><a href="#">Funeral </a></li>
+									<li><a href="/vendor/wedding-party">Wedding Party</a></li>
+									<li><a href="/vendor/sweet-17">Sweet 17 </a></li>
+									<li><a href="/vendor/bridal-shower">Bridal Shower </a></li>
+									<li><a href="/vendor/anniversary">Anniversary </a></li>
 								</ul>
 							</div>
 						</div>
@@ -20,10 +20,10 @@
 							<div class="footerLink">
 								<h5>Vendors</h5>
 								<ul class="list-unstyled">
-									<li><a href="#">EO </a></li>
-									<li><a href="#">Table Decoration </a></li>
-									<li><a href="#">Photographer</a></li>
-									<li><a href="#">Make Up Artist</a></li>
+									<li><a href="/vendor/all/event-organizer">EO </a></li>
+									<li><a href="/vendor/all/table-decoration">Table Decoration </a></li>
+									<li><a href="/vendor/all/photographer">Photographer</a></li>
+									<li><a href="/vendor/all/makeup-artist">Make Up Artist</a></li>
 								</ul>
 							</div>
 						</div>
@@ -31,8 +31,8 @@
 							<div class="footerLink">
 								<h5>Get in Touch</h5>
 								<ul class="list-unstyled">
-									<li>Call us at (555)-555-5555</li>
-									<li><a href="mailto:support@iamabdus.com">support@iamabdus.com</a></li>
+									<li>Call us at (+62)82114360256</li>
+									<li><a href="mailto:support@iamabdus.com">eveneofficial@gmail.com</a></li>
 								</ul>
 								<ul class="list-inline">
 									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
