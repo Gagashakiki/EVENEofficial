@@ -8,8 +8,8 @@
   <title>Document</title>
 </head>
 <style>
-  a:hover, button:hover{
-    cursor:pointer;
+  h3 {
+    margin: 0;
   }
   .container {
     padding-right: 15px;
@@ -20,25 +20,16 @@
   .img-logo {
     width: 10rem;
   }
-  .italic {
-    font-style: italic;
-  }
   .divider {
     width: 100%;
     border-top: double;
     margin: 2rem 0;
   }
-  .verify {
-    margin: 3rem 0;
+  .steps {
+    margin-bottom: 0;
   }
-  .center {
+  .footer {
     text-align: center;
-  }
-  .btnVerify {
-    text-decoration: none;
-    background-color: #C5AE45;
-    padding: 1rem 3rem;
-    border-radius:1rem;
   }
   @media only screen and (min-width: 768px) {
     .container {
@@ -62,21 +53,21 @@
 <body>
 <div class="container">
   <img class="img-logo" src="{{ asset('/img/new-evene-logo.png') }}" />
-  <h2>Hi, {{$username}}</h2>
-  <div class="center">
-    <h3 class="italic">You recently signed up in our website, please verify your email address to get started with EVENE.</h3>
+  <h1>YOU GOT A MESSAGE!</h1>
 
-    <div class="verify">
-      <h4 class="italic">This helps us to keep your data and information safe and secure.</h4>
+  <h3>Hi {{$receiver}},</h3>
+  <p style="margin-top: 0;">You got a message,</p>
 
-      <a href="{{$link}}"><button class="btnVerify">VERIFY EMAIL</button></a>
+  <h3>From: {{$sender}}</h3>
+  <h3>Message: {{$message}}</h3>
 
-      <h3 class="italic">THANK YOU.</h3>
-    </div>
+  <p style="margin-bottom: 0;">You can respond this message thru <span style="color:#FCDF58">EVENE</span> website at your chat page. Click <a>Here</a> to go thru EVENE chat page.</p>
 
-    <h4>Didn't sign up? <br/> You can slightly ignore this email</h4>
+  <h3>The sooner you respond, the better you can get.</h3>
 
-    <div class="divider"></div>
+  <div class="divider"></div>
+
+  <div class="footer">
     <h4 style="font-weight: bold">Thank You For Trusting <span style="color:#FCDF58">EVENE</span></h4>
 
     <h5>If you have any question about this email, please contact us: <br/> (+62)82114360256  / eveneofficial@gmail.com</h5>

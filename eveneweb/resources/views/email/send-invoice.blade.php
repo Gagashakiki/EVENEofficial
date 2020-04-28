@@ -8,9 +8,6 @@
   <title>Document</title>
 </head>
 <style>
-  a:hover, button:hover{
-    cursor:pointer;
-  }
   .container {
     padding-right: 15px;
     padding-left: 15px;
@@ -18,27 +15,28 @@
     margin-left: auto;
   }
   .img-logo {
-    width: 10rem;
-  }
-  .italic {
-    font-style: italic;
+    width: 20rem;
   }
   .divider {
     width: 100%;
     border-top: double;
     margin: 2rem 0;
   }
-  .verify {
-    margin: 3rem 0;
+  .steps {
+    margin-bottom: 0;
+  }
+  .invoice-box {
+    border: 1px solid black;
+    border-radius: 4rem;
   }
   .center {
     text-align: center;
   }
-  .btnVerify {
-    text-decoration: none;
-    background-color: #C5AE45;
-    padding: 1rem 3rem;
-    border-radius:1rem;
+  .invoice-billed {
+    text-align: right;
+  }
+  .invoice-header{
+    display: grid;
   }
   @media only screen and (min-width: 768px) {
     .container {
@@ -54,30 +52,38 @@
     .container {
       width: 1170px;
     }
-    .img-logo {
-      width: 15rem;
-    }
   }
 </style>
 <body>
 <div class="container">
-  <img class="img-logo" src="{{ asset('/img/new-evene-logo.png') }}" />
-  <h2>Hi, {{$username}}</h2>
-  <div class="center">
-    <h3 class="italic">You recently signed up in our website, please verify your email address to get started with EVENE.</h3>
+  <h1>INVOICE</h1>
+  <h4>Hi, {{$customerName}} <br/>Thank You! Your booking has been recorded and Confirmed.</h4>
 
-    <div class="verify">
-      <h4 class="italic">This helps us to keep your data and information safe and secure.</h4>
+  <h3>Here's your booking summary</h3>
 
-      <a href="{{$link}}"><button class="btnVerify">VERIFY EMAIL</button></a>
-
-      <h3 class="italic">THANK YOU.</h3>
+  <div class="invoice-box">
+    <div class="invoice-header">
+      <img class="img-logo" src="{{ asset('/img/new-evene-logo.png') }}"  alt="evene-logo"/>
+      <h1>INVOICE</h1>
     </div>
+    <div class="invoice-body">
 
-    <h4>Didn't sign up? <br/> You can slightly ignore this email</h4>
+    </div>
+    <div class="invoice-footer center">
+      <h5>If you have any question about this email, please contact us: <br/> (+62)82114360256  / eveneofficial@gmail.com</h5>
+      <h4 style="font-weight: bold">Thank You For Trusting <span style="color:#FCDF58">EVENE</span></h4>
+      <div class="invoice-billed">
+        <h4>BILLED TO</h4>
+      </div>
+    </div>
+  </div>
 
-    <div class="divider"></div>
-    <h4 style="font-weight: bold">Thank You For Trusting <span style="color:#FCDF58">EVENE</span></h4>
+
+
+  <div class="divider"></div>
+
+  <div class="center">
+
 
     <h5>If you have any question about this email, please contact us: <br/> (+62)82114360256  / eveneofficial@gmail.com</h5>
     <h5></h5>

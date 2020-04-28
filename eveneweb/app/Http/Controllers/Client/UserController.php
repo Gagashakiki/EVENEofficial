@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Mail\EmailVerification;
+use App\Mail\VerifyEmail;
 use App\Quotation;
 use App\User;
 use Auth;
@@ -10,7 +12,7 @@ use Crypt;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 use Session;
 
 
@@ -146,12 +148,16 @@ where mr.id in (select mr.id from message_room mr where mr.user_id = " . $user[0
       'pass' => $password,
       'nama1' => $request->firstName,
       'nama2' => $request->lastName,
-      'notelp' => $request->phoneNumber
+      'notelp' => $request->phoneNumber,
+      'jenis' => 'users'
     ]);
 
-    Mail::to($email)->send(new VerifyEmail($user));
+    $username = $request->firstName . " " . $request->lastName;
+
+    Mail::to($email)->send(new EmailVerification($user, $username));
 
     return redirect('/')->with('success', 'Please Verify Your Email before Using Evene');
+//    return $user;
   }
 
   private function createUserVendor($request) {
@@ -167,7 +173,7 @@ where mr.id in (select mr.id from message_room mr where mr.user_id = " . $user[0
       'jenis' => 'vendor'
     ]);
 
-    Mail::to($email)->send(new VerifyEmail($user));
+    Mail::to($email)->send(new EmailVerification($user, $request->fullName));
 
     return redirect('/')->with('success', 'Please Verify Your Email before Using Evene');
   }
