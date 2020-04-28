@@ -84,7 +84,7 @@
                 {{ csrf_field() }}
                 <input type="hidden" value="{{$list->iduser}}" name="receiverUser">
                 <input type="hidden" value="{{$profil->id}}" name="senderUser">
-                <button type="submit" class="btn btn-primary btn-default mb-5 mt-2">
+                <button type="submit" class="btn btn-primary btn-default mb-5 mt-2" style="border-radius: 12rem">
                   <i class="fa fa-comment"></i>
                   <small>Ask Vendor</small>
                 </button>

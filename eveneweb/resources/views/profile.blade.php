@@ -89,7 +89,7 @@
                     </div>
                     <div class="form-group row">
                       <div class=" col-md-12 ">
-                        <button type="submit" class="btn btn-primary float-right">SAVE INFO</button>
+                        <button type="submit" class="btn btn-primary float-right" style="border-radius:12rem;">SAVE INFO</button>
                       </div>
                     </div>
                   </div>

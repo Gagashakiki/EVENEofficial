@@ -172,8 +172,8 @@
                            alt="products-img" id="image-inside">
                     </div>
                     <div class="productMasking">
-                      <ul class="list-inline btn-group" role="group">
-                        <li><a class="btn btn-default"
+                      <ul class="list-inline btn-group" role="group" style="background-color: #FCDF58;">
+                        <li><a class="btn btn-default" style="color: #404040"
                                {{--ata-toggle="modal"--}} href="{{url('/vendor/detail/'.$list->id)}}"><i class="fa fa-eye"></i>
                             View </a></li>
                       </ul>

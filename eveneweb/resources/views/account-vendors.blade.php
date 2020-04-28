@@ -47,12 +47,12 @@
                       <td>Rp. {{number_format($vendor->harga)}}</td>
                       <td>{{$vendor->status}}</td>
                       <td><span><a href="{{ url('/account/vendors/edit/'.$vendor->id) }}"
-                                   class="btn btn-sm btn-secondary-outlined"> View/Edit</a>
+                                   class="btn btn-sm btn-secondary-outlined" style="border-radius: 12rem; padding:0 1.5rem; width:auto;"> View/Edit</a>
                                             <button
                                               class="hapus" style="background-color: red;
                                                   border: none;
                                                   color: white;
-
+                                                  border-radius: 12rem;
                                                   text-align: center;
                                                   text-decoration: none;
                                                   display: inline-block;

@@ -9,10 +9,14 @@
 							<div class="footerLink">
 								<h5>Events</h5>
 								<ul class="list-unstyled">
-									<li><a href="/vendor/wedding-party">Wedding Party</a></li>
-									<li><a href="/vendor/sweet-17">Sweet 17 </a></li>
-									<li><a href="/vendor/bridal-shower">Bridal Shower </a></li>
-									<li><a href="/vendor/anniversary">Anniversary </a></li>
+									<li><a href="{{ url('vendor/birthday-party') }}">Birthday Party</a></li>
+									<li><a href="{{ url('vendor/anniversary') }}">Anniversary</a></li>
+									<li><a href="{{ url('vendor/wedding-party') }}">Wedding Party</a></li>
+									<li><a href="{{ url('vendor/sweet-17') }}">Sweet 17</a></li>
+									<li><a href="{{ url('vendor/bridal-shower') }}">Bridal Shower</a></li>
+									<li><a href="{{ url('vendor/baby-shower') }}">Baby Shower</a></li>
+									<li><a href="{{ url('vendor/prom-night') }}">Prom Night</a></li>
+									<li><a href="{{ url('vendor/proposal') }}">Proposal</a></li>
 								</ul>
 							</div>
 						</div>
@@ -83,7 +87,7 @@
 							</div>
 
 							<p>don’t have account? <a style="text-decoration: underline !important;" data-dismiss="modal" data-toggle="modal" data-target="#signup">sign up here</a></p>
-							<button type="submit" class="btn btn-primary btn-block">log in</button>
+							<button type="submit" class="btn btn-primary btn-block" style="border-radius: 12rem">log in</button>
 {{--							<button type="button" class="btn btn-link btn-block">Forgot Password?</button>--}}
 						</form>
 					</div>
@@ -126,7 +130,7 @@
 								<label for="">Confirm Password</label>
 								<input type="password" class="form-control" id="" required>
 							</div>
-							<button type="submit" class="btn btn-primary btn-block">Sign up</button>
+							<button type="submit" class="btn btn-primary btn-block" style="border-radius: 12rem">Sign up</button>
 						</form>
 					</div>
 				</div>
@@ -137,7 +141,7 @@
 		<div class="modal fade " id="signup-vendor" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-header flex-column justify-content-center" style="background-color:#FBB03B">
+					<div class="modal-header flex-column justify-content-center" style="background-color:#FCDF58">
 						<div class="d-flex justify-content-end">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						</div>
@@ -172,7 +176,7 @@
 								<input type="password" class="form-control" id="confirm-password" required>
 							</div>
 							<input name="userType" value="vendor" type="hidden"/>
-							<button type="submit" class="btn btn-primary btn-block">Sign up</button>
+							<button type="submit" class="btn btn-primary btn-block" style="border-radius: 12rem">Sign up</button>
 						</form>
 					</div>
 				</div>

@@ -88,7 +88,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" v-on:click="onModalFormSubmit" data-dismiss="modal">Create Order</button>
+          <button type="button" style="border-radius:12rem;" class="btn btn-primary" v-on:click="onModalFormSubmit" data-dismiss="modal">Create Order</button>
         </div>
       </div>
     </div>

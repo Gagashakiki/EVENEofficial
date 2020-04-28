@@ -40,12 +40,13 @@
     margin: 8px 0 0;
   }
   .sent_msg p {
-    background: #FBB03B none repeat scroll 0 0;
+    background: #FCDF58 none repeat scroll 0 0;
     border-radius: 3px;
     font-size: 14px;
-    margin: 0; color:#fff;
+    margin: 0;
     padding: 5px 10px 5px 12px;
     width:100%;
+    color: #404040;
   }
 </style>
 

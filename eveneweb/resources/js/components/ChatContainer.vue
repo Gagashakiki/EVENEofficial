@@ -130,10 +130,10 @@
   }
 
   .btn-message-send {
-    background: #FBB03B none repeat scroll 0 0;
+    background: #FCDF58 none repeat scroll 0 0;
     border: medium none;
     border-radius: 50%;
-    color: #fff;
+    color: #404040;
     cursor: pointer;
     font-size: 17px;
     height: 33px;

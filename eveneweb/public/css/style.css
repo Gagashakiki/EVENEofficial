@@ -6101,14 +6101,12 @@ body.bodyColor.container {
 
 #login .modal-dialog .modal-content .modal-header .modal-title, #signup .modal-dialog .modal-content .modal-header .modal-title {
   text-align: center;
-  color: #ffffff;
   font-weight: 700;
   text-transform: uppercase;
 }
 
 #login .modal-dialog .modal-content .modal-header .close, #signup .modal-dialog .modal-content .modal-header .close {
   opacity: 1;
-  color: #ffffff;
   position: absolute;
   right: 0px;
   top: 0;
