@@ -7,7 +7,7 @@
       <div class="fullscreenbanner">
         <ul>
           <li data-transition="slidehorizontal" data-slotamount="5" data-masterspeed="700" data-title="Slide 1">
-            <img src="img/home/banner-slider/slider-bg1.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+            <img src="img/home/banner-slider/foto-Birthday.png" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
             <div class="slider-caption slider-captionV1 container">
 
               {{-- <div class="tp-caption rs-caption-1 sft start"
@@ -65,7 +65,7 @@
             </div>
           </li>
           <li data-transition="slidehorizontal" data-slotamount="5" data-masterspeed="700"  data-title="Slide 2">
-            <img src="img/home/banner-slider/slide.png" alt="slidebg" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+            <img src="img/home/banner-slider/foto-bridal-shower.png" alt="slidebg" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
             <div class="slider-caption slider-captionV1 container">
               {{-- <div class="tp-caption rs-caption-1 sft start"
                 data-hoffset="0"

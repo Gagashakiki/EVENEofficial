@@ -35,7 +35,7 @@
 							<div class="footerLink">
 								<h5>Get in Touch</h5>
 								<ul class="list-unstyled">
-									<li>Call us at (+62)82114360256</li>
+									<li>Call us at (+62)81389691252</li>
 									<li><a href="mailto:support@iamabdus.com">eveneofficial@gmail.com</a></li>
 								</ul>
 								<ul class="list-inline">

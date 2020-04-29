@@ -24,7 +24,7 @@ Route::get('/inspiration/{slug}', function () {
   return view('aaa');
 });
 
-Route::get('/how-evene-works', 'Client\ClientController@howEveneWorks');
+Route::get('/about-us', 'Client\ClientController@aboutUs');
 
 //profile
 Route::get('/profile', 'Client\usercontroller@profile');

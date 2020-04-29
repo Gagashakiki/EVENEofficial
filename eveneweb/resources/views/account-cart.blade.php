@@ -86,7 +86,7 @@
         <div class="modal-footer">
           <h4>Payment Confirmation : </h4>
           <div class="btn">
-            <a href="https://api.whatsapp.com/send?phone=08xx" target="_blank"
+            <a href="https://api.whatsapp.com/send?phone=6281389691252" target="_blank"
                class="btn btn-warning btn-evene">
               <i class="fa fa-whatsapp fa-lg"></i>
               <small>via Whatsapp</small>

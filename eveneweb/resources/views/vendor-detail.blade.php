@@ -90,7 +90,7 @@
                 </button>
               </form>
               @else
-              <button class="btn btn-primary btn-default mb-5 mt-2" data-toggle="modal" href='.login-modal'>
+              <button class="btn btn-primary btn-default mb-5 mt-2" style="border-radius: 12rem" data-toggle="modal" href='.login-modal'>
                 <i class="fa fa-comment"></i>
                 <small>Ask Vendor</small>
               </button>

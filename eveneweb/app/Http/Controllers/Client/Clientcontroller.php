@@ -100,8 +100,8 @@ class Clientcontroller extends Controller {
     return redirect('/');
   }
 
-  public function howEveneWorks() {
-    return view('how-evene-works');
+  public function aboutUs() {
+    return view('about-us');
   }
 
   private function checkAvailableRoom($senderId, $receiverId) {

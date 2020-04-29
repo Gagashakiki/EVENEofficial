@@ -125,7 +125,7 @@
 {{--                  </span>--}}
 {{--                </li>--}}
 {{--              </ul>--}}
-              <a class="text-warning" href="/how-evene-works#main" style="font-weight: bold">How Evene Works</a>
+              <a class="text-warning" href="/about-us#main" style="font-weight: bold">About Us</a>
             </li>
           </ul>
         </div>

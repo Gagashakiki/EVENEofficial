@@ -3,8 +3,17 @@
 @section('content')
   <!-- MAIN CONTENT SECTION -->
   <section>
-    <div id="main-section" class="container-fluid">
-      <div class="container" id="main">
+    <div id="main" class="container-fluid">
+      <div class="container d-flex flex-column align-items-center wording-section">
+        <img src="{{ asset('img/new-evene-logo.png') }}" width="500" height="500">
+
+        <h2 class="mb-4">EVENE IS A MARKETPLACE THAT <b>CONNECTS</b> YOU WITH</h2>
+        <h2 class="mb-4">EVENT ORGANIZERS, MAKE UP ARTISTS,</h2>
+        <h2>PHOTOGRAPHER, AND TABLE DECORATORS.</h2>
+      </div>
+    </div>
+    <div id="how-evene-work"class="container-fluid">
+      <div class="container">
         <div class="d-flex flex-column justify-content-center align-items-center wording-section">
           <h1>How EVENE Works</h1>
           <div class="row mt-5">
@@ -53,7 +62,7 @@
             <li>Pembayaran Selesai.</li>
             <li>Kirim bukti pembayaran melalui
               <br/> <b>Email eveneofficial@gmail.com</b>
-              <br/> <b>Whatsapp Admin (+62)82114360256</b>
+              <br/> <b>Whatsapp Admin (+62)81389691252</b>
             </li>
             <li>Setelah bukti pembayaran telah terkirim, pembayaran anda akan terverifikasi.</li>
           </ol>
