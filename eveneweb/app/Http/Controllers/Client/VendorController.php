@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Mail\CreateVendor;
 use App\VendorRatings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class VendorController extends Controller {
@@ -186,8 +188,9 @@ class VendorController extends Controller {
             '$request->email','$request->notelp','$request->alamat','$detail',
             '$extension','$gambar2','$gambar3','$gambar4','all, $two','$request->nama','$number','$request->judul')");
     $dataemail = db::select("call editvendor('$number')");
-    session::put('datavem', $dataemail);
-    Mail::to($emailuser)->send(new Konfirmasi($user));
+
+    Mail::to($emailuser)->send(new CreateVendor($dataemail));
+
     return redirect('/account/vendors')->with('success', 'Please Ignore The Email We Just Sent, it\'s free for now!');
   }
 

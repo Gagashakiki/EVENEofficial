@@ -198,13 +198,12 @@
                         </div>
                         <div class="col-12 mb-5">
                             <div class="btn-group" role="group" aria-label="...">
-                                <button type="submit" class="checking btn" id="roundedButton"><h5>Submit Vendor</h5></button>
+                                <button type="submit" class="checking btn btn-evene"><h5>Submit Vendor</h5></button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </form>
 </section>
