@@ -12,13 +12,13 @@
 */
 
 //Clientside
-Route::get('/', 'Client\Clientcontroller@home');
+Route::get('/', 'Client\ClientController@home');
 
-Route::get('/blog', 'Client\Clientcontroller@blog');
+Route::get('/blog', 'Client\ClientController@blog');
 
-Route::get('/blog/{id}', 'Client\Clientcontroller@blogdetail');
+Route::get('/blog/{id}', 'Client\ClientController@blogdetail');
 
-Route::get('/inspiration', 'Client\Clientcontroller@inspiration');
+Route::get('/inspiration', 'Client\ClientController@inspiration');
 
 Route::get('/inspiration/{slug}', function () {
   return view('aaa');
@@ -49,11 +49,11 @@ Route::get('verify', 'Client\UserController@verify')->name('signup.verify');
 Route::post('/login/submit', 'Client\UserController@login');
 Route::get('/logout', 'Client\UserController@logout');
 
-Route::get('/why-join-us', 'Client\Clientcontroller@joinReason');
+Route::get('/why-join-us', 'Client\ClientController@joinReason');
 
 Route::get('/account/messages', 'Client\UserController@listMessages');
 
-Route::post('/ask-vendor', 'Client\Clientcontroller@askVendor');
+Route::post('/ask-vendor', 'Client\ClientController@askVendor');
 
 // Message Controller
 Route::post('/message/requestInvoice', 'Client\MessageController@requestInvoice');

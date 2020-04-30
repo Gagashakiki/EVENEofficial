@@ -18,7 +18,7 @@ use App\Quotation;
 use Carbon\Carbon;
 
 
-class Clientcontroller extends Controller {
+class ClientController extends Controller {
   public function home() {
     $data = session::get('profil');
     $spriceeo = db::select("call eosprice()");
