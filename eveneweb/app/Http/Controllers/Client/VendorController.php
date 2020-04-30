@@ -46,9 +46,13 @@ class VendorController extends Controller {
 
     $reviews = VendorRatings::with('user')->where('vendor_id', '=', $id)->get();
 
-    if ($status == 'Verified') {
+    if($data == null){
+      return view('vendor-detail')->with('list', $detail)->with('reviews', $reviews)->with('profil', $data);
+    }
+    if ($status == 'Verified' && $data != null) {
       return view('vendor-detail')->with('list', $detail)->with('reviews', $reviews)->with('profil', $data[0]);
-    } else {
+    }
+    else {
       return redirect('/');
     }
   }
