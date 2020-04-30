@@ -133,7 +133,7 @@ where mr.id in (select mr.id from message_room mr where mr.user_id = " . $user[0
 
       $contacts = db::select($queryContactMessage);
 
-      return view('account-messages')->with('profil', $user)->with('contacts', $contacts);
+      return view('account-messages')->with('profil', $user)->with('contacts', json_encode($contacts, JSON_NUMERIC_CHECK));
     }
 
     return redirect('/');

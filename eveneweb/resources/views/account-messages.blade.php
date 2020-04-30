@@ -3,7 +3,7 @@
 @section('content')
   <div id="chat-app">
     <message-container
-      :contacts='{{ json_encode($contacts) }}'
+      :contacts='{{ $contacts }}'
       :current-user='{{ $profil[0]->id }}'
       current-user-type="{{ $profil[0]->jenis }}"
     >

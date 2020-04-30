@@ -13,10 +13,12 @@ use stdClass;
 
 class MessageController extends Controller {
   public function getMessages($roomId) {
-    return DB::table('messages')
+    $messages = DB::table('messages')
       ->selectRaw('sender_id as senderId, message, created_at as createdAt')
       ->where('room_id', '=', $roomId)
       ->get();
+
+    return json_encode($messages, JSON_NUMERIC_CHECK);
   }
 
   public function sendMessage(Request $request) {
