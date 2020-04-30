@@ -79,20 +79,23 @@
             <div class="media-body">
               <h2 id="nama-vendor">{{strtoupper($list->judul)}}</h2>
               <h6 class="text-muted">START FROM <span class="text-warning"> Rp. {{number_format($list->harga)}} NETT </span></h6>
-              @if($profil->id == $list->iduser)
-              <div class="mb-5">
 
-              </div>
-              @elseif($profil && $profil->id != $list->iduser)
-              <form action="/ask-vendor" method="post">
-                {{ csrf_field() }}
-                <input type="hidden" value="{{$list->iduser}}" name="receiverUser">
-                <input type="hidden" value="{{$profil->id}}" name="senderUser">
-                <button type="submit" class="btn btn-primary btn-default mb-5 mt-2" style="border-radius: 12rem">
-                  <i class="fa fa-comment"></i>
-                  <small>Ask Vendor</small>
-                </button>
-              </form>
+              @if($profil)
+                @if($profil->id == $list->iduser || $profil->jenis == 'vendor')
+                  <div class="mb-5">
+
+                  </div>
+                @else
+                  <form action="/ask-vendor" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" value="{{$list->iduser}}" name="receiverUser">
+                    <input type="hidden" value="{{$profil->id}}" name="senderUser">
+                    <button type="submit" class="btn btn-primary btn-default mb-5 mt-2" style="border-radius: 12rem">
+                      <i class="fa fa-comment"></i>
+                      <small>Ask Vendor</small>
+                    </button>
+                  </form>
+                @endif
               @else
               <button class="btn btn-primary btn-default mb-5 mt-2" style="border-radius: 12rem" data-toggle="modal" href='.login-modal'>
                 <i class="fa fa-comment"></i>
