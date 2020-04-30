@@ -189,7 +189,7 @@ class VendorController extends Controller {
             '$extension','$gambar2','$gambar3','$gambar4','all, $two','$request->nama','$number','$request->judul')");
     $dataemail = db::select("call editvendor('$number')");
 
-    Mail::to($emailuser)->send(new CreateVendor($dataemail));
+//    Mail::to($emailuser)->send(new CreateVendor($dataemail));
 
     return redirect('/account/vendors')->with('success', 'Please Ignore The Email We Just Sent, it\'s free for now!');
   }

@@ -70,7 +70,7 @@
 
     </div>
     <div class="invoice-footer center">
-      <h5>If you have any question about this email, please contact us: <br/> (+62)82114360256  / eveneofficial@gmail.com</h5>
+      <h5>If you have any question about this email, please contact us: <br/> (+62)81389691252  / eveneofficial@gmail.com</h5>
       <h4 style="font-weight: bold">Thank You For Trusting <span style="color:#FCDF58">EVENE</span></h4>
       <div class="invoice-billed">
         <h4>BILLED TO</h4>
