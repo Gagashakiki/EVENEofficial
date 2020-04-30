@@ -174,7 +174,7 @@
         <button v-if="currentUserType === 'users'" class="btn-message-send" title="Request Invoice" type="button" v-on:click="sendRequestInvoice">
           <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
         </button>
-        <button v-else class="btn-message-send" title="Request Invoice" type="button" data-toggle="modal" href='#requestInvoiceModal'>
+        <button v-else class="btn-message-send" title="Create Order" type="button" data-toggle="modal" href='#requestInvoiceModal'>
           <i class="fa fa-cart-plus" aria-hidden="true"></i>
         </button>
       </div>
