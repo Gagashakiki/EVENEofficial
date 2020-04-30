@@ -29,9 +29,9 @@
                 data-start="2000"
                 data-easing="Back.easeInOut"
                 data-endspeed="300">
-                Everyone can<br>
-                Celebrate Their<br>
-                <b>Birthday Party</b>
+                <b>EVERYONE</b><br>
+                <span style="color:white">can Celebrate Their<br>
+                <b>Birthday Party</b></span>
 
 
               </div>
@@ -86,11 +86,11 @@
                 data-start="2000"
                 data-easing="Back.easeInOut"
                 data-endspeed="300">
-                Share Your<br>
-                Joy and Laugh<br>
+                <b>SHARE</b> <br>
+                <span style="color:white">Your Joy and Laugh<br>
                 With Your Bestie<br>
                 Through<br>
-                <b>BRIDAL SHOWER</b>
+                <b>BRIDAL SHOWER</b></span>
               </div>
 
               {{-- <div class="tp-caption rs-caption-3 sft"
