@@ -79,7 +79,11 @@
             <div class="media-body">
               <h2 id="nama-vendor">{{strtoupper($list->judul)}}</h2>
               <h6 class="text-muted">START FROM <span class="text-warning"> Rp. {{number_format($list->harga)}} NETT </span></h6>
-              @if($profil)
+              @if($profil->id == $list->iduser)
+              <div class="mb-5">
+
+              </div>
+              @elseif($profil && $profil->id != $list->iduser)
               <form action="/ask-vendor" method="post">
                 {{ csrf_field() }}
                 <input type="hidden" value="{{$list->iduser}}" name="receiverUser">
