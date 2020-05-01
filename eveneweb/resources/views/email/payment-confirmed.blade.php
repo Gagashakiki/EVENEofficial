@@ -9,8 +9,8 @@
 </head>
 <body>
 <div>
-  <h1 style="letter-spacing: .5rem">INVOICE</h1>
-  <h4>Hi, {{$customerName}} <br/><span style="font-weight: normal">Thank You! Your booking has been recorded and Confirmed.</span></h4>
+  <h1>PAYMENT CONFIRMED!</h1>
+  <h4>Hi, {{$customerName}} <br/><span style="font-weight: normal">Thank You! Your payment has been confirmed.</span></h4>
 
   <h3>Here's your booking summary</h3>
 
@@ -37,6 +37,9 @@
         </tr>
       </table>
     </div>
+    <div style="background-color: lime; text-align: center">
+      <h4 style="color:#404040; margin:0">PAYMENT SUCCESSFUL</h4>
+    </div>
     <div class="invoice-body" style=" margin-bottom:2rem">
       <table style="width:100%; border-collapse: collapse;">
         <colgroup>
@@ -44,37 +47,37 @@
           <col span="1" style="width:40%">
         </colgroup>
         <thead>
-          <tr>
-            <th style="text-align: left; border-bottom: 1px solid black">DESCRIPTION</th>
-            <th style="text-align: center; border-bottom: 1px solid black">AMOUNT</th>
-          </tr>
+        <tr>
+          <th style="text-align: left; border-bottom: 1px solid black">DESCRIPTION</th>
+          <th style="text-align: center; border-bottom: 1px solid black">AMOUNT</th>
+        </tr>
         </thead>
         <tbody>
-          <tr style="background-color: #ECF0F1">
-            <td>{{ $order->description }}</td>
-            <td style="text-align: right;">Rp{{ number_format($order->amount) }}</td>
-          </tr>
-          <tr>
-            <td><br></td>
-            <td></td>
-          </tr>
-          <tr style="background-color: #ECF0F1">
-            <td><br></td>
-            <td style="border-bottom: 1px solid black"></td>
-          </tr>
-          <tr>
-            <td rowspan="3"></td>
-            <td style="border-bottom: 3px double black;">
-              <p style="margin:0; float:left">Total</p>
-              <p style="margin:0; text-align: right">Rp{{ number_format($order->amount) }}</p>
-            </td>
-          </tr>
-          <tr>
-            <td style="color:#404040; text-align: center">Make all checks payable to</td>
-          </tr>
-          <tr>
-            <td style="text-align: center">[{{ $vendorName }}]</td>
-          </tr>
+        <tr style="background-color: #ECF0F1">
+          <td>{{ $order->description }}</td>
+          <td style="text-align: right;">Rp{{ number_format($order->amount) }}</td>
+        </tr>
+        <tr>
+          <td><br></td>
+          <td></td>
+        </tr>
+        <tr style="background-color: #ECF0F1">
+          <td><br></td>
+          <td style="border-bottom: 1px solid black"></td>
+        </tr>
+        <tr>
+          <td rowspan="3"></td>
+          <td style="border-bottom: 3px double black;">
+            <p style="margin:0; float:left">Total</p>
+            <p style="margin:0; text-align: right">Rp{{ number_format($order->amount) }}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="color:#404040; text-align: center">Make all checks payable to</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">[{{ $vendorName }}]</td>
+        </tr>
         </tbody>
       </table>
     </div>
@@ -91,19 +94,7 @@
 
 
   <div id="footer" style="text-align: center">
-    <h4 style="color:#404040">Please proceed the payment to this bank account <br>
-      (BCA) 2302626686 - GAGAS HAKIKI
-    </h4>
-
-    <h5 style="color:#BDC3C7">We will confirmed the payment to this email 1 x 24 hours after the payment <br>
-    <span style="color:black">Click
-      <a href="https://eveneofficial.com/about-us#how-evene-work" target="_blank" style="color:#FCDF58; font-style: italic">Here</a>
-      to Learn how to done your payment with EVENE</span>
-    </h5>
-
-    <h4 style="color:red">WARNING!</h4>
-
-    <h5 style="color:red">Make sure you transfer to our official bank account (written above). Transfer to <br> another bank account is out of our responsibility.</h5>
+    <h4 style="color:limegreen">Thank you for completing the payment.</h4>
 
     <h5 style="margin:0;font-weight: normal">If you have any question about this email, please contact us: <br/> (+62)81389691252  / eveneofficial@gmail.com</h5>
   </div>
