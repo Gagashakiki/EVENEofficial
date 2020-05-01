@@ -91,7 +91,7 @@
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: "deleteuser/"+id,
+                    url: "/admin/deleteuser/"+id,
                     type: "DELETE",
                     dataType: "JSON",
                     data: {'id': id, '_method': 'DELETE', '_token': csrf_token},
