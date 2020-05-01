@@ -43,21 +43,15 @@
                   <li>
                     <a href="javascript:;" data-toggle="collapse" aria-expanded="false" data-target="#sortByPrice">Price<i class="fa fa-plus"></i></a>
                     <ul id="sortByPrice" class="collapse collapseItem">
-                      <li><a href="?sortBy=harga&sort=asc">
-                          <i class="fa fa-caret-right" aria-hidden="true"></i>Low to High
-                        </a>
-                      </li>
-                      <li><a href="?sortBy=harga&sort=desc">
-                          <i class="fa fa-caret-right" aria-hidden="true"></i>High to Low
-                        </a>
-                      </li>
+                      <li><a href="?sortBy=price&sort=asc"><i class="fa fa-caret-right" aria-hidden="true"></i>Low to High</a></li>
+                      <li><a href="?sortBy=price&sort=desc"><i class="fa fa-caret-right" aria-hidden="true"></i>High to Low</a></li>
                     </ul>
                   </li>
                   <li>
                     <a href="javascript:;" data-toggle="collapse" aria-expanded="false" data-target="#sortByRating">Rating<i class="fa fa-plus"></i></a>
                     <ul id="sortByRating" class="collapse collapseItem">
-                      <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>High to Low</a></li>
-                      <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Low to High</a></li>
+                      <li><a href="?sortBy=rating&sort=desc"><i class="fa fa-caret-right" aria-hidden="true"></i>High to Low</a></li>
+                      <li><a href="?sortBy=rating&sort=asc"><i class="fa fa-caret-right" aria-hidden="true"></i>Low to High</a></li>
                     </ul>
                   </li>
                 </ul>

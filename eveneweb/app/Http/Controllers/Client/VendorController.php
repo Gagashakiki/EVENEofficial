@@ -311,9 +311,11 @@ class VendorController extends Controller {
 
   private function validateSortBy($sortBy) {
     switch ($sortBy) {
-      case "harga":
+      case "price":
+        return "harga";
+        break;
       case "rating":
-        return $sortBy;
+        return "ratingCount";
       default:
         return null;
     }
