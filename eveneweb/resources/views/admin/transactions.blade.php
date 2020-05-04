@@ -31,7 +31,7 @@
         <tbody>
           @foreach($transactions as $transaction)
             <tr>
-              <td>{{ $transaction->id }}</td>
+              <td>#{{ $transaction->id }}</td>
               <td>{{ $transaction->vendorName }}</td>
               <td>{{ $transaction->customerName }}</td>
               <td>{{ $transaction->type }}</td>

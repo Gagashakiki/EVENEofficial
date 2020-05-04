@@ -30,7 +30,7 @@
               </tr>
               <tr>
                 <td style="text-align:right">No. Invoice</td>
-                <td style="text-align:right; min-width:9rem">{{ $order->number }}</td>
+                <td style="text-align:right; min-width:9rem">#{{ $order->number }}</td>
               </tr>
             </table>
           </td>

@@ -221,8 +221,8 @@ class AdminController extends controller {
     if (session::get('profiladmin')) {
       $transaction = Order::where('transaction_id', '=', $transactionId)->first();
 
-      if ($transaction->transaction_status != "Sudah Membayar") {
-        $transaction->transaction_status = "Sudah Membayar";
+      if ($transaction->transaction_status != "Payment Successful") {
+        $transaction->transaction_status = "Payment Successful";
 
         $transaction->save();
       }

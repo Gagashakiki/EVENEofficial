@@ -28,7 +28,7 @@
                   <tbody>
                   @foreach($orders as $order)
                     <tr>
-                      <td>{{ $order->id }}</td>
+                      <td>#{{ $order->id }}</td>
                       <td>{{ $order->vendorName }}</td>
                       <td>{{ $order->type }}</td>
                       <td>{{ $order->theme }}</td>
