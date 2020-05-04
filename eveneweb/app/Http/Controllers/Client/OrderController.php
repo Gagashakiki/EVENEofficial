@@ -18,7 +18,7 @@ class OrderController extends Controller {
 
     $order = new Order();
 
-    $transactionId = "#5254".($maxOrder+1);
+    $transactionId = "5254".($maxOrder+1);
 
     $order->vendor_id = $user[0]->id;
     $order->customer_id = $request->customerId;
@@ -36,7 +36,7 @@ class OrderController extends Controller {
     $orderEmail = new stdClass();
 
     $orderEmail->number = $transactionId;
-    $orderEmail->date = $request->eventDate;
+    $orderEmail->date = $order->created_at;
     $orderEmail->description = $request->eventType;
     $orderEmail->amount = $request->transactionAmount;
 

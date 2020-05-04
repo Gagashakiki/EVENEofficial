@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\PaymentConfirmed;
 use App\Order;
 use App\Quotation;
 use Auth;
 use Crypt;
 use DB;
 use Illuminate\Http\Request;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 use Session;
+use stdClass;
 
 class AdminController extends controller {
   public function dashboard(Request $request) {
@@ -225,9 +227,28 @@ class AdminController extends controller {
         $transaction->save();
       }
 
+      $customer = $this->getUser($transaction->customer_id);
+      $vendor = $this->getUser($transaction->vendor_id);
+
+      $order = new stdClass();
+      $order->number = $transaction->transaction_id;
+      $order->date = $transaction->updated_at;
+      $order->description = $transaction->event_type;
+      $order->amount = $transaction->transaction_amount;
+
+
+      Mail::to("$customer->email")->send(new PaymentConfirmed($customer->username, $vendor->username, $order));
+
       return redirect('/admin/transactions')->with('success', 'Payment Confirmed');
     }
 
     return redirect('/');
+  }
+
+  private function getUser($id) {
+    return db::table('users')
+      ->selectRaw("CASE WHEN users.jenis = 'vendor' then users.nama2 else concat(users.nama1, ' ', users.nama2) END AS username, users.email")
+      ->where('id', '=', $id)
+      ->first();
   }
 }
