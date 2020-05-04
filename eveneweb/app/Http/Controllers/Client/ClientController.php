@@ -2,20 +2,11 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Message;
-use App\MessageRoom;
-use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
-use Session;
-use DB;
-use stdClass;
-use str;
 use App\Quotation;
-use Carbon\Carbon;
+use DB;
+use Session;
+use str;
 
 
 class ClientController extends Controller {
@@ -60,53 +51,7 @@ class ClientController extends Controller {
     return view('join-reason');
   }
 
-  public function askVendor(Request $request) {
-    $user = session::get('profil');
-
-    if ($user) {
-      $currentTime = Carbon::now();
-      $senderId = $request->senderUser;
-      $receiverId = $request->receiverUser;
-      $roomId = "";
-      $initialMessage = "Halo.. saya mau bertanya";
-
-      $existingRoom = $this->checkAvailableRoom($senderId, $receiverId);
-
-      if($existingRoom){
-        $roomId = $existingRoom;
-      }else {
-        $roomId = $senderId . "-" . $currentTime->format("yymdhms");
-
-        $messageRoom = new MessageRoom;
-        $messageRoom->id = $roomId;
-        $messageRoom->user_id = $senderId;
-        $messageRoom->save();
-
-        $messageRoom = new MessageRoom;
-        $messageRoom->id = $roomId;
-        $messageRoom->user_id = $receiverId;
-        $messageRoom->save();
-
-        $message = new Message;
-        $message->room_id = $roomId;
-        $message->sender_id = $senderId;
-        $message->message = $initialMessage;
-        $message->save();
-      }
-
-      return redirect('/account/messages');
-    }
-
-    return redirect('/');
-  }
-
   public function aboutUs() {
     return view('about-us');
-  }
-
-  private function checkAvailableRoom($senderId, $receiverId) {
-    $checkQuery = "select mr.id from message_room mr where mr.id in (select id from message_room mr where user_id = " . $senderId . ") and mr.user_id != " . $senderId . " and mr.user_id = " . $receiverId;
-
-    return db::select($checkQuery);
   }
 }

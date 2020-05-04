@@ -12,6 +12,11 @@
 */
 
 //Clientside
+use App\Mail\FirstTimeMessage;
+use App\Mail\PaymentConfirmed;
+use App\Mail\SendOrderInvoice;
+use Illuminate\Support\Facades\Mail;
+
 Route::get('/', 'Client\ClientController@home');
 
 Route::get('/blog', 'Client\ClientController@blog');
@@ -53,7 +58,7 @@ Route::get('/why-join-us', 'Client\ClientController@joinReason');
 
 Route::get('/account/messages', 'Client\UserController@listMessages');
 
-Route::post('/ask-vendor', 'Client\ClientController@askVendor');
+Route::post('/ask-vendor', 'Client\UserController@askVendor');
 
 // Message Controller
 Route::post('/message/requestInvoice', 'Client\MessageController@requestInvoice');

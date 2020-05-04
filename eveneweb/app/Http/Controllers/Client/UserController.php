@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Mail\EmailVerification;
-use App\Mail\VerifyEmail;
+use App\Mail\FirstTimeMessage;
+use App\Message;
+use App\MessageRoom;
 use App\Quotation;
 use App\User;
 use Auth;
+use Carbon\Carbon;
 use Crypt;
 use DB;
 use Illuminate\Http\Request;
@@ -129,11 +132,53 @@ class UserController extends Controller {
       $queryContactMessage = "select u.id, ml.room_id as roomId, ml.created_at as createdAt, case when u.jenis = 'vendor' then u.nama2 else concat(u.nama1, ' ', u.nama2) end as username, u.pict as avatar ,ml.message, u.email from message_room mr join (select m.* from messages m 
 join (select max(m.created_at) created_at, m.room_id from messages m group by m.room_id) ml on m.room_id = ml.room_id and m.created_at = ml.created_at) ml on mr.id = ml.room_id
 join users u on mr.user_id = u.id
-where mr.id in (select mr.id from message_room mr where mr.user_id = " . $user[0]->id . ") and mr.user_id != " . $user[0]->id. " order by ml.created_at desc";
+where mr.id in (select mr.id from message_room mr where mr.user_id = " . $user[0]->id . ") and mr.user_id != " . $user[0]->id . " order by ml.created_at desc";
 
       $contacts = db::select($queryContactMessage);
 
       return view('account-messages')->with('profil', $user)->with('contacts', json_encode($contacts, JSON_NUMERIC_CHECK));
+    }
+
+    return redirect('/');
+  }
+
+  public function askVendor(Request $request) {
+    $user = session::get('profil');
+
+    if ($user) {
+      $currentTime = Carbon::now();
+      $senderId = $request->senderUser;
+      $receiverId = $request->receiverUser;
+      $initialMessage = "Halo.. saya mau bertanya";
+
+      $existingRoom = $this->checkAvailableRoom($senderId, $receiverId);
+
+      if (!$existingRoom) {
+        $roomId = $senderId . "-" . $currentTime->format("yymdhms");
+
+        $messageRoom = new MessageRoom;
+        $messageRoom->id = $roomId;
+        $messageRoom->user_id = $senderId;
+        $messageRoom->save();
+
+        $messageRoom = new MessageRoom;
+        $messageRoom->id = $roomId;
+        $messageRoom->user_id = $receiverId;
+        $messageRoom->save();
+
+        $message = new Message;
+        $message->room_id = $roomId;
+        $message->sender_id = $senderId;
+        $message->message = $initialMessage;
+        $message->save();
+
+        $sender = $this->getUser($senderId);
+        $receiver = $this->getUser($receiverId);
+
+        Mail::to($receiver->email)->send(new FirstTimeMessage($sender->username, $receiver->username, $initialMessage));
+      }
+
+      return redirect('/account/messages');
     }
 
     return redirect('/');
@@ -157,7 +202,6 @@ where mr.id in (select mr.id from message_room mr where mr.user_id = " . $user[0
     Mail::to($email)->send(new EmailVerification($user, $username));
 
     return redirect('/')->with('success', 'Please Verify Your Email before Using Evene');
-//    return $user;
   }
 
   private function createUserVendor($request) {
@@ -176,5 +220,18 @@ where mr.id in (select mr.id from message_room mr where mr.user_id = " . $user[0
     Mail::to($email)->send(new EmailVerification($user, $request->fullName));
 
     return redirect('/')->with('success', 'Please Verify Your Email before Using Evene');
+  }
+
+  public function getUser($id) {
+    return db::table('users')
+      ->selectRaw("CASE WHEN users.jenis = 'vendor' then users.nama2 else concat(users.nama1, ' ', users.nama2) END AS username, users.email")
+      ->where('id', '=', $id)
+      ->first();
+  }
+
+  private function checkAvailableRoom($senderId, $receiverId) {
+    $checkQuery = "select mr.id from message_room mr where mr.id in (select id from message_room mr where user_id = " . $senderId . ") and mr.user_id != " . $senderId . " and mr.user_id = " . $receiverId;
+
+    return db::select($checkQuery);
   }
 }
