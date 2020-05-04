@@ -222,7 +222,7 @@ where mr.id in (select mr.id from message_room mr where mr.user_id = " . $user[0
     return redirect('/')->with('success', 'Please Verify Your Email before Using Evene');
   }
 
-  public function getUser($id) {
+  private function getUser($id) {
     return db::table('users')
       ->selectRaw("CASE WHEN users.jenis = 'vendor' then users.nama2 else concat(users.nama1, ' ', users.nama2) END AS username, users.email")
       ->where('id', '=', $id)
