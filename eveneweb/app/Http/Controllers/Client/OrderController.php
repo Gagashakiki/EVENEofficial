@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendOrderInvoice;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use stdClass;
 
 class OrderController extends Controller {
   public function createOrder(Request $request) {
@@ -28,6 +31,16 @@ class OrderController extends Controller {
     $order->transaction_status = "Waiting For Payment";
 
     $order->save();
+
+    $customer = $this->getUser($request->customerId);
+    $orderEmail = new stdClass();
+
+    $orderEmail->number = $transactionId;
+    $orderEmail->date = $request->eventDate;
+    $orderEmail->description = $request->eventType;
+    $orderEmail->amount = $request->transactionAmount;
+
+    Mail::to($customer->email)->send(new SendOrderInvoice($customer->username, $user[0]->nama2, $orderEmail));
 
     return response("success", 200);
   }
@@ -56,5 +69,12 @@ class OrderController extends Controller {
       ->get();
 
     return view('account-cart')->with('orders', $listCart);
+  }
+
+  private function getUser($id) {
+    return db::table('users')
+      ->selectRaw("CASE WHEN users.jenis = 'vendor' then users.nama2 else concat(users.nama1, ' ', users.nama2) END AS username, users.email")
+      ->where('id', '=', $id)
+      ->first();
   }
 }
