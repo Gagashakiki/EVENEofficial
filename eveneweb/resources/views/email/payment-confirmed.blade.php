@@ -38,7 +38,7 @@
       </table>
     </div>
     <div style="background-color: lime; text-align: center">
-      <h4 style="color:#404040; margin:0">PAYMENT SUCCESSFUL</h4>
+      <h4 style="color:#6DC067; margin:0">PAYMENT SUCCESSFUL</h4>
     </div>
     <div class="invoice-body" style=" margin-bottom:2rem">
       <table style="width:100%; border-collapse: collapse;">

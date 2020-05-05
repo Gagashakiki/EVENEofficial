@@ -6,11 +6,6 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
-<style>
-  .steps {
-    margin-bottom: 0;
-  }
-</style>
 <body>
 <div>
   <img width="200" height="200" src="{{ asset('/img/new-evene-logo.png') }}" />
@@ -34,11 +29,11 @@
   <ol>
     <li>
       <h4 style="margin-bottom: 0;">Tekan Create Invoice di kolom Chat</h4>
-      <dl>Klik button Create Invoice yang terdapat di dalam kolom chat, lalu</dl>
+      <p style="margin-block-start: 0;margin-block-end: 0; margin: 0">Klik button <span style="font-weight: bold; font-style: italic;">Create Invoice</span> yang terdapat di dalam kolom chat, lalu</p>
     </li>
     <li>
       <h4 style="margin-bottom: 0;">Input data Invoice</h4>
-      <dl>Masukkan data-data customer anda</dl>
+      <p style="margin-block-start: 0;margin-block-end: 0; margin:0">Masukkan data-data customer anda</p>
       <ul style="list-style-type: disc;">
         <li>Nama</li>
         <li>Jenis Acara</li>
@@ -50,11 +45,17 @@
     </li>
     <li>
       <h4 style="margin-bottom: 0;">Send Invoice</h4>
-      <dl>Jika sudah memasukkan data diatas, tekan tombol Send Invoice untuk mengirimkan invoice kepada customer anda.</dl>
-      <dl>*Data yang telah anda masukkan tersebut juga masuk kedalam menu My Order.</dl>
+      <p style="margin-block-start: 0;margin-block-end: 0; margin:0;">Jika sudah memasukkan data diatas, tekan tombol <span style="font-weight: bold; font-style: italic;">Send Invoice</span> untuk mengirimkan invoice kepada customer anda.</>
+      <p style="margin-block-start: 0;margin-block-end: 0; margin:0;">*Data yang telah anda masukkan tersebut juga masuk kedalam menu <span style="font-weight: bold; font-style: italic;">My Order.</span></p>
     </li>
     <li>
       <h4 style="margin-bottom: 0;">Tunggu hingga transaksi berhasil</h4>
+      <p style="margin-block-start: 0;margin-block-end: 0; margin: 0;">
+        Jika customer anda sudah membayar melalui rekening EVENE, maka anda akan mendapat email verifikasi serta status pembayaran didalam menu My Order pun akan berubah.
+      </p>
+      <p style="margin-block-start: 0;margin-block-end: 0; margin: 0;">
+        silahkan follow up kepada customer untuk memverifikasi transaksi anda.
+      </p>
     </li>
   </ol>
 
