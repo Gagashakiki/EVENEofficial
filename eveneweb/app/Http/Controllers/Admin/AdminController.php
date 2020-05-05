@@ -238,6 +238,7 @@ class AdminController extends controller {
 
 
       Mail::to("$customer->email")->send(new PaymentConfirmed($customer->username, $vendor->username, $order));
+      Mail::to("$vendor->email")->send(new PaymentConfirmed($customer->username, $vendor->username, $order));
 
       return redirect('/admin/transactions')->with('success', 'Payment Confirmed');
     }
