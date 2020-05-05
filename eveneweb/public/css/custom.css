@@ -226,5 +226,10 @@ img{ max-width:100%;}
   #how-evene-work {
     min-height: 70rem;
   }
+  #why-section {
+    min-height: 70rem;
+  }
+  #how-evene-work .justify-content-center, #why-section .justify-content-center{
+    justify-content: start !important;
+  }
 }
-
