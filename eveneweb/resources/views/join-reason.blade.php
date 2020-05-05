@@ -28,16 +28,16 @@
       <div class="d-flex flex-column justify-content-center align-items-center wording-section">
         <h1>WHY YOU SHOULD JOIN EVENE?</h1>
         <div class="row mt-5">
-          <div class="col-sm d-flex flex-column justify-content-center text-center">
-            <img src="{{ asset('img/wording/wording-1.png') }}">
+          <div class="col-sm-4 d-flex flex-column justify-content-center align-items-center text-center">
+            <img width="200" height="197" class="img-fluid" src="{{ asset('img/wording/wording-1.png') }}">
             <h4 class="wording">Firstly, we will help you to boost your business awareness.</h4>
           </div>
-          <div class="col-sm d-flex flex-column justify-content-center text-center">
-            <img src="{{ asset('img/wording/wording-2.png') }}">
+          <div class="col-sm-4 d-flex flex-column justify-content-center align-items-center text-center">
+            <img width="200" height="197" class="img-fluid" src="{{ asset('img/wording/wording-2.png') }}">
             <h4 class="wording">Then, customers will find you.</h4>
           </div>
-          <div class="col-sm d-flex flex-column justify-content-center text-center">
-            <img src="{{ asset('img/wording/wording-3.png') }}" style="margin-bottom:7rem">
+          <div class="col-sm-4 d-flex flex-column justify-content-center align-items-center text-center">
+            <img width="200" height="197" class="img-fluid" src="{{ asset('img/wording/wording-3.png') }}">
             <h4 class="wording">And Magically your business will improved.</h4>
           </div>
         </div>

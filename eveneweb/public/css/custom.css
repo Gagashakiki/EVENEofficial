@@ -222,4 +222,9 @@ img{ max-width:100%;}
   background-color: #FCDF58;
 }
 
+@media (max-width: 480px) {
+  #how-evene-work {
+    min-height: 70rem;
+  }
+}
 
