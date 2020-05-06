@@ -232,4 +232,7 @@ img{ max-width:100%;}
   #how-evene-work .justify-content-center, #why-section .justify-content-center{
     justify-content: start !important;
   }
+  .messaging {
+    flex-direction: column;
+  }
 }
