@@ -235,4 +235,7 @@ img{ max-width:100%;}
   .messaging {
     flex-direction: column;
   }
+  .messaging .messages {
+    overflow: scroll;
+  }
 }
