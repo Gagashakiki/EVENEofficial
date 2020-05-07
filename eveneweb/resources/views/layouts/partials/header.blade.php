@@ -98,11 +98,7 @@
       <div class="row">
         <div class="col-md-6 d-none d-md-block">
           <ul class="list-inline">
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            {{-- <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-  <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-  <li><a href="#"><i class="fa fa-tumblr"></i></a></li> --}}
+            <li><a href="https://instagram.com/eveneofficial?igshid=78eyi0x9yjvs" target="_blank"><i class="fa fa-instagram"></i></a></li>
           </ul>
         </div>
         <div class="col-md-6 col-12">
