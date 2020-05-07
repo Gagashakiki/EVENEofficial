@@ -238,4 +238,12 @@ img{ max-width:100%;}
   .messaging .messages {
     overflow: scroll;
   }
+
+  #my-vendor-header {
+    flex-direction: column !important;
+    text-align: center;
+  }
+  #my-vendor-header a {
+    margin-bottom: 1rem;
+  }
 }

@@ -20,7 +20,7 @@
         <div class="col-md-12">
           <div class="innerWrapper">
             <div class="orderBox">
-              <div class="d-flex flex-row">
+              <div id="my-vendor-header" class="d-flex flex-row">
                 <h2 class="mr-3">Vendor List</h2>
                 <a href="{{ url('/account/vendors/create') }}"
                    class="btn btn-success"><i class="fa fa-plus mr-1"></i> Create new vendor</a>
