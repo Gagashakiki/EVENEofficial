@@ -80,7 +80,7 @@
             <br/> Konfirmasi pemesanan dari pihak EVENE maks H+3 dari pemesanan.
           </p>
           <p>Lengkapnya Metode Pembayaran EVENE ada
-            <a style="text-decoration:underline !important;" href="/how-evene-works#main">disini</a>
+            <a style="text-decoration:underline !important;" href="/about-us#how-evene-work">disini</a>
           </p>
         </div>
         <div class="modal-footer">
