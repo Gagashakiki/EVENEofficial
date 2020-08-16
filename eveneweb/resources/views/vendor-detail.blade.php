@@ -242,8 +242,7 @@
     jQuery(document).ready(function(){
       $('#btnSubmitReview').on('click', function() {
         if(validateReview()) {
-          // $('#formReview').submit();
-          console.log('submit');
+          $('#formReview').submit();
         }
 
 
